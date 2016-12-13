@@ -13,12 +13,18 @@
   <script type="text/javascript" src="javascripts/index.js"></script>
 </head>
 <body>
-  <section class="welcome_page in_center">
+  <section class="in_center">
     <form class="form-inline">
-      <label for="exampleInputName">Join Session:</label>
-      <input type="text" class="form-control" id="input-name" placeholder="ID/Name">
+      <label for="exampleInputSessionName">Session Name:</label>
+      <input type="text" class="form-control" id="input-session-name" placeholder="SessionName">
     </form>
     <br />
-    <a href="session_new.html"> New Session </a>
+    <table class="table table-striped" id="default-points-list">
+      <tr>
+        <th>Label</th>
+        <th>Value</th>
+      </tr>
+    </table>
+    <button class="btn btn-primary"> Create Session </button>
   </section>
 </body>
