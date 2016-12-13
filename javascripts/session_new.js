@@ -22,4 +22,16 @@ define(function(){
     row$.append($('<td>').html(value));
     $("#default-points-list").append(row$);
   }
+
+  $("#create_session").click(function(){
+    $.ajax("https://leancloud.cn:443/1.1/classes/session",
+    {
+      method: 'POST',
+      headers: { "X-LC-Id": "IuBpRcjICs1OlVjLeBm99rSO-gzGzoHsz",
+                "X-LC-Key": "Tan5kGI0Swx4cMte10sHrEjW" },
+      contentType: "application/json",
+      processData: false,
+      data: JSON.stringify({name: $("#input-session-name").val(), points: defaultPoints}),
+    });
+  });
 });

@@ -4,3 +4,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+#session_page {
+  width: 500px;
+  margin: auto;
+}
+
+#session_page button {
+  margin: 10px;
+}
+
+#session_page h1 {
+  text-align: center;
+}
