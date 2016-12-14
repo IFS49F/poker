@@ -2,6 +2,10 @@
 require(["session_new"], function(sessionNew){
 })
 
+// load session
+require(["session"], function(session){
+})
+
 
 $(document).ready(function(){
   $("#join_session").click(function(){
