@@ -1,4 +1,4 @@
-define(function(){
+define(["./bower_components/js-cookie/src/js.cookie"], function(Cookies){
   var sessionName = Cookies.get("session_name");
 
   $.ajax("https://leancloud.cn:443/1.1/classes/session",
