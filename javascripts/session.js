@@ -10,7 +10,7 @@ $.ajax("https://leancloud.cn:443/1.1/classes/session",
     var points = data.results[0].points;
     for(var i = 0 ; i < points.length; i++) {
       var row$ = $('<button type="button" class="btn btn-info">');
-      row$.html(points[i]);
+      row$.html(points[i].label);
       $("#point_labels").append(row$);
     }
   }
