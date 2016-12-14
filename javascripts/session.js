@@ -15,5 +15,5 @@ define(function(){
         $("#point_labels").append(row$);
       }
     }
-  };
+  });
 });
