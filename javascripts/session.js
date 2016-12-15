@@ -36,7 +36,7 @@ $('#point_labels').on('click', 'button', function(){
 
 // clear all votes
 $('#clear-votes').click(function(){
-  $('td').find("[id]").each(function(){
+  $("td[id!='_blank']").each(function(){
     this.text('');
     this.addClass('hidden-point');
   });
