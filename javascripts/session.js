@@ -46,12 +46,12 @@ ws.onmessage = function(evt){
 
 // add event handler for diconnection
 ws.onclose= function(evt){
-  logf('log: Diconnected');
+  alert('Server Diconnected');
 };
 
 // add event handler for error
 ws.onerror= function(evt){
-  logf('log: Error');
+  alert('Server Error');
 };
 
 // add event handler for new connection
