@@ -55,7 +55,7 @@ $("#user-point-list").append(user_point$);
 $('#point_labels').on('click', 'button', function(){
   var point = this.textContent.replace(/[^(\d\.)|?]*/g, '');
   $('#' + userName).text(point);
-  $('#' + userName).toggleClass('hidden-point ready-point');
+  $('#' + userName).attr('class', 'ready-point');
 });
 
 // clear all votes
@@ -68,7 +68,10 @@ $('#clear-votes').click(function(){
 
 // show votes
 $('#show-votes').click(function(){
-  $('td.hidden-point').removeClass('hidden-point');
+  // $('td.hidden-point').removeClass('hidden-point');
+  $("td[id]").each(function(){
+    this.className = '';
+  });
 });
 
 // --- WEBSOCKET ---
