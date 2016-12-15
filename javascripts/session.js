@@ -1,4 +1,5 @@
 var sessionName = Cookies.get("session_name");
+var userName = Cookies.get("user_name");
 
 $.ajax("https://leancloud.cn:443/1.1/classes/session",
 {
@@ -15,3 +16,42 @@ $.ajax("https://leancloud.cn:443/1.1/classes/session",
     }
   }
 });
+
+var user_point$ = $('<tr>');
+user_point$.append($('<td>').html(userName));
+var td_with_id_class = '<td id=' + userName + 'class=hidden' + '>';
+user_point$.append($(td_with_class));
+$("#user-point-list").append(row$);
+
+
+// --- WEBSOCKET ---
+//***************************
+// make new conncetion
+var ws = new WebSocket('ws://achex.ca:4010');
+
+// setup user ID
+ws.send(JSON.stringify({"setID":userName, "passwd":"free"}));
+
+// register Broadcast
+ws.send(JSON.stringify({"cmd":"register_broadcast", "bid":sessionName}));
+
+// add event handler for incomming message
+ws.onmessage = function(evt){
+  var my_received_message = evt.data;
+  logf('received: ' + my_received_message);
+};
+
+// add event handler for diconnection
+ws.onclose= function(evt){
+  logf('log: Diconnected');
+};
+
+// add event handler for error
+ws.onerror= function(evt){
+  logf('log: Error');
+};
+
+// add event handler for new connection
+ws.onopen= function(evt){
+  logf('log: Connected');
+};

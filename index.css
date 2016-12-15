@@ -17,3 +17,7 @@
 #session_page h1 {
   text-align: center;
 }
+
+.hidden {
+  background-color: black;
+}
