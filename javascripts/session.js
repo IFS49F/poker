@@ -34,6 +34,15 @@ $('#point_labels').on('click', 'button', function(){
   $('#' + userName).text(point);
 });
 
+// clear all votes
+$('#clear-votes').click(function(){
+
+});
+
+// show votes
+$('#show-votes').click(function(){
+  $('td.hidden-point').removeClass('hidden-point');
+});
 
 // --- WEBSOCKET ---
 //***************************
