@@ -19,6 +19,7 @@ var defaultPoints = [
 // make new conncetion
 var ws = new WebSocket('ws://achex.ca:4010');
 
+// maybe future time will use this
 // $.ajax("https://leancloud.cn:443/1.1/classes/session",
 // {
   // headers: { "X-LC-Id": "IuBpRcjICs1OlVjLeBm99rSO-gzGzoHsz",
@@ -58,7 +59,7 @@ $('#point_labels').on('click', 'button', function(){
 
 // clear all votes
 $('#clear-votes').click(function(){
-  $("td[id!='']").each(function(){
+  $("td[id]").each(function(){
     this.innerText = '';
     this.className = 'hidden-point';
   });
