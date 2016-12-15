@@ -24,7 +24,7 @@ user_point$.append($(td_with_id_class));
 $("#user-point-list").append(user_point$);
 
 $('#point_labels').on('click', 'button', function(){
-  var point = this.textContent.replace( /[^\d\.]*/g, '');
+  var point = this.textContent.replace(/[^(\d\.)|?]*/g, '');
   $('#' + userName).text(point);
 });
 
