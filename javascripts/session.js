@@ -10,7 +10,7 @@ $.ajax("https://leancloud.cn:443/1.1/classes/session",
     $("#session_name").text(sessionName);
     var points = data.results[0].points;
     for(var i = 0 ; i < points.length; i++) {
-      var row$ = $('<button type="button" class="btn btn-info">');
+      var row$ = $('<button type="button" class="btn btn-info points">');
       row$.html(points[i].label);
       $("#point_labels").append(row$);
     }
@@ -22,6 +22,11 @@ user_point$.append($('<td>').html(userName));
 var td_with_id_class = '<td id=' + userName + ' ' + 'class=hidden-point' + '>';
 user_point$.append($(td_with_id_class));
 $("#user-point-list").append(user_point$);
+
+$("button.points").click(function(this){
+  var point = this.textContext.replace( /[^\d\.]*/g, '');
+  $('#' + userName).text(point);
+});
 
 
 // --- WEBSOCKET ---
