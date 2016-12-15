@@ -20,7 +20,7 @@ $.ajax("https://leancloud.cn:443/1.1/classes/session",
 var user_point$ = $('<tr>');
 user_point$.append($('<td>').html(userName));
 var td_with_id_class = '<td id=' + userName + 'class=hidden' + '>';
-user_point$.append($(td_with_class));
+user_point$.append($(td_with_id_class));
 $("#user-point-list").append(row$);
 
 
