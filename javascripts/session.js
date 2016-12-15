@@ -36,6 +36,7 @@ var ws = new WebSocket('ws://achex.ca:4010');
 // });
 
 
+$("#session_name").text(sessionName);
 for(var i = 0 ; i < defaultPoints.length; i++) {
   var row$ = $('<button type="button" class="btn btn-info points">');
   row$.html(defaultPoints[i].label);
