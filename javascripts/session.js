@@ -55,6 +55,7 @@ $("#user-point-list").append(user_point$);
 $('#point_labels').on('click', 'button', function(){
   var point = this.textContent.replace(/[^(\d\.)|?]*/g, '');
   $('#' + userName).text(point);
+  $('#' + userName).toggleClass('hidden-point', 'ready-point');
 });
 
 // clear all votes

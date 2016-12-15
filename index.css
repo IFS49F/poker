@@ -21,3 +21,7 @@
 .hidden-point {
   background-color: #333;
 }
+
+.ready-point {
+  background-color: green;
+}
