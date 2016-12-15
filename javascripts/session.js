@@ -41,7 +41,6 @@ $('#point_labels').on('click', 'button', function(){
 // add event handler for incomming message
 ws.onmessage = function(evt){
   var my_received_message = evt.data;
-  logf('received: ' + my_received_message);
 };
 
 // add event handler for diconnection
