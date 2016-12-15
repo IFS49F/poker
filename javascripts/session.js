@@ -23,8 +23,8 @@ var td_with_id_class = '<td id=' + userName + ' ' + 'class=hidden-point' + '>';
 user_point$.append($(td_with_id_class));
 $("#user-point-list").append(user_point$);
 
-$("button.points").click(function(this){
-  var point = this.textContext.replace( /[^\d\.]*/g, '');
+$('#point_labels').on('click', 'button', function(){
+  var point = this.textContent.replace( /[^\d\.]*/g, '');
   $('#' + userName).text(point);
 });
 
