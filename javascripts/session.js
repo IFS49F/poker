@@ -37,7 +37,7 @@ $('#point_labels').on('click', 'button', function(){
 // clear all votes
 $('#clear-votes').click(function(){
   $("td[id!='']").each(function(){
-    this.text('');
+    this.innerText = '';
     this.addClass('hidden-point');
   });
 });
