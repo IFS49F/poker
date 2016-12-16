@@ -57,6 +57,7 @@ $('#point_labels').on('click', 'button', function(){
   var point = this.textContent.replace(/[^(\d\.)|?]*/g, '');
   $('#' + userName).text(point);
   $('#' + userName).attr('class', 'ready-point');
+  Cookies.set('point', point);
   ws.send(JSON.stringify({"bc": sessionName, "type":"user_choose_point", "user_name": userName, "point": point}));
 });
 
@@ -124,5 +125,7 @@ ws.onopen= function(evt){
   if(Cookies.get('first_login') != 'false') {
     Cookies.set('first_login', 'false');
     ws.send(JSON.stringify({"bc": sessionName, "type":"new_user", "user_name": userName, "point": ""}));
+  }else{
+    ws.send(JSON.stringify({"bc": sessionName, "type":"new_user", "user_name": userName, "point": Cookies.get("point")}));
   }
 };
