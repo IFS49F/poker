@@ -84,6 +84,7 @@ $('#show-votes').click(function(){
   $("td[id]").each(function(){
     this.className = '';
   });
+  ws.send(JSON.stringify({"bc": sessionName, "type":"show_all_votes"}));
 });
 
 // --- WEBSOCKET ---
@@ -125,6 +126,12 @@ ws.onmessage = function(evt){
       this.className = 'hidden-point';
     });
     Cookies.remove('point');
+  }
+
+  if(my_received_message.type == "show_all_votes"){
+    $("td[id]").each(function(){
+      this.className = '';
+    });
   }
 };
 
