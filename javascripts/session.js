@@ -57,6 +57,7 @@ $('#point_labels').on('click', 'button', function(){
   var point = this.textContent.replace(/[^(\d\.)|?]*/g, '');
   $('#' + userName).text(point);
   $('#' + userName).attr('class', 'ready-point');
+  ws.send(JSON.stringify({"bc": sessionName, "type":"user_choose_point", "user_name": userName, "point": point}));
 });
 
 // clear all votes
@@ -92,6 +93,14 @@ ws.onmessage = function(evt){
   // add sync user
   if(my_received_message.type == "new_user_sync"){
     append_user(my_received_message.user_name, my_received_message.point);
+  }
+
+  // sync user update
+  if(my_received_message.type == "user_choose_point"){
+    if(userName != my_received_message.user_name){
+      $('#' + my_received_message.user_name).text(point);
+      $('#' + my_received_message.user_name).attr('class', 'ready-point');
+    }
   }
 };
 
