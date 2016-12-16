@@ -84,7 +84,7 @@ $('#show-votes').click(function(){
 //
 // add event handler for incomming message
 ws.onmessage = function(evt){
-  var my_received_message = evt.data;
+  var my_received_message = JSON.parse(evt.data);
   if(my_received_message.type == "new_user"){
     append_user(my_received_message.user_name);
   }
