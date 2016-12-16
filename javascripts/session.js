@@ -74,6 +74,7 @@ $('#clear-votes').click(function(){
     this.innerText = '';
     this.className = 'hidden-point';
   });
+  Cookies.remove('point');
   ws.send(JSON.stringify({"bc": sessionName, "type":"clear_all_votes"}));
 });
 
@@ -123,6 +124,7 @@ ws.onmessage = function(evt){
       this.innerText = '';
       this.className = 'hidden-point';
     });
+    Cookies.remove('point');
   }
 };
 
