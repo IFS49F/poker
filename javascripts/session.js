@@ -49,7 +49,7 @@ for(var i = 0 ; i < defaultPoints.length; i++) {
 var append_user = function(user_name, point) {
   if($('td[id=' + user_name + ']')[0] == undefined){
     if(point == undefined){
-      $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="hidden-point">' + point + '</td></tr>');
+      $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="hidden-point"></td></tr>');
     }else{
       $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="ready-point">' + point + '</td></tr>');
     }
@@ -136,7 +136,7 @@ ws.onopen= function(evt){
   // check login
   if(Cookies.get('first_login') != 'false') {
     Cookies.set('first_login', 'false');
-    ws.send(JSON.stringify({"bc": sessionName, "type":"new_user", "user_name": userName, "point": ""}));
+    ws.send(JSON.stringify({"bc": sessionName, "type":"new_user", "user_name": userName, "point": cookie_point}));
   }else{
     append_user(userName, cookie_point);
     ws.send(JSON.stringify({"bc": sessionName, "type":"user_refresh", "user_name": userName}));
