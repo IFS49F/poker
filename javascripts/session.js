@@ -1,5 +1,6 @@
 var sessionName = Cookies.get("session_name");
 var userName = Cookies.get("user_name");
+var cookie_point = Cookies.get("point");
 
 var defaultPoints = [
   {label: "0 points", value: "0"},
@@ -46,7 +47,11 @@ for(var i = 0 ; i < defaultPoints.length; i++) {
 
 // append user function
 var append_user = function(user_name, point) {
-  $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="hidden-point">' + point + '</td></tr>');
+  if(point == ""){
+    $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="hidden-point">' + point + '</td></tr>');
+  }else{
+    $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="ready-point">' + point + '</td></tr>');
+  }
 }
 
 // show user on page
@@ -87,7 +92,7 @@ ws.onmessage = function(evt){
   if(my_received_message.type == "new_user"){
     append_user(my_received_message.user_name, my_received_message.point);
     if(userName != my_received_message.user_name){
-      ws.send(JSON.stringify({"to": my_received_message.user_name, "type": "new_user_sync", "user_name": userName, "point": $('#' + userName).text()}));
+      ws.send(JSON.stringify({"to": my_received_message.user_name, "type": "new_user_sync", "user_name": userName, "point": cookie_point}));
     }
   }
 
@@ -102,6 +107,11 @@ ws.onmessage = function(evt){
       $('#' + my_received_message.user_name).text(my_received_message.point);
       $('#' + my_received_message.user_name).attr('class', 'ready-point');
     }
+  }
+
+  // sync user refresh
+  if(my_received_message.type == "user_refresh"){
+    ws.send(JSON.stringify({"to": my_received_message.user_name, "type": "new_user_sync", "user_name": userName, "point": cookie_point}));
   }
 };
 
@@ -126,6 +136,7 @@ ws.onopen= function(evt){
     Cookies.set('first_login', 'false');
     ws.send(JSON.stringify({"bc": sessionName, "type":"new_user", "user_name": userName, "point": ""}));
   }else{
-    ws.send(JSON.stringify({"bc": sessionName, "type":"new_user", "user_name": userName, "point": Cookies.get("point")}));
+    append_user(userName, cookie_point);
+    ws.send(JSON.stringify({"bc": sessionName, "type":"user_refresh", "user_name": userName}));
   }
 };
