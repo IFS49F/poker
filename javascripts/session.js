@@ -109,6 +109,6 @@ ws.onopen= function(evt){
   // check login
   if(Cookies.get('first_login') != 'false') {
     Cookies.set('first_login', 'false');
-    ws.send({"bc": sessionName, "type":"new_user", "user_name": userName});
+    ws.send(JSON.stringify({"bc": sessionName, "type":"new_user", "user_name": userName}));
   }
 };
