@@ -47,10 +47,12 @@ for(var i = 0 ; i < defaultPoints.length; i++) {
 
 // append user function
 var append_user = function(user_name, point) {
-  if(point == ""){
-    $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="hidden-point">' + point + '</td></tr>');
-  }else{
-    $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="ready-point">' + point + '</td></tr>');
+  if($('td[id=' + user_name + ']')[0] == undefined){
+    if(point == undefined){
+      $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="hidden-point">' + point + '</td></tr>');
+    }else{
+      $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="ready-point">' + point + '</td></tr>');
+    }
   }
 }
 
