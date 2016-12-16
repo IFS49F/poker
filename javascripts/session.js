@@ -44,12 +44,17 @@ for(var i = 0 ; i < defaultPoints.length; i++) {
   $("#point_labels").append(row$);
 }
 
+
+var append_user = function(user_name) {
+  var user_point$ = $('<tr>');
+  user_point$.append($('<td>').html(user_name));
+  var td_with_id_class = '<td id=' + user_name + ' ' + 'class=hidden-point' + '>';
+  user_point$.append($(td_with_id_class));
+  $("#user-point-list").append(user_point$);
+}
+
 // show user on page
-var user_point$ = $('<tr>');
-user_point$.append($('<td>').html(userName));
-var td_with_id_class = '<td id=' + userName + ' ' + 'class=hidden-point' + '>';
-user_point$.append($(td_with_id_class));
-$("#user-point-list").append(user_point$);
+// append_user(userName);
 
 // choose a points
 $('#point_labels').on('click', 'button', function(){
@@ -80,6 +85,9 @@ $('#show-votes').click(function(){
 // add event handler for incomming message
 ws.onmessage = function(evt){
   var my_received_message = evt.data;
+  if(my_received_message.type == "new_user"){
+    append_user(my_received_message.user_name);
+  }
 };
 
 // add event handler for diconnection
@@ -98,4 +106,9 @@ ws.onopen= function(evt){
   ws.send(JSON.stringify({"setID":userName, "passwd":"free"}));
   // register Broadcast
   ws.send(JSON.stringify({"cmd":"register_broadcast", "bid":sessionName}));
+  // check login
+  if(Cookies.get('first_login') != 'false') {
+    Cookies.set('first_login', 'false');
+    ws.send({"bc": sessionName, "type":"new_user", "user_name": userName});
+  }
 };
