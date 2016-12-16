@@ -99,7 +99,7 @@ ws.onmessage = function(evt){
   // sync user update
   if(my_received_message.type == "user_choose_point"){
     if(userName != my_received_message.user_name){
-      $('#' + my_received_message.user_name).text(point);
+      $('#' + my_received_message.user_name).text(my_received_message.point);
       $('#' + my_received_message.user_name).attr('class', 'ready-point');
     }
   }
