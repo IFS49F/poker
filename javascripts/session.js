@@ -36,7 +36,7 @@ var ws = new WebSocket('ws://achex.ca:4010');
   // }
 // });
 
-
+// show points label list
 $("#session_name").text(sessionName);
 for(var i = 0 ; i < defaultPoints.length; i++) {
   var row$ = $('<button type="button" class="btn btn-info points">');
@@ -44,12 +44,12 @@ for(var i = 0 ; i < defaultPoints.length; i++) {
   $("#point_labels").append(row$);
 }
 
-
-var append_user = function(user_name) {
+// append user function
+var append_user = function(user_name, point) {
   var user_point$ = $('<tr>');
   user_point$.append($('<td>').html(user_name));
   var td_with_id_class = '<td id=' + user_name + ' ' + 'class=hidden-point' + '>';
-  user_point$.append($(td_with_id_class));
+  user_point$.append($(td_with_id_class)).html(point);
   $("#user-point-list").append(user_point$);
 }
 
@@ -85,8 +85,17 @@ $('#show-votes').click(function(){
 // add event handler for incomming message
 ws.onmessage = function(evt){
   var my_received_message = JSON.parse(evt.data);
+  // add new user also sync me to him
   if(my_received_message.type == "new_user"){
-    append_user(my_received_message.user_name);
+    append_user(my_received_message.user_name, my_received_message.point);
+    if(userName != my_received_message.user_name){
+      ws.send(JSON.stringify({"to": my_received_message.user_name, "type": "new_user_sync", "user_name": userName, "point": $('#' + userName).text()}));
+    }
+  }
+
+  // add sync user
+  if(my_received_message.type == "new_user_sync"){
+    append_user(my_received_message.user_name, my_received_message.point);
   }
 };
 
@@ -109,6 +118,6 @@ ws.onopen= function(evt){
   // check login
   if(Cookies.get('first_login') != 'false') {
     Cookies.set('first_login', 'false');
-    ws.send(JSON.stringify({"bc": sessionName, "type":"new_user", "user_name": userName}));
+    ws.send(JSON.stringify({"bc": sessionName, "type":"new_user", "user_name": userName, "point": ""}));
   }
 };
