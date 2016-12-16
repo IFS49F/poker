@@ -74,6 +74,7 @@ $('#clear-votes').click(function(){
     this.innerText = '';
     this.className = 'hidden-point';
   });
+  ws.send(JSON.stringify({"bc": sessionName, "type":"clear_all_votes"}));
 });
 
 // show votes
@@ -114,6 +115,14 @@ ws.onmessage = function(evt){
   // sync user refresh
   if(my_received_message.type == "user_refresh"){
     ws.send(JSON.stringify({"to": my_received_message.user_name, "type": "new_user_sync", "user_name": userName, "point": cookie_point}));
+  }
+
+  // clear all votes
+  if(my_received_message.type == "clear_all_votes"){
+    $("td[id]").each(function(){
+      this.innerText = '';
+      this.className = 'hidden-point';
+    });
   }
 };
 
