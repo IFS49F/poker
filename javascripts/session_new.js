@@ -34,7 +34,7 @@ define(function(){
       data: JSON.stringify({name: $("#input-session-name").val(), points: defaultPoints}),
       success: function(data) {
         document.cookie = "session_name=" + $("#input-session-name").val();
-        window.location.href = "http://hiveerli.me/poker/join_session.html";
+        window.location.href = "join_session.html";
       }
     });
   });
