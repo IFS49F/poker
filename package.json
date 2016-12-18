@@ -1,0 +1,25 @@
+{
+  "name": "poker",
+  "version": "1.0.0",
+  "description": "A very simplified poker.",
+  "author": "hiveer <ljp.hiveer@gmail.com>",
+  "scripts": {
+    "start": "python -m SimpleHTTPServer 80"
+  },
+  "homepage": "https://ifs49f.github.io/poker/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:IFS49F/poker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IFS49F/poker/issues"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "js-cookie": "^2.1.3",
+    "leancloud-storage": "^1.5.3",
+    "requirejs": "^2.3.2"
+  },
+  "license": "MIT"
+}
