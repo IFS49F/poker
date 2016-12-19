@@ -26,6 +26,9 @@ module.exports = {
     new ExtractTextPlugin('bundle.css', {
       allChunks: true,
       disable: false
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons'
     })
   ]
 };
