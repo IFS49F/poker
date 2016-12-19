@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A very simplified poker.",
   "author": "hiveer <ljp.hiveer@gmail.com>",
+  "engines": {
+    "node": "^6.0.0"
+  },
   "scripts": {
     "start": "python -m SimpleHTTPServer 80",
     "deploy": "bin/deploy"
