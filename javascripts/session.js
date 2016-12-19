@@ -18,7 +18,8 @@ var defaultPoints = [
 ];
 // initialize websocket
 // make new conncetion
-var ws = new WebSocket('ws://achex.ca:4010');
+// var ws = new WebSocket('ws://achex.ca:4010');
+var ws = new WebSocket('wss://echo.websocket.org/');
 
 // maybe future time will use this
 // $.ajax("https://leancloud.cn:443/1.1/classes/session",
