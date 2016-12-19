@@ -7,7 +7,7 @@
     "node": "^6.0.0"
   },
   "scripts": {
-    "start": "python -m SimpleHTTPServer 80",
+    "start": "php -S 0.0.0.0:8080 -t deploy",
     "deploy": "bin/deploy"
   },
   "homepage": "https://ifs49f.github.io/poker/",
