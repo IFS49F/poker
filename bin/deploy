@@ -15,8 +15,8 @@ cp join_session.html $DEPLOY_ROOT/
 cp session.html $DEPLOY_ROOT/
 cp session_new.html $DEPLOY_ROOT/
 cp LICENSE $DEPLOY_ROOT/
-cp javascripts $DEPLOY_ROOT/
-cp node_modules $DEPLOY_ROOT/
+cp -R javascripts $DEPLOY_ROOT/
+cp -R node_modules $DEPLOY_ROOT/
 
 cd $DEPLOY_ROOT
 
