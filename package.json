@@ -7,8 +7,9 @@
     "node": "^6.0.0"
   },
   "scripts": {
-    "start": "php -S 0.0.0.0:8080 -t deploy",
-    "deploy": "bin/deploy"
+    "start": "bin/server",
+    "deploy": "bin/deploy",
+    "build": "node_modules/.bin/webpack"
   },
   "homepage": "https://ifs49f.github.io/poker/",
   "repository": {
@@ -25,5 +26,12 @@
     "leancloud-storage": "^1.5.3",
     "requirejs": "^2.3.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "node-static": "^0.7.9",
+    "webpack": "^1.14.0"
+  }
 }

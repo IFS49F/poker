@@ -1,6 +1,7 @@
-// new session
-require(["session_new"], function(sessionNew){
-})
+require('bootstrap/dist/css/bootstrap.css')
+require('../styles/index.css');
+
+var $ = require('jquery/dist/jquery.js');
 
 $(document).ready(function(){
   $("#join_session").click(function(){
@@ -9,4 +10,3 @@ $(document).ready(function(){
     return false;
   });
 });
-

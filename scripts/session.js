@@ -1,3 +1,6 @@
+var $ = require('jquery/dist/jquery.js');
+require('js-cookie/src/js.cookie.js');
+
 var sessionName = Cookies.get("session_name");
 var userName = Cookies.get("user_name");
 var cookie_point = Cookies.get("point");

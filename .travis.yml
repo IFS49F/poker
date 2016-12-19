@@ -10,6 +10,7 @@ branches:
     - master
 
 script:
+  - npm run build
   - npm run deploy
 
 env:
