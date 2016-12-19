@@ -1,5 +1,5 @@
-var $ = require('jquery/dist/jquery.js');
-require('js-cookie/src/js.cookie.js');
+var $ = require('jquery');
+var Cookies = require('js-cookie');
 
 var sessionName = Cookies.get("session_name");
 var userName = Cookies.get("user_name");

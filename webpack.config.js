@@ -6,8 +6,7 @@ module.exports = {
     index: './scripts/index.js',
     session: './scripts/session.js',
     join_session: './scripts/join_session.js',
-    session_new: './scripts/session_new.js',
-    vendor: ['jquery', 'js-cookie']
+    session_new: './scripts/session_new.js'
   },
   output: {
     filename: '[name].js',
@@ -24,9 +23,6 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
-    }),
     new ExtractTextPlugin('bundle.css', {
       allChunks: true,
       disable: false

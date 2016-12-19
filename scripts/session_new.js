@@ -1,4 +1,4 @@
-var $ = require('jquery/dist/jquery.js');
+var $ = require('jquery');
 
 var defaultPoints = [
   {label: "0 points", value: "0"},
