@@ -4,7 +4,8 @@
   "description": "A very simplified poker.",
   "author": "hiveer <ljp.hiveer@gmail.com>",
   "scripts": {
-    "start": "python -m SimpleHTTPServer 80"
+    "start": "python -m SimpleHTTPServer 80",
+    "deploy": "bin/deploy"
   },
   "homepage": "https://ifs49f.github.io/poker/",
   "repository": {
