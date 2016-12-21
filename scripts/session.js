@@ -5,6 +5,11 @@ var sessionName = Cookies.get("session_name");
 var userName = Cookies.get("user_name");
 var cookie_point = Cookies.get("point");
 
+// redirect to login page
+if(sessionName == undefined) {
+  window.location.href = "index.html";
+}
+
 var defaultPoints = [
   {label: "0 points", value: "0"},
   {label: "0.5 point", value: "0.5"},
