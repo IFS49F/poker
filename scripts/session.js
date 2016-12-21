@@ -96,16 +96,17 @@ $('#show-votes').click(function(){
 // add event handler for incomming message
 ws.onmessage = function(evt){
   var my_received_message = JSON.parse(evt.data);
+
   // add new user also sync me to him
-  if(my_received_message.type == "new_user"){
+  if(my_received_message.type == "new_connection"){
     append_user(my_received_message.user_name, my_received_message.point);
     if(userName != my_received_message.user_name){
-      ws.send(JSON.stringify({"to": my_received_message.user_name, "type": "new_user_sync", "user_name": userName, "point": cookie_point}));
+      ws.send(JSON.stringify({"to": my_received_message.user_name, "type": "new_connection_sync", "user_name": userName, "point": cookie_point}));
     }
   }
 
   // add sync user
-  if(my_received_message.type == "new_user_sync"){
+  if(my_received_message.type == "new_connection_sync"){
     append_user(my_received_message.user_name, my_received_message.point);
   }
 
@@ -117,11 +118,6 @@ ws.onmessage = function(evt){
     }
   }
 
-  // sync user refresh
-  if(my_received_message.type == "user_refresh"){
-    ws.send(JSON.stringify({"to": my_received_message.user_name, "type": "new_user_sync", "user_name": userName, "point": cookie_point}));
-  }
-
   // clear all votes
   if(my_received_message.type == "clear_all_votes"){
     $("td[id]").each(function(){
@@ -131,6 +127,7 @@ ws.onmessage = function(evt){
     Cookies.remove('point');
   }
 
+  // show all votes
   if(my_received_message.type == "show_all_votes"){
     $("td[id]").each(function(){
       this.className = '';
@@ -138,9 +135,9 @@ ws.onmessage = function(evt){
   }
 };
 
-// add event handler for diconnection
+// reconnect when server is disconnected
 ws.onclose= function(evt){
-  alert('Server Diconnected');
+  window.location.reload();
 };
 
 // add event handler for error
@@ -154,12 +151,6 @@ ws.onopen= function(evt){
   ws.send(JSON.stringify({"setID":userName, "passwd":"free"}));
   // register Broadcast
   ws.send(JSON.stringify({"cmd":"register_broadcast", "bid":sessionName}));
-  // check login
-  if(Cookies.get('first_login') != 'false') {
-    Cookies.set('first_login', 'false');
-    ws.send(JSON.stringify({"bc": sessionName, "type":"new_user", "user_name": userName, "point": cookie_point}));
-  }else{
-    append_user(userName, cookie_point);
-    ws.send(JSON.stringify({"bc": sessionName, "type":"user_refresh", "user_name": userName}));
-  }
+  // broadcast new connection
+  ws.send(JSON.stringify({"bc": sessionName, "type":"new_connection", "user_name": userName, "point": cookie_point}));
 };
