@@ -14,17 +14,7 @@ cp join_session.html $DEPLOY_ROOT/
 cp session.html $DEPLOY_ROOT/
 cp session_new.html $DEPLOY_ROOT/
 cp LICENSE $DEPLOY_ROOT/
-
-mkdir $DEPLOY_ROOT/styles
-cp index.css $DEPLOY_ROOT/styles/
-cp node_modules/bootstrap/dist/css/bootstrap.min.css $DEPLOY_ROOT/styles/
-
-mkdir $DEPLOY_ROOT/scripts
-cp javascripts/* $DEPLOY_ROOT/scripts
-cp node_modules/leancloud-storage/dist/av-min.js $DEPLOY_ROOT/scripts/
-cp node_modules/jquery/dist/jquery.min.js $DEPLOY_ROOT/scripts/
-cp node_modules/js-cookie/src/js.cookie.js $DEPLOY_ROOT/scripts/
-cp node_modules/requirejs/require.js $DEPLOY_ROOT/scripts/
+cp -R dist $DEPLOY_ROOT/
 
 cd $DEPLOY_ROOT
 

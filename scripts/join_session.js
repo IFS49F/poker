@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 $(document).ready(function(){
   $("#join_with_name").click(function(){
     document.cookie = "user_name=" + $("#input-user-name").val() + "; point=''";
