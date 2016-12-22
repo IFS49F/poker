@@ -1,3 +1,6 @@
+dist: trusty
+sudo: false
+
 language: node_js
 node_js:
   - 6
@@ -12,15 +15,3 @@ branches:
 script:
   - npm run build
   - npm run deploy
-
-env:
-  global:
-    - NODE_ENV=production
-    - CXX=g++-4.8
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8

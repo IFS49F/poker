@@ -7,9 +7,9 @@
     "node": "^6.0.0"
   },
   "scripts": {
-    "start": "bin/server",
-    "deploy": "bin/deploy",
-    "build": "node_modules/.bin/webpack"
+    "start": "node_modules/.bin/webpack-dev-server --inline --hot",
+    "build": "node_modules/.bin/webpack",
+    "deploy": "bin/deploy"
   },
   "homepage": "https://ifs49f.github.io/poker/",
   "repository": {
@@ -19,19 +19,16 @@
   "bugs": {
     "url": "https://github.com/IFS49F/poker/issues"
   },
-  "dependencies": {
-    "bootstrap": "^3.3.7",
-    "jquery": "^3.1.1",
-    "js-cookie": "^2.1.3",
-    "leancloud-storage": "^1.5.3",
-    "requirejs": "^2.3.2"
-  },
   "license": "MIT",
   "devDependencies": {
+    "bootstrap": "^3.3.7",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
-    "node-static": "^0.7.9",
-    "webpack": "^1.14.0"
+    "jquery": "^3.1.1",
+    "js-cookie": "^2.1.3",
+    "leancloud-storage": "^1.5.3",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
   }
 }
