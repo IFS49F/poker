@@ -6,8 +6,12 @@ var userName = Cookies.get("user_name");
 var cookie_point = Cookies.get("point");
 
 // redirect to login page
-if(sessionName == undefined) {
+if(!sessionName) {
   window.location.href = "index.html";
+}
+
+if(sessionName && !userName) {
+  window.location.href = "join_session.html";
 }
 
 var defaultPoints = [
