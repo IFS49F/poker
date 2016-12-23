@@ -14,6 +14,7 @@ cp join_session.html $DEPLOY_ROOT/
 cp session.html $DEPLOY_ROOT/
 cp session_new.html $DEPLOY_ROOT/
 cp LICENSE $DEPLOY_ROOT/
+cp CNAME $DEPLOY_ROOT/
 cp -R dist $DEPLOY_ROOT/
 
 cd $DEPLOY_ROOT
