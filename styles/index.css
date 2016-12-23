@@ -6,8 +6,16 @@
 }
 
 #session_page {
+  position: relative;
   width: 500px;
   margin: auto;
+}
+
+#statistics {
+  position: fixed;
+  width: 300px;
+  left: 1000px;
+  top: 300px;
 }
 
 #session_page button {

@@ -129,12 +129,32 @@ ws.onmessage = function(evt){
       this.className = 'hidden-point';
     });
     Cookies.remove('point');
+    $(".point_count").each(function(){
+      this.parentNode.removeChild(this);
+    });
+    $("#statistics")[0].hidden = true;
   }
 
   if(my_received_message.type == "show_all_votes"){
+    var pointArray = [];
     $("td[id]").each(function(){
       this.className = '';
+      pointArray.push(this.innerText);
     });
+    var uniqValues = pointArray.filter(onlyUnique);
+    var pointCount = [];
+    uniqValues.forEach(function(point_value){
+      var point = [];
+      point.push(point_value);
+      point.push(pointArray.filter(function(x){return x==point_value}).length);
+      pointCount.push(point);
+    });
+    for(var i = 0 ; i < pointCount.length; i++) {
+      var row$ = $('<tr class="point_count"><td>' + pointCount[i][0] + '</td><td>' + pointCount[i][1] + '</td></tr>');
+      $("#point-count-list").append(row$);
+    }
+
+    $("#statistics")[0].hidden = false;
   }
 };
 
@@ -163,3 +183,10 @@ ws.onopen= function(evt){
     ws.send(JSON.stringify({"bc": sessionName, "type":"user_refresh", "user_name": userName}));
   }
 };
+
+
+
+// find the uniq element of an array
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index && value != '';
+}
