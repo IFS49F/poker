@@ -184,10 +184,3 @@ ws.onopen= function(evt){
     ws.send(JSON.stringify({"bc": sessionName, "type":"user_refresh", "user_name": userName}));
   }
 };
-
-
-
-// find the uniq element of an array
-function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index && value != '';
-}
