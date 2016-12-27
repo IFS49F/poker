@@ -152,7 +152,7 @@ ws.onmessage = function(evt){
       $("#point-count-list").append(row$);
     }
 
-    $("#statistics")[0].hidden = false;
+    $('#statistics').show();
   }
 };
 

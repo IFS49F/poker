@@ -12,6 +12,7 @@
 }
 
 #statistics {
+  display: none;
   position: absolute;
   width: 300px;
   left: 540px;
