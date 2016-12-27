@@ -129,10 +129,8 @@ ws.onmessage = function(evt){
       this.className = 'hidden-point';
     });
     Cookies.remove('point');
-    $(".point_count").each(function(){
-      this.parentNode.removeChild(this);
-    });
-    $("#statistics")[0].hidden = true;
+    $('#statistics').hide();
+    $('.point_count').remove();
   }
 
   if(my_received_message.type == "show_all_votes"){

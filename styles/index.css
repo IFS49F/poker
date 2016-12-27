@@ -12,10 +12,10 @@
 }
 
 #statistics {
-  position: fixed;
+  position: absolute;
   width: 300px;
-  left: 1000px;
-  top: 300px;
+  left: 540px;
+  top: 280px;
 }
 
 #session_page button {
