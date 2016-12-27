@@ -138,7 +138,9 @@ ws.onmessage = function(evt){
     var pointArray = [];
     $("td[id]").each(function(){
       this.className = '';
-      pointArray.push(this.innerText);
+      if(this.innerText != '') {
+        pointArray.push(this.innerText);
+      }
     });
 
     var pointHash = {};
