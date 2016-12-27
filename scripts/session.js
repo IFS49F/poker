@@ -153,8 +153,7 @@ ws.onmessage = function(evt){
     });
 
     for ( var key in pointHash) {
-      var row$ = $('<tr class="point_count"><td>' + key + '</td><td>' + pointHash[key] + '</td></tr>');
-      $("#point-count-list").append(row$);
+      $('<tr class="point_count"><td>' + key + '</td><td>' + pointHash[key] + '</td></tr>').appendTo("#point-count-list");
     }
 
     $('#statistics').show();
