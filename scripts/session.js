@@ -19,11 +19,12 @@ var defaultPoints = [
   {label: "100 points", value: "100"},
   {label: "?", value: '?'}
 ];
+
 // initialize websocket
 // make new conncetion
 var ws = new WebSocket('ws://achex.ca:4010');
 
-// maybe future time will use this
+// maybe in the future this would be used
 // $.ajax("https://leancloud.cn:443/1.1/classes/session",
 // {
   // headers: { "X-LC-Id": "IuBpRcjICs1OlVjLeBm99rSO-gzGzoHsz",
@@ -139,16 +140,18 @@ ws.onmessage = function(evt){
       this.className = '';
       pointArray.push(this.innerText);
     });
-    var uniqValues = pointArray.filter(onlyUnique);
-    var pointCount = [];
-    uniqValues.forEach(function(point_value){
-      var point = [];
-      point.push(point_value);
-      point.push(pointArray.filter(function(x){return x==point_value}).length);
-      pointCount.push(point);
+
+    var pointHash = {};
+    pointArray.forEach(function(point_value){
+       if(!pointHash[point_value]) {
+        pointHash[point_value] = 1;
+       } else {
+        pointHash[point_value] += 1;
+       }
     });
-    for(var i = 0 ; i < pointCount.length; i++) {
-      var row$ = $('<tr class="point_count"><td>' + pointCount[i][0] + '</td><td>' + pointCount[i][1] + '</td></tr>');
+
+    for ( var key in pointHash) {
+      var row$ = $('<tr class="point_count"><td>' + key + '</td><td>' + pointHash[key] + '</td></tr>');
       $("#point-count-list").append(row$);
     }
 
