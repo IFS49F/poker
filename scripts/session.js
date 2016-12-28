@@ -33,23 +33,6 @@ var defaultPoints = [
 // make new conncetion
 var ws = new WebSocket('ws://achex.ca:4010');
 
-// maybe in the future this would be used
-// $.ajax("https://leancloud.cn:443/1.1/classes/session",
-// {
-  // headers: { "X-LC-Id": "IuBpRcjICs1OlVjLeBm99rSO-gzGzoHsz",
-            // "X-LC-Key": "Tan5kGI0Swx4cMte10sHrEjW" },
-  // data: 'where=' + JSON.stringify({"name":sessionName}),
-  // success: function(data){
-    // $("#session_name").text(sessionName);
-    // var points = data.results[0].points;
-    // for(var i = 0 ; i < points.length; i++) {
-      // var row$ = $('<button type="button" class="btn btn-info points">');
-      // row$.html(points[i].label);
-      // $("#point_labels").append(row$);
-    // }
-  // }
-// });
-
 // show points label list
 $("#session_name").text(sessionName);
 for(var i = 0 ; i < defaultPoints.length; i++) {
