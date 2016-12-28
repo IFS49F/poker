@@ -1,38 +1,23 @@
-require('init_point_labels');
-
+require('./session/init_point_labels');
 var $ = require('jquery');
 var Cookies = require('js-cookie');
-
 var sessionName = Cookies.get("session_name");
 var userName = Cookies.get("user_name");
 var cookie_point = Cookies.get("point");
+var append_user = require('./session/append_user');
 
 // redirect to login page
 if(!sessionName) {
   window.location.href = "index.html";
 }
 
+// redirect to join session page
 if(sessionName && !userName) {
   window.location.href = "join_session.html";
 }
 
-// initialize websocket
 // make new conncetion
 var ws = new WebSocket('ws://achex.ca:4010');
-
-// append user function
-var append_user = function(user_name, point) {
-  if($('td[id=' + user_name + ']')[0] == undefined){
-    if(point == undefined || point == "undefined"){
-      $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="hidden-point"></td></tr>');
-    }else{
-      $("#user-point-list").append('<tr><td>' + user_name + '</td><td id=' + user_name +' class="ready-point">' + point + '</td></tr>');
-    }
-  }
-}
-
-// show user on page
-// append_user(userName);
 
 // choose a points
 $('#point_labels').on('click', 'button', function(){
