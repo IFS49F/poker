@@ -1,19 +1,5 @@
 import $ from 'jquery';
-
-let defaultPoints = [
-  {label: "0 points", value: "0"},
-  {label: "0.5 point", value: "0.5"},
-  {label: "1 point", value: "1"},
-  {label: "2 points", value: "2"},
-  {label: "3 points", value: "3"},
-  {label: "5 points", value: "5"},
-  {label: "8 points", value: "8"},
-  {label: "13 points", value: "13"},
-  {label: "20 points", value: "20"},
-  {label: "40 points", value: "40"},
-  {label: "100 points", value: "100"},
-  {label: "?", value: '?'}
-];
+import DEFAULT_POINTS from '../configs/defaultPoints';
 
 class NewSession {
   constructor() {
@@ -22,11 +8,11 @@ class NewSession {
   }
 
   _initDefaultPoints() {
-    for (let i = 0; i < defaultPoints.length; i++) {
+    for (let i = 0; i < DEFAULT_POINTS.length; i++) {
       let row$ = $('<tr>');
-      let label = defaultPoints[i].label;
+      let label = DEFAULT_POINTS[i].label;
       row$.append($('<td>').html(label));
-      let value = defaultPoints[i].value;
+      let value = DEFAULT_POINTS[i].value;
       row$.append($('<td>').html(value));
       $('#default-points-list').append(row$);
     }
@@ -46,7 +32,7 @@ class NewSession {
         processData: false,
         data: JSON.stringify({
           name: sessionName,
-          points: defaultPoints
+          points: DEFAULT_POINTS
         }),
         success: function(data) {
           document.cookie = `session_name=${sessionName}`;
