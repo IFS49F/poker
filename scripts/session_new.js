@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-var defaultPoints = [
+let defaultPoints = [
   {label: "0 points", value: "0"},
   {label: "0.5 point", value: "0.5"},
   {label: "1 point", value: "1"},
@@ -22,29 +22,35 @@ class NewSession {
   }
 
   _initDefaultPoints() {
-    for(var i = 0; i < defaultPoints.length; i++) {
-      var row$ = $('<tr>');
-      var label = defaultPoints[i].label;
+    for (let i = 0; i < defaultPoints.length; i++) {
+      let row$ = $('<tr>');
+      let label = defaultPoints[i].label;
       row$.append($('<td>').html(label));
-      var value = defaultPoints[i].value;
+      let value = defaultPoints[i].value;
       row$.append($('<td>').html(value));
-      $("#default-points-list").append(row$);
+      $('#default-points-list').append(row$);
     }
   }
 
   _initEventHandlers() {
-    $("#create_session").click(function(){
-      $.ajax("https://leancloud.cn:443/1.1/classes/session",
-      {
+    $('#create_session').click(function() {
+      let sessionName = $('#input-session-name').val();
+
+      $.ajax('https://leancloud.cn:443/1.1/classes/session', {
         method: 'POST',
-        headers: { "X-LC-Id": "IuBpRcjICs1OlVjLeBm99rSO-gzGzoHsz",
-                  "X-LC-Key": "Tan5kGI0Swx4cMte10sHrEjW" },
-        contentType: "application/json",
+        headers: {
+          'X-LC-Id': 'IuBpRcjICs1OlVjLeBm99rSO-gzGzoHsz',
+          'X-LC-Key': 'Tan5kGI0Swx4cMte10sHrEjW'
+        },
+        contentType: 'application/json',
         processData: false,
-        data: JSON.stringify({name: $("#input-session-name").val(), points: defaultPoints}),
+        data: JSON.stringify({
+          name: sessionName,
+          points: defaultPoints
+        }),
         success: function(data) {
-          document.cookie = "session_name=" + $("#input-session-name").val();
-          window.location.href = "join_session.html";
+          document.cookie = `session_name=${sessionName}`;
+          location.href = '/join_session.html';
         }
       });
     });

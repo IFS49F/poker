@@ -6,8 +6,9 @@ class Join {
   }
 
   _handleJoinSession() {
-    document.cookie = "user_name=" + $("#input-user-name").val() + "; point=''";
-    window.location.href = "session.html";
+    let userName = $('#input-user-name').val()
+    document.cookie = `user_name=${userName}; point=''`;
+    location.href = '/session.html';
     return false;
   }
 }

@@ -6,8 +6,9 @@ class App {
   }
 
   _handleJoinSession() {
-    document.cookie = "session_name=" + $("#input-name").val();
-    window.location.href = "join_session.html";
+    let sessionName = $('#input-name').val();
+    document.cookie = `session_name=${sessionName}`;
+    location.href = '/join_session.html';
     return false;
   }
 }
