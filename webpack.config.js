@@ -1,6 +1,6 @@
-let path = require('path');
-let webpack = require('webpack');
-let ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -16,6 +16,10 @@ module.exports = {
   },
   module: {
     loaders: [{
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: 'babel-loader?presets[]=es2015'
+    }, {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('css-loader?sourceMap')
     }, {
