@@ -1,12 +1,15 @@
-require('bootstrap/dist/css/bootstrap.css')
-require('../styles/index.css');
+import $ from 'jquery';
 
-var $ = require('jquery');
+class App {
+  constructor() {
+    $('#join_session').click(this._handleJoinSession);
+  }
 
-$(document).ready(function(){
-  $("#join_session").click(function(){
+  _handleJoinSession() {
     document.cookie = "session_name=" + $("#input-name").val();
     window.location.href = "join_session.html";
     return false;
-  });
-});
+  }
+}
+
+$(() => new App);

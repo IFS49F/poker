@@ -1,4 +1,4 @@
-var $ = require('jquery');
+import $ from 'jquery';
 
 var defaultPoints = [
   {label: "0 points", value: "0"},
@@ -15,27 +15,40 @@ var defaultPoints = [
   {label: "?", value: '?'}
 ];
 
-for(var i = 0; i < defaultPoints.length; i++) {
-  var row$ = $('<tr>');
-  var label = defaultPoints[i].label;
-  row$.append($('<td>').html(label));
-  var value = defaultPoints[i].value;
-  row$.append($('<td>').html(value));
-  $("#default-points-list").append(row$);
+class NewSession {
+  constructor() {
+    this._initDefaultPoints();
+    this._initEventHandlers();
+  }
+
+  _initDefaultPoints() {
+    for(var i = 0; i < defaultPoints.length; i++) {
+      var row$ = $('<tr>');
+      var label = defaultPoints[i].label;
+      row$.append($('<td>').html(label));
+      var value = defaultPoints[i].value;
+      row$.append($('<td>').html(value));
+      $("#default-points-list").append(row$);
+    }
+  }
+
+  _initEventHandlers() {
+    $("#create_session").click(function(){
+      $.ajax("https://leancloud.cn:443/1.1/classes/session",
+      {
+        method: 'POST',
+        headers: { "X-LC-Id": "IuBpRcjICs1OlVjLeBm99rSO-gzGzoHsz",
+                  "X-LC-Key": "Tan5kGI0Swx4cMte10sHrEjW" },
+        contentType: "application/json",
+        processData: false,
+        data: JSON.stringify({name: $("#input-session-name").val(), points: defaultPoints}),
+        success: function(data) {
+          document.cookie = "session_name=" + $("#input-session-name").val();
+          window.location.href = "join_session.html";
+        }
+      });
+    });
+  }
 }
 
-$("#create_session").click(function(){
-  $.ajax("https://leancloud.cn:443/1.1/classes/session",
-  {
-    method: 'POST',
-    headers: { "X-LC-Id": "IuBpRcjICs1OlVjLeBm99rSO-gzGzoHsz",
-              "X-LC-Key": "Tan5kGI0Swx4cMte10sHrEjW" },
-    contentType: "application/json",
-    processData: false,
-    data: JSON.stringify({name: $("#input-session-name").val(), points: defaultPoints}),
-    success: function(data) {
-      document.cookie = "session_name=" + $("#input-session-name").val();
-      window.location.href = "join_session.html";
-    }
-  });
-});
+$(() => new NewSession);
