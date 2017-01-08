@@ -116,7 +116,7 @@ class Session {
   _registerEventHanlders() {
     let that = this;
 
-    $('#point_labels').on('click', 'button', function() {
+    $('#point-labels').on('click', 'button', function() {
       let point = this.textContent.replace(/[^(\d\.)|?]*/g, '');
       let $user = $(`#${that.userName}`);
 
@@ -163,11 +163,11 @@ class Session {
   }
 
   _initPointLabels() {
-    $('#session_name').text(this.sessionName);
+    $('#session-name').text(this.sessionName);
     for (let i = 0 ; i < DEFAULT_POINTS.length; i++) {
       let $row = $('<button type="button" class="btn btn-info points">');
       $row.html(DEFAULT_POINTS[i].label);
-      $('#point_labels').append($row);
+      $('#point-labels').append($row);
     }
   }
 

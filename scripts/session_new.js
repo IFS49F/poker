@@ -19,7 +19,7 @@ class NewSession {
   }
 
   _initEventHandlers() {
-    $('#create_session').click(function() {
+    $('#btn-create-session').click(function() {
       let sessionName = $('#input-session-name').val();
 
       $.ajax('https://leancloud.cn:443/1.1/classes/session', {

@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 class Join {
   constructor() {
-    $('#join_with_name').click(this._handleJoinSession);
+    $('#btn-join-session').click(this._handleJoinSession);
   }
 
   _handleJoinSession() {

@@ -1,20 +1,20 @@
-.in_center {
+.page-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-#session_page {
+.session-page {
   width: 500px;
   margin: auto;
 }
 
-#session_page button {
+.session-page button {
   margin: 10px;
 }
 
-#session_page h1 {
+.session-page h1 {
   text-align: center;
 }
 
