@@ -5,15 +5,15 @@ import '../styles/index.css';
 
 class App {
   constructor() {
-    $('#btn-to-join-session').click(this._handleJoinSession);
+    $('#btn-to-join-session').click(this.handleJoinSession);
   }
 
-  _handleJoinSession() {
+  handleJoinSession() {
     let sessionName = $('#input-name').val();
-    document.cookie = `session_name=${sessionName}`;
-    location.href = '/join_session.html';
+    window.document.cookie = `session_name=${sessionName}`;
+    window.location.href = '/join_session.html';
     return false;
   }
 }
 
-$(() => new App);
+$(() => new App());
