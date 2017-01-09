@@ -11,7 +11,7 @@
   margin: auto;
 }
 
-#statistics {
+.statistics {
   display: none;
   position: absolute;
   width: 300px;
