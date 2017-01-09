@@ -28,11 +28,12 @@ var defaultPoints = [
   {label: "100 points", value: "100"},
   {label: "?", value: '?'}
 ];
+
 // initialize websocket
 // make new conncetion
 var ws = new WebSocket('ws://achex.ca:4010');
 
-// maybe future time will use this
+// maybe in the future this would be used
 // $.ajax("https://leancloud.cn:443/1.1/classes/session",
 // {
   // headers: { "X-LC-Id": "IuBpRcjICs1OlVjLeBm99rSO-gzGzoHsz",
@@ -134,13 +135,29 @@ ws.onmessage = function(evt){
       this.className = 'hidden-point';
     });
     Cookies.remove('point');
+    $('#statistics').hide();
+    $('.point_count').remove();
   }
 
   // show all votes
   if(my_received_message.type == "show_all_votes"){
+    var pointHash = {};
     $("td[id]").each(function(){
       this.className = '';
+      if(this.innerText != '') {
+        if(!pointHash[this.innerText]) {
+          pointHash[this.innerText] = 1;
+        } else {
+          pointHash[this.innerText] += 1;
+        }
+      }
     });
+
+    Object.keys(pointHash).forEach(function(key) {
+      $('<tr class="point_count"><td>' + key + '</td><td>' + pointHash[key] + '</td></tr>').appendTo("#point-count-list");
+    });
+
+    $('#statistics').show();
   }
 };
 
