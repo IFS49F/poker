@@ -66,13 +66,32 @@ class Session {
         });
 
         Cookies.remove('point');
+
+        $('#statistics').hide();
+        $('.point_count').remove();
       }
 
       // show all votes
       if (myReceivedMessage.type === 'show_all_votes') {
+        let pointHash = {};
+
         $('td[id]').each((index, element) => {
           element.className = '';
+
+          if (element.innerText !== '') {
+            if (!pointHash[element.innerText]) {
+              pointHash[element.innerText] = 1;
+            } else {
+              pointHash[element.innerText] += 1;
+            }
+          }
         });
+
+        Object.keys(pointHash).forEach((key) => {
+          $(`<tr class="point_count"><td>${key}</td><td>${pointHash[key]}</td></tr>`).appendTo('#point-count-list');
+        });
+
+        $('#statistics').show();
       }
     };
 
@@ -106,6 +125,23 @@ class Session {
     };
 
     this.ws = ws;
+
+    // maybe in the future this would be used
+    // $.ajax("https://leancloud.cn:443/1.1/classes/session",
+    // {
+      // headers: { "X-LC-Id": "IuBpRcjICs1OlVjLeBm99rSO-gzGzoHsz",
+                // "X-LC-Key": "Tan5kGI0Swx4cMte10sHrEjW" },
+      // data: 'where=' + JSON.stringify({"name":sessionName}),
+      // success: function(data){
+        // $("#session_name").text(sessionName);
+        // var points = data.results[0].points;
+        // for(var i = 0 ; i < points.length; i++) {
+          // var row$ = $('<button type="button" class="btn btn-info points">');
+          // row$.html(points[i].label);
+          // $("#point_labels").append(row$);
+        // }
+      // }
+    // });
   }
 
   registerEventHanlders() {
