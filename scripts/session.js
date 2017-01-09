@@ -141,26 +141,21 @@ ws.onmessage = function(evt){
 
   // show all votes
   if(my_received_message.type == "show_all_votes"){
-    var pointArray = [];
+    var pointHash = {};
     $("td[id]").each(function(){
       this.className = '';
       if(this.innerText != '') {
-        pointArray.push(this.innerText);
+        if(!pointHash[this.innerText]) {
+          pointHash[this.innerText] = 1;
+        } else {
+          pointHash[this.innerText] += 1;
+        }
       }
     });
 
-    var pointHash = {};
-    pointArray.forEach(function(point_value){
-       if(!pointHash[point_value]) {
-        pointHash[point_value] = 1;
-       } else {
-        pointHash[point_value] += 1;
-       }
-    });
-
-    for ( var key in pointHash) {
+    Object.keys(pointHash).forEach(function(key) {
       $('<tr class="point_count"><td>' + key + '</td><td>' + pointHash[key] + '</td></tr>').appendTo("#point-count-list");
-    }
+    });
 
     $('#statistics').show();
   }
