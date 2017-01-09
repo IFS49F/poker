@@ -6,8 +6,17 @@
 }
 
 .session-page {
+  position: relative;
   width: 500px;
   margin: auto;
+}
+
+#statistics {
+  display: none;
+  position: absolute;
+  width: 300px;
+  left: 540px;
+  top: 280px;
 }
 
 .session-page button {
