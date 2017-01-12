@@ -8,9 +8,8 @@
   },
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server --inline --hot",
-    "eslint": "eslint ./scripts",
-    "build": "node_modules/.bin/webpack",
-    "deploy": "bin/deploy"
+    "eslint": "node_modules/.bin/eslint ./scripts",
+    "build": "node_modules/.bin/webpack"
   },
   "homepage": "https://ifs49f.github.io/poker/",
   "repository": {

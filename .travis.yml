@@ -15,4 +15,10 @@ branches:
 script:
   - npm run eslint
   - npm run build
-  - npm run deploy
+
+deploy:
+  provider: script
+  script: bin/deploy
+  skip_cleanup: true
+  on:
+    branch: master
