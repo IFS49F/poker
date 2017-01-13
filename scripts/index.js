@@ -1,12 +1,19 @@
-require('bootstrap/dist/css/bootstrap.css')
-require('../styles/index.css');
+import $ from 'jquery';
+// work with `extract-text-webpack-plugin`.
+import 'bootstrap/dist/css/bootstrap.css';
+import '../styles/index.css';
 
-var $ = require('jquery');
+class App {
+  constructor() {
+    $('#btn-to-join-session').click(this._handleJoinSession);
+  }
 
-$(document).ready(function(){
-  $("#join_session").click(function(){
-    document.cookie = "session_name=" + $("#input-name").val();
-    window.location.href = "join_session.html";
+  _handleJoinSession() {
+    let sessionName = $('#input-name').val();
+    document.cookie = `session_name=${sessionName}`;
+    location.href = '/join_session.html';
     return false;
-  });
-});
+  }
+}
+
+$(() => new App);

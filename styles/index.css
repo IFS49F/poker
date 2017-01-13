@@ -1,17 +1,17 @@
-.in_center {
+.page-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-#session_page {
+.session-page {
   position: relative;
   width: 500px;
   margin: auto;
 }
 
-#statistics {
+.statistics {
   display: none;
   position: absolute;
   width: 300px;
@@ -19,11 +19,11 @@
   top: 280px;
 }
 
-#session_page button {
+.session-page button {
   margin: 10px;
 }
 
-#session_page h1 {
+.session-page h1 {
   text-align: center;
 }
 

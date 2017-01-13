@@ -1,9 +1,16 @@
-var $ = require('jquery');
+import $ from 'jquery';
 
-$(document).ready(function(){
-  $("#join_with_name").click(function(){
-    document.cookie = "user_name=" + $("#input-user-name").val() + "; point=''";
-    window.location.href = "session.html";
+class Join {
+  constructor() {
+    $('#btn-join-session').click(this._handleJoinSession);
+  }
+
+  _handleJoinSession() {
+    let userName = $('#input-user-name').val()
+    document.cookie = `user_name=${userName}; point=''`;
+    location.href = '/session.html';
     return false;
-  });
-});
+  }
+}
+
+$(() => new Join);
