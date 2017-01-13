@@ -4,55 +4,54 @@ import DEFAULT_POINTS from '../configs/defaultPoints';
 
 class Session {
   constructor() {
-    this._checkPermissions();
-    this._initConncetion();
-    this._registerEventHanlders();
-    this._initPointLabels();
+    this.checkPermissions();
+    this.initConncetion();
+    this.registerEventHanlders();
+    this.initPointLabels();
   }
 
-  _checkPermissions() {
+  checkPermissions() {
     this.sessionName = Cookies.get('session_name');
     this.userName = Cookies.get('user_name');
     this.cookiePoint = Cookies.get('point');
 
     // redirect to login page
     if (!this.sessionName) {
-      location.href = '/index.html';
+      window.location.href = '/index.html';
     }
 
     if (this.sessionName && !this.userName) {
-      location.href = '/join_session.html';
+      window.location.href = '/join_session.html';
     }
   }
 
-  _initConncetion() {
+  initConncetion() {
     let ws = new WebSocket('ws://achex.ca:4010');
-    let that = this;
 
-    ws.onmessage = function(evt) {
-      let myReceivedMessage = JSON.parse(evt.data);
+    ws.onmessage = (event) => {
+      let myReceivedMessage = JSON.parse(event.data);
 
       // add new user also sync me to him
       if (myReceivedMessage.type === 'new_connection') {
-        that._appendUser(myReceivedMessage.user_name, myReceivedMessage.point);
-        if (that.userName !== myReceivedMessage.user_name) {
+        this.appendUser(myReceivedMessage.user_name, myReceivedMessage.point);
+        if (this.userName !== myReceivedMessage.user_name) {
           ws.send(JSON.stringify({
             to: myReceivedMessage.user_name,
             type: 'new_connection_sync',
-            user_name: that.userName,
-            point: that.cookiePoint
+            user_name: this.userName,
+            point: this.cookiePoint
           }));
         }
       }
 
       // add sync user
       if (myReceivedMessage.type === 'new_connection_sync') {
-        that._appendUser(myReceivedMessage.user_name, myReceivedMessage.point);
+        this.appendUser(myReceivedMessage.user_name, myReceivedMessage.point);
       }
 
       // sync user update
       if (myReceivedMessage.type === 'user_choose_point') {
-        if (that.userName !== myReceivedMessage.user_name) {
+        if (this.userName !== myReceivedMessage.user_name) {
           let $user = $(`#${myReceivedMessage.user_name}`);
           $user.text(myReceivedMessage.point);
           $user.attr('class', 'ready-point');
@@ -61,9 +60,9 @@ class Session {
 
       // clear all votes
       if (myReceivedMessage.type === 'clear_all_votes') {
-        $('td[id]').each(function() {
-          this.innerText = '';
-          this.className = 'hidden-point';
+        $('td[id]').each((index, element) => {
+          element.innerText = '';
+          element.className = 'hidden-point';
         });
 
         Cookies.remove('point');
@@ -73,21 +72,23 @@ class Session {
       }
 
       // show all votes
-      if (myReceivedMessage.type === "show_all_votes"){
+      if (myReceivedMessage.type === 'show_all_votes') {
         let pointHash = {};
-        $('td[id]').each(function(){
-          this.className = '';
-          if (this.innerText !== '') {
-            if (!pointHash[this.innerText]) {
-              pointHash[this.innerText] = 1;
+
+        $('td[id]').each((index, element) => {
+          element.className = '';
+
+          if (element.innerText !== '') {
+            if (!pointHash[element.innerText]) {
+              pointHash[element.innerText] = 1;
             } else {
-              pointHash[this.innerText] += 1;
+              pointHash[element.innerText] += 1;
             }
           }
         });
 
-        Object.keys(pointHash).forEach(function(key) {
-          $('<tr class="point_count"><td>' + key + '</td><td>' + pointHash[key] + '</td></tr>').appendTo("#point-count-list");
+        Object.keys(pointHash).forEach((key) => {
+          $(`<tr class="point_count"><td>${key}</td><td>${pointHash[key]}</td></tr>`).appendTo('#point-count-list');
         });
 
         $('#statistics').show();
@@ -95,35 +96,31 @@ class Session {
     };
 
     // reconnect when server is disconnected
-    ws.onclose = function(evt) {
-      location.reload();
-    };
+    ws.onclose = () => window.location.reload();
 
     // add event handler for error
-    ws.onerror = function(evt) {
-      alert('Server Error');
-    };
+    ws.onerror = () => alert('Server Error');
 
     // add event handler for new connection
-    ws.onopen = function(evt) {
+    ws.onopen = () => {
       // setup user ID
       ws.send(JSON.stringify({
-        setID: that.userName,
+        setID: this.userName,
         passwd: 'free'
       }));
 
       // register Broadcast
       ws.send(JSON.stringify({
         cmd: 'register_broadcast',
-        bid: that.sessionName
+        bid: this.sessionName
       }));
 
       // broadcast new connection
       ws.send(JSON.stringify({
-        bc: that.sessionName,
-        type:'new_connection',
-        user_name: that.userName,
-        point: that.cookiePoint
+        bc: this.sessionName,
+        type: 'new_connection',
+        user_name: this.userName,
+        point: this.cookiePoint
       }));
     };
 
@@ -147,65 +144,63 @@ class Session {
     // });
   }
 
-  _registerEventHanlders() {
-    let that = this;
-
-    $('#point-labels').on('click', 'button', function() {
-      let point = this.textContent.replace(/[^(\d\.)|?]*/g, '');
-      let $user = $(`#${that.userName}`);
+  registerEventHanlders() {
+    $('#point-labels').on('click', 'button', (event) => {
+      let point = event.target.textContent.replace(/[^(\d)|?]*/g, '');
+      let $user = $(`#${this.userName}`);
 
       $user.text(point);
       $user.attr('class', 'ready-point');
 
       Cookies.set('point', point);
 
-      that.ws.send(JSON.stringify({
-        bc: that.sessionName,
+      this.ws.send(JSON.stringify({
+        bc: this.sessionName,
         type: 'user_choose_point',
-        user_name: that.userName,
+        user_name: this.userName,
         point
       }));
     });
 
     // clear all votes
-    $('#clear-votes').click(function() {
-      $('td[id]').each(function() {
-        this.innerText = '';
-        this.className = 'hidden-point';
+    $('#clear-votes').click(() => {
+      $('td[id]').each((index, element) => {
+        element.innerText = '';
+        element.className = 'hidden-point';
       });
 
       Cookies.remove('point');
 
-      that.ws.send(JSON.stringify({
-        bc: that.sessionName,
+      this.ws.send(JSON.stringify({
+        bc: this.sessionName,
         type: 'clear_all_votes'
       }));
     });
 
     // show votes
-    $('#show-votes').click(function() {
+    $('#show-votes').click(() => {
       // $('td.hidden-point').removeClass('hidden-point');
-      $('td[id]').each(function() {
-        this.className = '';
+      $('td[id]').each((index, element) => {
+        element.className = '';
       });
 
-      that.ws.send(JSON.stringify({
-        bc: that.sessionName,
-        type:'show_all_votes'
+      this.ws.send(JSON.stringify({
+        bc: this.sessionName,
+        type: 'show_all_votes'
       }));
     });
   }
 
-  _initPointLabels() {
+  initPointLabels() {
     $('#session-name').text(this.sessionName);
-    for (let i = 0 ; i < DEFAULT_POINTS.length; i++) {
+    for (let i = 0; i < DEFAULT_POINTS.length; i++) {
       let $row = $('<button type="button" class="btn btn-info points">');
       $row.html(DEFAULT_POINTS[i].label);
       $('#point-labels').append($row);
     }
   }
 
-  _appendUser(userName, point) {
+  appendUser(userName, point) {
     if ($(`td[id=${userName}]`)[0] === undefined) {
       let $userPointList = $('#user-point-list');
       if (point === undefined || point === 'undefined') {
@@ -217,4 +212,4 @@ class Session {
   }
 }
 
-$(() => new Session);
+$(() => new Session());

@@ -2,15 +2,15 @@ import $ from 'jquery';
 
 class Join {
   constructor() {
-    $('#btn-join-session').click(this._handleJoinSession);
+    $('#btn-join-session').click(this.handleJoinSession);
   }
 
-  _handleJoinSession() {
-    let userName = $('#input-user-name').val()
-    document.cookie = `user_name=${userName}; point=''`;
-    location.href = '/session.html';
+  handleJoinSession() {
+    let userName = $('#input-user-name').val();
+    window.document.cookie = `user_name=${userName}; point=''`;
+    window.location.href = '/session.html';
     return false;
   }
 }
 
-$(() => new Join);
+$(() => new Join());
