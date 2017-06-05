@@ -1,0 +1,62 @@
+:root {
+  --card-height: 150px;
+}
+
+.Card {
+  position: relative;
+  width: calc(var(--card-height) / 1.5);
+  height: var(--card-height);
+  font-size: calc(var(--card-height) / 3);
+  line-height: var(--card-height);
+  transition: opacity 0.5s ease;
+  opacity: 0.3;
+
+  .face {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: transform 0.5s ease;
+    text-align: center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    background-color: white;
+    box-shadow: 0 0 0 2px DarkSlateGrey;
+    border-radius: calc(var(--card-height) / 10);
+    color: DarkSlateGrey;
+  }
+
+  .back.face {
+    color: LightSlateGrey;
+    background-image: linear-gradient(130deg, LightSlateGrey, DarkSlateGrey);
+  }
+
+  .front.face {
+    background-image: linear-gradient(130deg, white, LightGrey);
+    transform: rotateY(180deg);
+  }
+
+  &.voted {
+    opacity: 1;
+    animation: bounce ease 2s 1;
+  }
+
+  &.show {
+    .back.face {
+      transform: rotateY(-180deg);
+    }
+
+    .front.face {
+      transform: rotateY(0deg);
+    }
+  }
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0) }
+  10% { transform: translateY(calc(var(--card-height) / -5)) }
+  20% { transform: translateY(0) }
+  30% { transform: translateY(calc(var(--card-height) / -10)) }
+  40% { transform: translateY(0) }
+}
