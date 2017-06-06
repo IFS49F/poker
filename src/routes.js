@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Route } from 'react-router';
 
-import App from './pages/App/App';
-import NotFound from './pages/NotFound/NotFound';
+import App from 'pages/App/App';
+import NotFound from 'pages/NotFound/NotFound';
 
 const Routes = (props) => (
   <Router {...props}>
