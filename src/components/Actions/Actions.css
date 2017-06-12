@@ -1,5 +1,5 @@
 :root {
-  --actions-button-size: 4rem;
+  --actions-button-size: 3rem;
   --actions-button-border-radius: calc(var(--actions-button-size) / 5);
 }
 
