@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Votes from 'components/Votes/Votes';
 import Summary from 'components/Summary/Summary';
 import './App.css';
+import io from 'socket.io-client';
+
+let socket = io(`http://localhost:4000`);
 
 class App extends Component {
   constructor(props) {
