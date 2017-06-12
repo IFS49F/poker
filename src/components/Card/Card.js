@@ -4,11 +4,11 @@ import './Card.css';
 
 class Card extends Component {
   render() {
-    let { voted, show } = this.props;
-    let cardClass = classNames('Card', { voted, show });
+    const { score, voted, show } = this.props;
+    const cardClass = classNames('Card', { voted, show: (voted && show) });
     return (
       <div className={cardClass}>
-        <div className="front face">{this.props.score}</div>
+        <div className="front face">{score}</div>
         <div className="back face">♤</div>
       </div>
     );

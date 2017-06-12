@@ -1,27 +1,53 @@
 import React, { Component } from 'react';
-import Card from 'components/Card/Card';
+import Votes from 'components/Votes/Votes';
+import Summary from 'components/Summary/Summary';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      score: 8,
-      voted: false,
+      me: {
+        id: '1',
+        name: 'James',
+        score: 8,
+        voted: true
+      },
+      team: [{
+        id: '2',
+        name: 'Hiveer',
+        score: 8,
+        voted: true
+      }, {
+        id: '3',
+        name: 'Langping',
+        score: 13,
+        voted: true
+      }, {
+        id: '4',
+        name: 'Zoro',
+        score: '🤔',
+        voted: true
+      }, {
+        id: '5',
+        name: 'Elvis',
+        score: null,
+        voted: false
+      }],
       show: false
     };
   }
 
   handleChangeScore = (e) => {
-    let score = e.target.value
+    const score = e.target.value
     this.setState(prevState => ({
-      score
+      me: Object.assign({}, prevState.me, { score })
     }));
   };
 
   handleToggleVoted = () => {
     this.setState(prevState => ({
-      voted: !prevState.voted
+      me: Object.assign({}, prevState.me, { voted: !prevState.me.voted })
     }));
   };
 
@@ -34,13 +60,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Card
-          score={this.state.score}
-          voted={this.state.voted}
-          show={this.state.show} />
-        <br />
         <select
-          value={this.state.score}
+          value={this.state.me.score}
           onChange={this.handleChangeScore}>
           <option>0</option>
           <option>1</option>
@@ -62,6 +83,14 @@ class App extends Component {
         <button
           onClick={this.handleToggleShow}>
           Show / Hide</button>
+        <Votes
+          me={this.state.me}
+          team={this.state.team}
+          show={this.state.show} />
+        <Summary
+            me={this.state.me}
+            team={this.state.team}
+            show={this.state.show} />
       </div>
     );
   }
