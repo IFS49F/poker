@@ -5,17 +5,19 @@ import './Votes.css';
 class Votes extends Component {
   render() {
     const { me, team, show } = this.props;
-    const listItems = team.map((member) =>
-      <li key={member.id}>
-        <dd>
-          <Card
-            score={member.score}
-            voted={member.voted}
-            show={show} />
-        </dd>
-        <dt>{member.name}</dt>
-      </li>
-    );
+    const listItems = team
+      .sort((a, b) => (a.name > b.name ? 1 : -1))
+      .map((member) =>
+        <li key={member.id}>
+          <dd>
+            <Card
+              score={member.score}
+              voted={member.voted}
+              show={show} />
+          </dd>
+          <dt>{member.name}</dt>
+        </li>
+      );
     return (
       <div className="Votes">
         <ul>
