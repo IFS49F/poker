@@ -10,17 +10,17 @@
 
   ul {
     display: flex;
-    padding: 0;
+    margin: 1rem 0;
     list-style-type: none;
   }
 
   button {
     display: inline-block;
-    min-width: var(--actions-button-size);
     height: var(--actions-button-size);
     border: none;
     cursor: pointer;
     transition: transform 0.2s ease;
+    font-family: inherit;
     font-size: calc(var(--actions-button-size) / 2);
     outline: none;
 
@@ -34,6 +34,7 @@
   }
 
   .scores button {
+    width: var(--actions-button-size);
     background-image: linear-gradient(to right, #f0cb35, #c02425);
     background-size: cover;
     background-position: center;
