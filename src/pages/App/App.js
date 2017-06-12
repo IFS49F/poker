@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Actions from 'components/Actions/Actions';
 import Votes from 'components/Votes/Votes';
 import Summary from 'components/Summary/Summary';
 import './App.css';
@@ -13,8 +14,8 @@ class App extends Component {
       me: {
         id: '1',
         name: 'James',
-        score: 8,
-        voted: true
+        score: null,
+        voted: false
       },
       team: [{
         id: '2',
@@ -41,16 +42,10 @@ class App extends Component {
     };
   }
 
-  handleChangeScore = (e) => {
+  handleVote = (e) => {
     const score = e.target.value
     this.setState(prevState => ({
-      me: Object.assign({}, prevState.me, { score })
-    }));
-  };
-
-  handleToggleVoted = () => {
-    this.setState(prevState => ({
-      me: Object.assign({}, prevState.me, { voted: !prevState.me.voted })
+      me: Object.assign({}, prevState.me, { score, voted: true })
     }));
   };
 
@@ -63,29 +58,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <select
-          value={this.state.me.score}
-          onChange={this.handleChangeScore}>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>5</option>
-          <option>8</option>
-          <option>13</option>
-          <option>20</option>
-          <option>40</option>
-          <option>100</option>
-          <option>?</option>
-        </select>
-        <br />
-        <button
-          onClick={this.handleToggleVoted}>
-          Toggle Voted</button>
-        <br />
-        <button
-          onClick={this.handleToggleShow}>
-          Show / Hide</button>
+        <Actions
+          show={this.state.show}
+          onVote={this.handleVote}
+          onToggleShow={this.handleToggleShow} />
         <Votes
           me={this.state.me}
           team={this.state.team}

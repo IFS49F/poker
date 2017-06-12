@@ -20,6 +20,7 @@
 
   li {
     display: flex;
+    margin: 0 20px 20px 20px;
   }
 
   dt {

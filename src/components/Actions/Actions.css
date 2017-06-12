@@ -1,0 +1,63 @@
+:root {
+  --actions-button-size: 4rem;
+  --actions-button-border-radius: calc(var(--actions-button-size) / 5);
+}
+
+.Actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  ul {
+    display: flex;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  button {
+    display: inline-block;
+    min-width: var(--actions-button-size);
+    height: var(--actions-button-size);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    font-size: calc(var(--actions-button-size) / 2);
+    outline: none;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(1.1);
+    }
+  }
+
+  .scores button {
+    background-image: linear-gradient(to right, #f0cb35, #c02425);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+  }
+
+  .scores li:first-child > button {
+    border-radius: var(--actions-button-border-radius) 0 0 var(--actions-button-border-radius);
+  }
+
+  .scores li:last-child > button {
+    border-radius: 0 var(--actions-button-border-radius) var(--actions-button-border-radius) 0;
+  }
+
+  .operations button {
+    margin: 0 1rem;
+    width: calc(var(--actions-button-size) * 2);
+    border-radius: var(--actions-button-border-radius);
+    background: YellowGreen;
+    color: white;
+
+    &.danger {
+      background: crimson;
+    }
+  }
+}
