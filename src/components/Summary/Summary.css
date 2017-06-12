@@ -1,5 +1,5 @@
 :root {
-  --summary-item-height: 5rem;
+  --summary-item-height: 6rem;
 }
 
 .Summary {
@@ -23,7 +23,8 @@
   }
 
   dt {
-    margin-left: 5px;
+    margin-left: 0.5rem;
+    font-size: calc(var(--summary-item-height) / 4);
     line-height: var(--summary-item-height);
     white-space: nowrap;
   }
@@ -35,6 +36,7 @@
     margin: 0;
     border-radius: 50%;
     background-color: LightGrey;
+    color: DarkSlateGrey;
     font-size: calc(var(--summary-item-height) / 3);
     line-height: var(--summary-item-height);
     text-align: center;

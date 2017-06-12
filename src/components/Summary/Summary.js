@@ -6,6 +6,9 @@ class Summary extends Component {
   render() {
     const { me, team, show } = this.props;
     const summaryClass = classNames('Summary', { show });
+    if (!show) return (
+      <div className={summaryClass}></div>
+    );
     let votes = {};
     team
       .concat([me])
