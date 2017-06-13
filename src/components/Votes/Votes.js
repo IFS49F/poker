@@ -6,6 +6,7 @@ class Votes extends Component {
   render() {
     const { me, team, show } = this.props;
     const listItems = team
+      .slice() // shallow copy to prevent sort from mutating the state directly
       .sort((a, b) => (a.name > b.name ? 1 : -1))
       .map((member) =>
         <li key={member.id}>

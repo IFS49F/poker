@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Join from 'components/Join/Join';
 import Actions from 'components/Actions/Actions';
 import Votes from 'components/Votes/Votes';
 import Summary from 'components/Summary/Summary';
@@ -10,27 +11,27 @@ class App extends Component {
     this.state = {
       me: null,
       team: [{
-        id: '1',
+        id: 1,
         name: 'James',
         score: null,
         voted: false
       }, {
-        id: '2',
+        id: 2,
         name: 'Hiveer',
         score: 8,
         voted: true
       }, {
-        id: '3',
+        id: 3,
         name: 'Langping',
         score: 13,
         voted: true
       }, {
-        id: '4',
+        id: 4,
         name: 'Zoro',
         score: '🤔',
         voted: true
       }, {
-        id: '5',
+        id: 5,
         name: 'Elvis',
         score: null,
         voted: false
@@ -38,6 +39,22 @@ class App extends Component {
       show: false
     };
   }
+
+  handlePlayerJoin = (e) => {
+    e.preventDefault();
+    const { team } = this.state;
+    const formData = new FormData(e.target);
+    const name = formData.get('myName');
+    const id = team[team.length - 1].id + 1;
+    this.setState({
+      me: {
+        id,
+        name,
+        score: null,
+        voted: false
+      }
+    });
+  };
 
   handleVote = (e) => {
     const score = e.target.value
@@ -53,20 +70,26 @@ class App extends Component {
   };
 
   render() {
+    const { me, team, show } = this.state;
     return (
       <div className="App">
-        <Actions
-          show={this.state.show}
-          onVote={this.handleVote}
-          onToggleShow={this.handleToggleShow} />
+        {me ? (
+          <Actions
+            show={show}
+            onVote={this.handleVote}
+            onToggleShow={this.handleToggleShow} />
+        ) : (
+          <Join
+            onSubmit={this.handlePlayerJoin} />
+        )}
         <Votes
-          me={this.state.me}
-          team={this.state.team}
-          show={this.state.show} />
+          me={me}
+          team={team}
+          show={show} />
         <Summary
-            me={this.state.me}
-            team={this.state.team}
-            show={this.state.show} />
+            me={me}
+            team={team}
+            show={show} />
       </div>
     );
   }

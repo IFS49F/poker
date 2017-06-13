@@ -1,0 +1,46 @@
+:root {
+  --join-button-size: 3rem;
+  --join-button-border-radius: calc(var(--join-button-size) / 5);
+}
+
+.Join {
+  padding: 1rem 0;
+  text-align: center;
+  font-size: calc(var(--join-button-size) / 2);
+  line-height: var(--join-button-size);
+
+  button {
+    display: inline-block;
+    margin: 0 1rem;
+    width: calc(var(--join-button-size) * 2);
+    height: var(--join-button-size);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border-radius: var(--join-button-border-radius);
+    background: YellowGreen;
+    font-family: inherit;
+    font-size: inherit;
+    color: white;
+    outline: none;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(1.1);
+    }
+  }
+
+  input[type=text] {
+    width: 200px;
+    margin: 0 1rem;
+    border: none;
+    border-bottom: 2px solid black;
+    text-align: center;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+  }
+}
