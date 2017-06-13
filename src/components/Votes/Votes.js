@@ -21,15 +21,17 @@ class Votes extends Component {
     return (
       <div className="Votes">
         <ul>
-          <li key={me.id}>
-            <dd>
-              <Card
-                score={me.score}
-                voted={me.voted}
-                show={show} />
-            </dd>
-            <dt>{me.name}</dt>
-          </li>
+          {me && (
+            <li key={me.id}>
+              <dd>
+                <Card
+                  score={me.score}
+                  voted={me.voted}
+                  show={show} />
+              </dd>
+              <dt>{me.name}</dt>
+            </li>
+          )}
           {listItems}
         </ul>
       </div>

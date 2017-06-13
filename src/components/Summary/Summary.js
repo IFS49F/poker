@@ -13,7 +13,7 @@ class Summary extends Component {
     team
       .concat([me])
       .forEach((val) => {
-        if (!val.voted || val.score === null) return;
+        if (!val || !val.voted || val.score === null) return;
         if (votes[val.score]) {
           votes[val.score]++;
         } else {

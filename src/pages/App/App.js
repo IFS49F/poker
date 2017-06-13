@@ -8,13 +8,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      me: {
+      me: null,
+      team: [{
         id: '1',
         name: 'James',
         score: null,
         voted: false
-      },
-      team: [{
+      }, {
         id: '2',
         name: 'Hiveer',
         score: 8,
