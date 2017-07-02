@@ -5,40 +5,39 @@ import Votes from 'components/Votes/Votes';
 import Summary from 'components/Summary/Summary';
 import './App.css';
 import Cookies from 'js-cookie';
+import io from 'socket.io-client';
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.initSocketConnection();
     this.state = {
       me: null,
-      team: [{
-        id: 1,
-        name: 'James',
-        score: null,
-        voted: false
-      }, {
-        id: 2,
-        name: 'Hiveer',
-        score: 8,
-        voted: true
-      }, {
-        id: 3,
-        name: 'Langping',
-        score: 13,
-        voted: true
-      }, {
-        id: 4,
-        name: 'Zoro',
-        score: '🤔',
-        voted: true
-      }, {
-        id: 5,
-        name: 'Elvis',
-        score: null,
-        voted: false
-      }],
+      team: [],
       show: false
     };
+  }
+
+  initSocketConnection(){
+    this.room = 'acl-grooming';
+    this.socket = io(`http://localhost:4000`);
+
+    this.socket.on('joined', this.reRender);
+    this.socket.on('disconnected', this.reRender);
+    this.socket.on('voted', this.reRender);
+    this.socket.on('cleared', this.reRender);
+  }
+
+  reRender = (response) => {
+    let me = response.team.find(client => client.name === Cookies.get('playerName'));
+    let team = response.team.filter(client => client.name !== Cookies.get('playerName'));
+    let show = response.show;
+
+    this.setState({
+      me,
+      team,
+      show
+    });
   }
 
   handlePlayerJoin = (e) => {
@@ -46,32 +45,23 @@ class App extends Component {
     const { team } = this.state;
     const formData = new FormData(e.target);
     const name = formData.get('myName');
-    const id = team[team.length - 1].id + 1;
+    const id = team.length + 1;
 
     Cookies.set('playerName', name);
-
-    this.setState({
-      me: {
-        id,
-        name,
-        score: null,
-        voted: false
-      }
-    });
+    this.socket.emit('join', this.room, name);
   };
 
   handleVote = (e) => {
-    const score = e.target.value
-    this.setState(prevState => ({
-      me: Object.assign({}, prevState.me, { score, voted: true })
-    }));
+    this.socket.emit('vote', e.target.value);
   };
 
   handleToggleShow = () => {
-    this.setState(prevState => ({
-      show: !prevState.show
-    }));
+    this.socket.emit('show', true);
   };
+
+  handleClear= () => {
+    this.socket.emit('clear');
+  }
 
   render() {
     const { me, team, show } = this.state;
@@ -81,7 +71,8 @@ class App extends Component {
           <Actions
             show={show}
             onVote={this.handleVote}
-            onToggleShow={this.handleToggleShow} />
+            onToggleShow={this.handleToggleShow}
+            onClear={this.handleClear}/>
         ) : (
           <Join
             playerName={Cookies.get('playerName')}
