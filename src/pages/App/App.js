@@ -4,6 +4,7 @@ import Actions from 'components/Actions/Actions';
 import Votes from 'components/Votes/Votes';
 import Summary from 'components/Summary/Summary';
 import './App.css';
+import Cookies from 'js-cookie';
 
 class App extends Component {
   constructor(props) {
@@ -46,6 +47,9 @@ class App extends Component {
     const formData = new FormData(e.target);
     const name = formData.get('myName');
     const id = team[team.length - 1].id + 1;
+
+    Cookies.set('playerName', name);
+
     this.setState({
       me: {
         id,
@@ -80,6 +84,7 @@ class App extends Component {
             onToggleShow={this.handleToggleShow} />
         ) : (
           <Join
+            playerName={Cookies.get('playerName')}
             onSubmit={this.handlePlayerJoin} />
         )}
         <Votes

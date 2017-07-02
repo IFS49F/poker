@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "js-cookie": "^2.1.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router": "^3.0.4"
