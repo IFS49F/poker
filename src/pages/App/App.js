@@ -42,7 +42,6 @@ class App extends Component {
 
   handlePlayerJoin = (e) => {
     e.preventDefault();
-    const { team } = this.state;
     const formData = new FormData(e.target);
     const name = formData.get('myName');
 
