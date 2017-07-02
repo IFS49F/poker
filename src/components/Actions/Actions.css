@@ -24,6 +24,10 @@
     font-size: calc(var(--actions-button-size) / 2);
     outline: none;
 
+    &.selected {
+      transform: scale(1.2);
+    }
+
     &:hover {
       transform: scale(1.2);
     }

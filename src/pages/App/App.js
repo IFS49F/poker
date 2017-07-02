@@ -45,7 +45,6 @@ class App extends Component {
     const { team } = this.state;
     const formData = new FormData(e.target);
     const name = formData.get('myName');
-    const id = team.length + 1;
 
     Cookies.set('playerName', name);
     this.socket.emit('join', this.room, name);
@@ -70,6 +69,7 @@ class App extends Component {
         {me ? (
           <Actions
             show={show}
+            score={me.score}
             onVote={this.handleVote}
             onToggleShow={this.handleToggleShow}
             onClear={this.handleClear}/>
