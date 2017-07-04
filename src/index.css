@@ -6,3 +6,11 @@
 body {
   font-family: -apple-system, "BlinkMacSystemFont", "Helvetica Neue", "Lucida Grande", "Segoe UI", sans-serif;
 }
+
+.App {
+  min-width: 667px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5vh 0;
+  perspective: 1000px;
+}
