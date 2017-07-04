@@ -64,7 +64,7 @@ class Room extends Component {
   render() {
     const { me, team, show } = this.state;
     return (
-      <div className="App">
+      <div className="Room">
         {me ? (
           <Actions
             show={show}
