@@ -1,0 +1,72 @@
+:root {
+  --button-size: 3rem;
+  --button-border-radius: calc(var(--button-size) / 5);
+}
+
+.Landing {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #CC95C0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(130deg, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(130deg, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  .Form {
+    margin: 30vh auto;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 100;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  h1, p {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  button {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0.8rem 1rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border-radius: var(--button-border-radius);
+    background: RoyalBlue;
+    font-family: inherit;
+    font-size: inherit;
+    color: white;
+    outline: none;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(1.1);
+    }
+  }
+
+  input[type=text] {
+    width: 200px;
+    margin: 0 1rem;
+    border: none;
+    border-bottom: 2px solid black;
+    background: transparent;
+    text-align: center;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+  }
+}

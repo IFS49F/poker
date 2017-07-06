@@ -11,7 +11,7 @@ class Room extends Component {
   constructor(props) {
     super(props);
     this.initSocketConnection();
-    this.room = this.props.location.pathname;
+    this.room = this.props.match.params.room;
     this.state = {
       me: null,
       team: [],
@@ -40,11 +40,7 @@ class Room extends Component {
     });
   }
 
-  handlePlayerJoin = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const name = formData.get('myName');
-
+  handlePlayerJoin = (name) => {
     Cookies.set('playerName', name);
     this.socket.emit('join', this.room, name);
   };

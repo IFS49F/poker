@@ -1,40 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Landing from 'pages/Landing/Landing';
+import Room from 'pages/Room/Room';
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      url: null
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(e) {
-    this.setState({
-      url: e.target.value
-    });
-  }
-
-  handleSubmit() {
-    this.props.router.push(this.state.url);
-  }
-
-  render() {
-    return (
-      <div className='App'>
-        <form className='Form' onSubmit={this.handleSubmit}>
-          <section>
-            <label>cdifs-49f.poker /</label>
-            <input type='text' required onChange={this.handleChange} />
-          </section>
-          <button type="submit">Start or Join a session</button>
-        </form>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <div>
+      <Route exact path="/" component={Landing} />
+      <Route path="/:room" component={Room} />
+    </div>
+  </Router>
+);
 
 export default App;
