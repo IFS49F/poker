@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { hri } from 'human-readable-ids';
 import './Landing.css';
 
 class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      roomName: ''
+      roomName: '',
+      randomRoomName: hri.random()
     };
   }
 
@@ -17,7 +19,8 @@ class Landing extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.history.push(this.state.roomName);
+    const roomName = this.state.roomName || this.state.randomRoomName;
+    this.props.history.push(roomName);
   };
 
   render() {
@@ -30,8 +33,8 @@ class Landing extends Component {
             <input
               type="text"
               value={this.state.roomName}
+              placeholder={this.state.randomRoomName}
               onChange={this.handleChange}
-              required
               autoFocus />
           </p>
           <p>
