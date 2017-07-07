@@ -10,39 +10,40 @@ import io from 'socket.io-client';
 class Room extends Component {
   constructor(props) {
     super(props);
-    this.initSocketConnection();
+    this.socket = this.initSocketConnection();
     this.room = this.props.match.params.room;
+    this.socket.emit('join', this.room);
     this.state = {
       me: null,
       team: [],
       show: false
     };
   }
+  
+  initSocketConnection = () => {
+    const socket = io(`http://localhost:4000`);
 
-  initSocketConnection(){
-    this.socket = io(`http://localhost:4000`);
-
-    this.socket.on('joined', this.reRender);
-    this.socket.on('disconnected', this.reRender);
-    this.socket.on('voted', this.reRender);
-    this.socket.on('cleared', this.reRender);
-  }
-
-  reRender = (response) => {
-    let me = response.team.find(client => client.name === Cookies.get('playerName'));
-    let team = response.team.filter(client => client.name !== Cookies.get('playerName'));
-    let show = response.show;
-
-    this.setState({
-      me,
-      team,
-      show
+    socket.on('connect', () => {
+      this.socketId = socket.id;
     });
-  }
+    socket.on('stateUpdate', (response) => {
+      const me = response.team.find(client => client.id === this.socketId);
+      const team = response.team.filter(client => client.id !== this.socketId);
+      const show = response.show;
+
+      this.setState({
+        me,
+        team,
+        show
+      });
+    });
+
+    return socket;
+  };
 
   handlePlayerJoin = (name) => {
     Cookies.set('playerName', name);
-    this.socket.emit('join', this.room, name);
+    this.socket.emit('play', name);
   };
 
   handleVote = (e) => {
@@ -55,7 +56,7 @@ class Room extends Component {
 
   handleClear= () => {
     this.socket.emit('clear');
-  }
+  };
 
   render() {
     const { me, team, show } = this.state;
