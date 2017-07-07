@@ -61,7 +61,7 @@
 
   input[type=text] {
     width: 200px;
-    margin: 0 1rem;
+    margin-left: 0.5rem;
     border: none;
     border-bottom: 2px solid black;
     background: transparent;

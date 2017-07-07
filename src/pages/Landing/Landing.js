@@ -27,7 +27,7 @@ class Landing extends Component {
           <h1>Scrum<strong>Poker</strong></h1>
           <p>
             <label>cdifs-49f.poker /</label>
-            <input type="text" required onChange={this.handleChange} />
+            <input type="text" required autoFocus onChange={this.handleChange} />
           </p>
           <p>
             <button type="submit">Start or Join a session</button>
