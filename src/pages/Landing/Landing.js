@@ -5,19 +5,19 @@ class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: null
+      roomName: null
     };
   }
 
   handleChange = (e) => {
     this.setState({
-      url: e.target.value
+      roomName: e.target.value
     });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.history.push(this.state.url);
+    this.props.history.push(this.state.roomName);
   };
 
   render() {
@@ -27,7 +27,12 @@ class Landing extends Component {
           <h1>Scrum<strong>Poker</strong></h1>
           <p>
             <label>cdifs-49f.poker /</label>
-            <input type="text" required autoFocus onChange={this.handleChange} />
+            <input
+              type="text"
+              value={this.state.roomName}
+              onChange={this.handleChange}
+              required
+              autoFocus />
           </p>
           <p>
             <button type="submit">Start or Join a session</button>

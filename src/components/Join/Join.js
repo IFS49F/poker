@@ -31,7 +31,8 @@ class Join extends Component {
             value={this.state.myName}
             onChange={this.handleChange}
             placeholder="type in your name"
-            required />
+            required
+            autoFocus />
           to
           <button type="submit">Play</button>
         </form>
