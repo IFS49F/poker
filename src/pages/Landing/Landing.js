@@ -7,9 +7,6 @@ class Landing extends Component {
     this.state = {
       url: null
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = (e) => {
