@@ -4,5 +4,6 @@ import Votes from './Votes';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Votes />, div);
+  const team = [];
+  ReactDOM.render(<Votes team={team} />, div);
 });
