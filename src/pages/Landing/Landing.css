@@ -9,15 +9,14 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: #CC95C0;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(130deg, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(130deg, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image: url(/bram-naus-200967.jpg); /* Photo by Bram Naus via Unsplash https://unsplash.com/photos/n8Qb1ZAkK88 */
+  background-size: cover;
 
 
   .Form {
     margin: 30vh auto;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: saturate(180%) blur(20px);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   }
