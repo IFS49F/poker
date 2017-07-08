@@ -1,0 +1,72 @@
+:root {
+  --button-size: 3rem;
+  --button-border-radius: calc(var(--button-size) / 5);
+}
+
+.Landing {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(/bram-naus-200967.jpg); /* Photo by Bram Naus via Unsplash https://unsplash.com/photos/n8Qb1ZAkK88 */
+  background-size: cover;
+
+
+  .Form {
+    margin: 30vh auto;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 100;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  h1, p {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  button {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0.8rem 1rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border-radius: var(--button-border-radius);
+    background: RoyalBlue;
+    font-family: inherit;
+    font-size: inherit;
+    color: white;
+    outline: none;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(1.1);
+    }
+  }
+
+  input[type=text] {
+    width: 200px;
+    margin-left: 0.5rem;
+    border: none;
+    border-bottom: 2px solid black;
+    background: transparent;
+    text-align: center;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+  }
+}
