@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A Scrum pointing poker app.",
   "main": "src/index.js",
+  "homepage": "https://ifs49f-poker.surge.sh",
   "repository": "git@github.com:IFS49F/poker.git",
   "license": "GPL-3.0",
   "scripts": {

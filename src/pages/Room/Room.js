@@ -21,7 +21,7 @@ class Room extends Component {
   }
   
   initSocketConnection = () => {
-    const socket = io(`http://localhost:4000`);
+    const socket = io(`https://afternoon-gorge-59515.herokuapp.com/`);
 
     socket.on('connect', () => {
       this.socketId = socket.id;

@@ -29,7 +29,7 @@ class Landing extends Component {
         <form className="Form" onSubmit={this.handleSubmit}>
           <h1>Scrum<strong>Poker</strong></h1>
           <p>
-            <label>cdifs-49f.poker /</label>
+            <label>ifs49f-poker.surge.sh /</label>
             <input
               type="text"
               value={this.state.roomName}
