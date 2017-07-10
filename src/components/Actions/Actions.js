@@ -13,7 +13,7 @@ class Actions extends Component {
   }
 
   render() {
-    const { show, score, onVote, onToggleShow, onClear } = this.props;
+    const { show, score, onVote, onShow, onClear } = this.props;
     const listItems = validScores.map((item) => {
       const buttonClass = classNames({ 'selected': this.checkSelectedValue(item, score) });
       return (
@@ -32,7 +32,7 @@ class Actions extends Component {
           {show ? (
             <li><button onClick={onClear} className="danger">Clear</button></li>
           ) : (
-            <li><button onClick={onToggleShow}>Show</button></li>
+            <li><button onClick={onShow}>Show</button></li>
           )}
         </ul>
       </div>

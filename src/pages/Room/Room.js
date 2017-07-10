@@ -43,18 +43,40 @@ class Room extends Component {
 
   handlePlayerJoin = (name) => {
     Cookies.set('playerName', name);
+    this.setState({
+      me: {
+        id: this.socketId,
+        name,
+        score: null,
+        voted: false
+      }
+    });
     this.socket.emit('play', name);
   };
 
   handleVote = (e) => {
-    this.socket.emit('vote', e.target.value);
+    const score = e.target.value;
+    this.setState(prevState => ({
+      me: Object.assign({}, prevState.me, { score, voted: true })
+    }));
+    this.socket.emit('vote', score);
   };
 
-  handleToggleShow = () => {
+  handleShow = () => {
+    this.setState(prevState => ({
+      show: true
+    }));
     this.socket.emit('show', true);
   };
 
   handleClear= () => {
+    this.setState(prevState => ({
+      me: Object.assign({}, prevState.me, { score: null, voted: false }),
+      team: prevState.team.map(player => (
+        Object.assign({}, player, { score: null, voted: false })
+      )),
+      show: false
+    }));
     this.socket.emit('clear');
   };
 
@@ -67,7 +89,7 @@ class Room extends Component {
             show={show}
             score={me.score}
             onVote={this.handleVote}
-            onToggleShow={this.handleToggleShow}
+            onShow={this.handleShow}
             onClear={this.handleClear}/>
         ) : (
           <Join
