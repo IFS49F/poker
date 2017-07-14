@@ -4,7 +4,6 @@ import Actions from 'components/Actions/Actions';
 import Votes from 'components/Votes/Votes';
 import Summary from 'components/Summary/Summary';
 import './Room.css';
-import Cookies from 'js-cookie';
 import io from 'socket.io-client';
 
 class Room extends Component {
@@ -42,7 +41,6 @@ class Room extends Component {
   };
 
   handlePlayerJoin = (name) => {
-    Cookies.set('playerName', name);
     this.setState({
       me: {
         id: this.socketId,
@@ -51,6 +49,7 @@ class Room extends Component {
         voted: false
       }
     });
+    localStorage.setItem('playerName', name);
     this.socket.emit('play', name);
   };
 
@@ -82,6 +81,7 @@ class Room extends Component {
 
   render() {
     const { me, team, show } = this.state;
+    const playerName = localStorage.getItem('playerName') || '';
     return (
       <div className="Room">
         {me ? (
@@ -93,7 +93,7 @@ class Room extends Component {
             onClear={this.handleClear}/>
         ) : (
           <Join
-            playerName={Cookies.get('playerName')}
+            playerName={playerName}
             onSubmit={this.handlePlayerJoin} />
         )}
         <Votes
