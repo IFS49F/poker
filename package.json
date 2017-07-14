@@ -14,7 +14,6 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "human-readable-ids": "^1.0.1",
-    "js-cookie": "^2.1.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router-dom": "^4.1.1",
