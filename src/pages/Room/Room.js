@@ -20,7 +20,8 @@ class Room extends Component {
   }
   
   initSocketConnection = () => {
-    const socket = io(`https://afternoon-gorge-59515.herokuapp.com/`);
+    // const socket = io(`https://afternoon-gorge-59515.herokuapp.com/`);
+    const socket = io(`localhost:4000`);
 
     socket.on('connect', () => {
       this.socketId = socket.id;
@@ -62,13 +63,10 @@ class Room extends Component {
   };
 
   handleShow = () => {
-    this.setState(prevState => ({
-      show: true
-    }));
     this.socket.emit('show');
   };
 
-  handleClear= () => {
+  handleClear = () => {
     this.setState(prevState => ({
       me: Object.assign({}, prevState.me, { score: null, voted: false }),
       team: prevState.team.map(player => (
