@@ -65,7 +65,7 @@ class Room extends Component {
     this.setState(prevState => ({
       show: true
     }));
-    this.socket.emit('show', true);
+    this.socket.emit('show');
   };
 
   handleClear= () => {
