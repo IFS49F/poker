@@ -17,7 +17,7 @@ class Room extends Component {
   }
 
   componentDidMount() {
-    this.socket = io(`https://afternoon-gorge-59515.herokuapp.com/`);
+    this.socket = io(process.env.REACT_APP_SOCKET_SERVER_URL);
 
     this.socket.on('stateUpdate', (response) => {
       const me = response.team.find(client => client.id === this.socket.id);
