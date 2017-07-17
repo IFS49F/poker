@@ -35,7 +35,7 @@ class Room extends Component {
     this.socket.emit('join', this.room);
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     this.socket.close();
   }
 
