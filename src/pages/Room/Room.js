@@ -25,23 +25,16 @@ class Room extends Component {
     socket.on('connect', () => {
       this.socketId = socket.id;
     });
-    socket.on('stateUpdate', (response, shouldUpdateMe) => {
+    socket.on('stateUpdate', (response) => {
       const me = response.team.find(client => client.id === this.socketId);
       const team = response.team.filter(client => client.id !== this.socketId);
       const show = response.show;
 
-      this.setState(prevState => ({
-        /*
-        * For `Show` and `Clear` actions, we should also update `me` state
-        * to sync up with Redis data.
-        *
-        * For other actions, there is no need, since we don't want the scores
-        * will send to clients, so we reserve previous state for `me`.
-        */
-        me: shouldUpdateMe ? me : prevState.me,
+      this.setState({
+        me,
         team,
         show
-      }));
+      });
     });
 
     return socket;
