@@ -4,7 +4,7 @@ import './Votes.css';
 
 class Votes extends Component {
   render() {
-    const { me, team, show } = this.props;
+    const { me, myScore, team, show } = this.props;
     const listItems = team
       .slice() // shallow copy to prevent sort from mutating the state directly
       .sort((a, b) => (a.name > b.name ? 1 : -1))
@@ -26,7 +26,7 @@ class Votes extends Component {
             <li key={me.id}>
               <dd>
                 <Card
-                  score={me.score}
+                  score={myScore}
                   voted={me.voted}
                   show={show} />
               </dd>
