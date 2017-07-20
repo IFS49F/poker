@@ -1,14 +1,14 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Poker",
+  "name": "Scrum Poker",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "192x192",
+      "src": "apple-touch-icon.png",
+      "sizes": "144x144",
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
