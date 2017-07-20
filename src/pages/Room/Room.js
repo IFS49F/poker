@@ -11,6 +11,7 @@ class Room extends Component {
     super(props);
     this.state = {
       me: null,
+      myScore: null,
       team: [],
       show: false
     };
@@ -19,16 +20,17 @@ class Room extends Component {
   componentDidMount() {
     this.socket = io(process.env.REACT_APP_SOCKET_SERVER_URL);
 
-    this.socket.on('stateUpdate', (response) => {
+    this.socket.on('stateUpdate', (response, isClearAction) => {
       const me = response.team.find(client => client.id === this.socket.id);
       const team = response.team.filter(client => client.id !== this.socket.id);
       const show = response.show;
 
-      this.setState({
+      this.setState(prevState => ({
         me,
+        myScore: isClearAction ? null : prevState.myScore,
         team,
         show
-      });
+      }));
     });
 
     this.room = this.props.match.params.room;
@@ -55,21 +57,20 @@ class Room extends Component {
   handleVote = (e) => {
     const score = e.target.value;
     this.setState(prevState => ({
-      me: Object.assign({}, prevState.me, { score, voted: true })
+      me: Object.assign({}, prevState.me, { score, voted: true }),
+      myScore: score
     }));
     this.socket.emit('vote', score);
   };
 
   handleShow = () => {
-    this.setState(prevState => ({
-      show: true
-    }));
-    this.socket.emit('show', true);
+    this.socket.emit('show');
   };
 
   handleClear = () => {
     this.setState(prevState => ({
       me: Object.assign({}, prevState.me, { score: null, voted: false }),
+      myScore: null,
       team: prevState.team.map(player => (
         Object.assign({}, player, { score: null, voted: false })
       )),
@@ -79,14 +80,14 @@ class Room extends Component {
   };
 
   render() {
-    const { me, team, show } = this.state;
+    const { me, myScore, team, show } = this.state;
     const playerName = localStorage.getItem('playerName') || '';
     return (
       <div className="Room">
         {me ? (
           <Actions
             show={show}
-            score={me.score}
+            myScore={myScore}
             onVote={this.handleVote}
             onShow={this.handleShow}
             onClear={this.handleClear}/>
@@ -97,12 +98,13 @@ class Room extends Component {
         )}
         <Votes
           me={me}
+          myScore={myScore}
           team={team}
           show={show} />
         <Summary
-            me={me}
-            team={team}
-            show={show} />
+          me={me}
+          team={team}
+          show={show} />
       </div>
     );
   }
