@@ -9,9 +9,6 @@ import io from 'socket.io-client';
 class Room extends Component {
   constructor(props) {
     super(props);
-    this.socket = this.initSocketConnection();
-    this.room = this.props.match.params.room;
-    this.socket.emit('join', this.room);
     this.state = {
       me: null,
       myScore: null,
@@ -19,16 +16,13 @@ class Room extends Component {
       show: false
     };
   }
-  
-  initSocketConnection = () => {
-    const socket = io(`https://afternoon-gorge-59515.herokuapp.com/`);
 
-    socket.on('connect', () => {
-      this.socketId = socket.id;
-    });
-    socket.on('stateUpdate', (response, isClearAction) => {
-      const me = response.team.find(client => client.id === this.socketId);
-      const team = response.team.filter(client => client.id !== this.socketId);
+  componentDidMount() {
+    this.socket = io(process.env.REACT_APP_SOCKET_SERVER_URL);
+
+    this.socket.on('stateUpdate', (response, isClearAction) => {
+      const me = response.team.find(client => client.id === this.socket.id);
+      const team = response.team.filter(client => client.id !== this.socket.id);
       const show = response.show;
 
       this.setState(prevState => ({
@@ -39,13 +33,18 @@ class Room extends Component {
       }));
     });
 
-    return socket;
-  };
+    this.room = this.props.match.params.room;
+    this.socket.emit('join', this.room);
+  }
+
+  componentWillUnmount() {
+    this.socket.close();
+  }
 
   handlePlayerJoin = (name) => {
     this.setState({
       me: {
-        id: this.socketId,
+        id: this.socket.id,
         name,
         score: null,
         voted: false

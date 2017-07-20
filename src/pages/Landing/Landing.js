@@ -29,7 +29,7 @@ class Landing extends Component {
         <form className="Form" onSubmit={this.handleSubmit}>
           <h1>Scrum<strong>Poker</strong></h1>
           <p>
-            <label>ifs49f-poker.surge.sh /</label>
+            <label>{process.env.REACT_APP_DOMAIN} /</label>
             <input
               type="text"
               value={this.state.roomName}

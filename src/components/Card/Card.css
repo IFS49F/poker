@@ -10,6 +10,7 @@
   line-height: var(--card-height);
   transition: opacity 0.5s ease;
   opacity: 0.3;
+  perspective: 1000px;
 
   .face {
     position: absolute;
