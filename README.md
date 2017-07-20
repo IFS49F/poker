@@ -1,5 +1,7 @@
 # Poker
 
+<img width="72" alt="apple-touch-icon" src="https://user-images.githubusercontent.com/4647136/28407773-e23ed122-6d67-11e7-8026-673fe4f635a6.png">
+
 [![Build Status](https://travis-ci.org/IFS49F/poker.svg?branch=master)](https://travis-ci.org/IFS49F/poker) [![Dependency Status](https://david-dm.org/IFS49F/poker.svg)](https://david-dm.org/IFS49F/poker) [![Dev Dependency Status](https://david-dm.org/IFS49F/poker/dev-status.svg)](https://david-dm.org/IFS49F/poker?type=dev)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
