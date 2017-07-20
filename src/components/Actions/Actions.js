@@ -13,9 +13,9 @@ class Actions extends Component {
   }
 
   render() {
-    const { show, score, onVote, onShow, onClear } = this.props;
+    const { show, myScore, onVote, onShow, onClear } = this.props;
     const listItems = validScores.map((item) => {
-      const buttonClass = classNames({ 'selected': this.checkSelectedValue(item, score) });
+      const buttonClass = classNames({ 'selected': this.checkSelectedValue(item, myScore) });
       return (
         <li key={item}>
           <button onClick={onVote} className={buttonClass} value={item}>{item}</button>
