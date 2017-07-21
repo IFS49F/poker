@@ -57,7 +57,8 @@ class Room extends Component {
     this.socket.close();
   }
 
-  handleReconn = () => {
+  handleReconn = (e) => {
+    e.preventDefault();
     this.socket.open();
   };
 

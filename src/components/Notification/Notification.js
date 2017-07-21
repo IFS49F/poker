@@ -10,7 +10,7 @@ class Notification extends Component {
     return (
       <div className={notificationClass}>
         <span>Your computer seems offline, we will try reconnecting in {reconnCountdown}s... </span>
-        <a href="javascript:;" onClick={onReconn}>Reconnect Now</a>
+        <a href="reconnect" onClick={onReconn}>Reconnect Now</a>
       </div>
     );
   }
