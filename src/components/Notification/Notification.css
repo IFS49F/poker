@@ -1,0 +1,26 @@
+:root {
+  --notification-alert-color: white;
+  --notification-alert-bg-color: crimson;
+}
+
+.Notification {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  left: 0;
+  margin: 0.5rem;
+  background-color: var(--notification-alert-bg-color);
+  border-radius: 0.5rem;
+  color: var(--notification-alert-color);
+  text-align: center;
+  line-height: 2rem;
+  transition: transform 0.2s;
+
+  &.active {
+    transform: translateY(3rem);
+  }
+
+  a {
+    color: var(--notification-alert-color);
+  }
+}

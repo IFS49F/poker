@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Notification from 'components/Notification/Notification';
 import Join from 'components/Join/Join';
 import Actions from 'components/Actions/Actions';
 import Votes from 'components/Votes/Votes';
@@ -13,7 +14,9 @@ class Room extends Component {
       me: null,
       myScore: null,
       team: [],
-      show: false
+      show: false,
+      disconnected: false,
+      reconnCountdown: 0
     };
   }
 
@@ -33,6 +36,19 @@ class Room extends Component {
       }));
     });
 
+    this.socket.on('connect_error', (reason) => {
+      this.setState({
+        disconnected: true,
+        reconnCountdown: Math.floor(this.socket.io.reconnectionDelayMax() / 1000)
+      });
+    });
+
+    this.socket.on('connect', () => {
+      this.setState({
+        disconnected: false
+      });
+    });
+
     this.room = this.props.match.params.room;
     this.socket.emit('join', this.room);
   }
@@ -40,6 +56,10 @@ class Room extends Component {
   componentWillUnmount() {
     this.socket.close();
   }
+
+  handleReconn = () => {
+    this.socket.open();
+  };
 
   handlePlayerJoin = (name) => {
     this.setState({
@@ -80,17 +100,21 @@ class Room extends Component {
   };
 
   render() {
-    const { me, myScore, team, show } = this.state;
+    const { me, myScore, team, show, disconnected, reconnCountdown } = this.state;
     const playerName = localStorage.getItem('playerName') || '';
     return (
       <div className="Room">
+        <Notification
+          active={disconnected}
+          reconnCountdown={reconnCountdown}
+          onReconn={this.handleReconn} />
         {me ? (
           <Actions
             show={show}
             myScore={myScore}
             onVote={this.handleVote}
             onShow={this.handleShow}
-            onClear={this.handleClear}/>
+            onClear={this.handleClear} />
         ) : (
           <Join
             playerName={playerName}
