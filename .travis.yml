@@ -6,17 +6,19 @@ node_js:
   - 6
 cache: yarn
 
+before_script:
+  - openssl aes-256-cbc -K $encrypted_edffe1b3d92e_key -iv $encrypted_edffe1b3d92e_iv
+    -in deploy_key.enc -out ~/.ssh/deploy_key -d
+  - chmod 600 ~/.ssh/deploy_key
+  - eval "$(ssh-agent -s)"
+  - ssh-add ~/.ssh/deploy_key
+
 script:
   - yarn test
   - yarn build
 
-# https://surge.sh/help/adding-a-200-page-for-client-side-routing
-before_deploy:
-  - cp ./build/index.html ./build/200.html
-
 deploy:
-  provider: surge
-  project: ./build/
-  domain: ifs49f-poker.surge.sh
+  provider: script
+  script: rsync -r --delete-after --quiet ./build deploy@poker4.fun:/websites/poker
   skip_cleanup: true
-  on: master
+  on: new-server
