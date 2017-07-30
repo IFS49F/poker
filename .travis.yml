@@ -21,7 +21,12 @@ script:
   - yarn build
 
 deploy:
-  provider: script
-  script: rsync -r --delete-after --quiet ./build/. deploy@poker4.fun:/websites/poker
-  skip_cleanup: true
-  on: new-server
+  - provider: surge
+    project: ./build/
+    domain: ifs49f-poker.surge.sh
+    skip_cleanup: true
+  - provider: script
+    script: rsync -r --delete-after --quiet ./build/. deploy@poker4.fun:/websites/poker
+    skip_cleanup: true
+    on:
+      branch: new-server
