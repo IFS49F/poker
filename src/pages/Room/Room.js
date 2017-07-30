@@ -21,7 +21,7 @@ class Room extends Component {
   }
 
   componentDidMount() {
-    this.socket = io(`https://${process.env.REACT_APP_SOCKET_SERVER_URL}`);
+    this.socket = io(process.env.REACT_APP_SOCKET_SERVER_URL);
 
     this.socket.on('stateUpdate', (response, isClearAction) => {
       const me = response.team.find(client => client.id === this.socket.id);
