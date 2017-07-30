@@ -6,6 +6,10 @@ node_js:
   - 6
 cache: yarn
 
+env:
+  - REACT_APP_DOMAIN=ifs49f-poker.surge.sh REACT_APP_SOCKET_SERVER_URL=https://afternoon-gorge-59515.herokuapp.com/
+  - REACT_APP_DOMAIN=poker4.fun REACT_APP_SOCKET_SERVER_URL=https://api.poker4.fun/
+
 addons:
   ssh_known_hosts: poker4.fun
 
@@ -25,8 +29,12 @@ deploy:
     project: ./build/
     domain: ifs49f-poker.surge.sh
     skip_cleanup: true
+    on:
+      branch: new-server
+      condition: $REACT_APP_DOMAIN = ifs49f-poker.surge.sh
   - provider: script
     script: rsync -r --delete-after --quiet ./build/. deploy@poker4.fun:/websites/poker
     skip_cleanup: true
     on:
       branch: new-server
+      condition: $REACT_APP_DOMAIN = poker4.fun
