@@ -1,8 +1,8 @@
-# Poker
+# Poker4Fun
 
-<img width="300" alt="Scrum Poker Logo" src="https://user-images.githubusercontent.com/4647136/28408722-fec2a050-6d6a-11e7-9729-798bc945801b.png">
+<img width="300" alt="Poker4Fun Logo" src="https://user-images.githubusercontent.com/4647136/28408722-fec2a050-6d6a-11e7-9729-798bc945801b.png">
 
-[Scrum Poker Logo](https://github.com/IFS49F/poker/blob/master/public/apple-touch-icon.png) - Copyright 2017 IFS49F. Licensed under [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+[Poker4Fun Logo](https://github.com/IFS49F/poker/blob/master/public/apple-touch-icon.png) - Copyright 2017 IFS49F. Licensed under [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
 [![Build Status](https://travis-ci.org/IFS49F/poker.svg?branch=master)](https://travis-ci.org/IFS49F/poker) [![Dependency Status](https://david-dm.org/IFS49F/poker.svg)](https://david-dm.org/IFS49F/poker) [![Dev Dependency Status](https://david-dm.org/IFS49F/poker/dev-status.svg)](https://david-dm.org/IFS49F/poker?type=dev)
 
