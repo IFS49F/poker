@@ -27,7 +27,7 @@ class Landing extends Component {
     return (
       <div className="Landing">
         <form className="Form" onSubmit={this.handleSubmit}>
-          <h1>Scrum<strong>Poker</strong></h1>
+          <h1>Poker4<strong>Fun</strong></h1>
           <p>
             <label>{process.env.REACT_APP_DOMAIN} /</label>
             <input
