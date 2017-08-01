@@ -28,7 +28,7 @@ class Share extends Component {
     return (
       <div className="Share">
         <h1>Poker4<strong>Fun</strong></h1>
-        <input type="text" value={link} ref={(input) => { this.textInput = input; }} />
+        <input type="text" value={link} ref={(input) => { this.textInput = input; }} readOnly />
         <a
           href={link}
           onClick={this.handleCopy}
