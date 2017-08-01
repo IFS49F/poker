@@ -9,13 +9,13 @@ class Join extends Component {
     };
   }
 
-  handleChange = (e) => {
+  handleChange = (e) => { // eslint-disable-line
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = (e) => { // eslint-disable-line
     e.preventDefault();
     this.props.onSubmit(this.state.myName);
   };
