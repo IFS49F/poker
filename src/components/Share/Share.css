@@ -39,9 +39,9 @@
     position: absolute;
     top: 50%;
     right: -1rem;
-    margin-top: -0.2rem;
-    width: 0.6rem;
-    height: 0.6rem;
+    margin-top: -0.1rem;
+    width: 0.5rem;
+    height: 0.5rem;
     background: black;
     transform: rotate(45deg);
   }
