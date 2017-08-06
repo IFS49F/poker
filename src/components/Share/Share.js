@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Share.css';
 
+const defaultTooltip = 'Click to copy link';
+
 class Share extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +41,5 @@ class Share extends Component {
     );
   }
 }
-
-const defaultTooltip = 'Click to copy link';
 
 export default Share;
