@@ -8,7 +8,7 @@ cache: yarn
 
 env:
   - REACT_APP_DOMAIN=ifs49f-poker.surge.sh REACT_APP_SOCKET_SERVER_URL=https://afternoon-gorge-59515.herokuapp.com/
-  - REACT_APP_DOMAIN=poker4.fun REACT_APP_SOCKET_SERVER_URL=https://api.poker4.fun/
+  - REACT_APP_DOMAIN=poker4.fun REACT_APP_SOCKET_SERVER_URL=https://api.poker4.fun/ REACT_APP_GA_ID=UA-104177068-1
 
 addons:
   ssh_known_hosts: poker4.fun
