@@ -11,13 +11,13 @@ class Landing extends Component {
     };
   }
 
-  handleChange = (e) => {
+  handleChange = (e) => { // eslint-disable-line
     this.setState({
       roomName: e.target.value
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = (e) => { // eslint-disable-line
     e.preventDefault();
     const roomName = this.state.roomName || this.state.randomRoomName;
     this.props.history.push(roomName);

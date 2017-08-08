@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Share from 'components/Share/Share';
 import Notification from 'components/Notification/Notification';
 import Join from 'components/Join/Join';
 import Actions from 'components/Actions/Actions';
@@ -57,12 +58,12 @@ class Room extends Component {
     this.socket.close();
   }
 
-  handleReconn = (e) => {
+  handleReconn = (e) => { // eslint-disable-line
     e.preventDefault();
     this.socket.open();
   };
 
-  handlePlayerJoin = (name) => {
+  handlePlayerJoin = (name) => { // eslint-disable-line
     this.setState({
       me: {
         id: this.socket.id,
@@ -75,7 +76,7 @@ class Room extends Component {
     this.socket.emit('play', name);
   };
 
-  handleVote = (e) => {
+  handleVote = (e) => { // eslint-disable-line
     const score = e.target.value;
     this.setState(prevState => ({
       me: Object.assign({}, prevState.me, { score, voted: true }),
@@ -84,11 +85,11 @@ class Room extends Component {
     this.socket.emit('vote', score);
   };
 
-  handleShow = () => {
+  handleShow = () => { // eslint-disable-line
     this.socket.emit('show');
   };
 
-  handleClear = () => {
+  handleClear = () => { // eslint-disable-line
     this.setState(prevState => ({
       me: Object.assign({}, prevState.me, { score: null, voted: false }),
       myScore: null,
@@ -105,6 +106,8 @@ class Room extends Component {
     const playerName = localStorage.getItem('playerName') || '';
     return (
       <div className="Room">
+        <Share
+          roomName={this.room} />
         <Notification
           active={disconnected}
           reconnCountdown={reconnCountdown}
