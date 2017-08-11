@@ -19,6 +19,9 @@ class Room extends Component {
       disconnected: false,
       reconnCountdown: 0
     };
+    // put this line in `constructor` instead of `componentDidMount`
+    // to avoid `undefined` room link in first render.
+    this.room = this.props.match.params.room;
   }
 
   componentDidMount() {
@@ -50,7 +53,6 @@ class Room extends Component {
       });
     });
 
-    this.room = this.props.match.params.room;
     this.socket.emit('join', this.room);
   }
 
