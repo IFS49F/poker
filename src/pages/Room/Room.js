@@ -22,7 +22,7 @@ class Room extends Component {
     // put this line in `constructor` instead of `componentDidMount`
     // to avoid `undefined` room link in first render.
     this.room = this.props.match.params.room;
-    this.join = false;
+    this.playing = false;
   }
 
   componentDidMount() {
@@ -58,7 +58,7 @@ class Room extends Component {
     this.socket.on('reconnect', () => {
       this.socket.emit('join', this.room);
       const playerName = localStorage.getItem('playerName');
-      if (this.join && playerName) {
+      if (this.playing && playerName) {
         this.handlePlayerJoin(playerName);
       }
     });
@@ -76,7 +76,7 @@ class Room extends Component {
   };
 
   handlePlayerJoin = (name) => { // eslint-disable-line
-    this.join = true;
+    this.playing = true;
     this.setState({
       me: {
         id: this.socket.id,
