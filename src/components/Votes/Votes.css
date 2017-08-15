@@ -1,3 +1,7 @@
+:root {
+  --vote-width: 100px;
+}
+
 .Votes {
   ul {
     display: flex;
@@ -8,12 +12,16 @@
   }
 
   li {
+    width: var(--vote-width);
     margin: 0 20px 20px 20px;
   }
 
   dt {
     width: 100%;
     text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     line-height: 2em;
   }
 
