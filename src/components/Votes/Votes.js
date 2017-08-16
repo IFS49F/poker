@@ -2,12 +2,22 @@ import React, { Component } from 'react';
 import Card from 'components/Card/Card';
 import './Votes.css';
 
-class Votes extends Component {
+const collator = (() => {
+  if (Intl && 'Collator' in Intl) {
+    return new Intl.Collator();
+  } else {
+    return {
+      compare: (a, b) => a.localeCompare(b)
+    };
+  }
+})();
+
+class Votes extends Component { 
   render() {
     const { me, myScore, team, show } = this.props;
     const listItems = team
-      .slice() // shallow copy to prevent sort from mutating the state directly
-      .sort((a, b) => (a.name > b.name ? 1 : -1))
+      .slice() // shallow copy to avoid mutating the state directly
+      .sort((a, b) => collator.compare(a.name, b.name))
       .map((member) =>
         <li key={member.id}>
           <dd>
