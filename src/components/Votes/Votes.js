@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Card from 'components/Card/Card';
 import './Votes.css';
 
-const collator = Intl && 'Collator' in Intl
+const collator = Intl && ('Collator' in Intl)
   ? new Intl.Collator()
   : { compare: (a, b) => a.localeCompare(b) };
 
