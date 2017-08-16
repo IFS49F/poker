@@ -2,15 +2,9 @@ import React, { Component } from 'react';
 import Card from 'components/Card/Card';
 import './Votes.css';
 
-const collator = (() => {
-  if (Intl && 'Collator' in Intl) {
-    return new Intl.Collator();
-  } else {
-    return {
-      compare: (a, b) => a.localeCompare(b)
-    };
-  }
-})();
+const collator = Intl && 'Collator' in Intl
+  ? new Intl.Collator()
+  : { compare: (a, b) => a.localeCompare(b) };
 
 class Votes extends Component { 
   render() {
