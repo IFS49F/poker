@@ -12,20 +12,20 @@
   }
 
   li {
-    width: var(--vote-width);
-    margin: 0 20px 20px 20px;
+    min-width: 20%;
+    margin: 0 0 20px;
+  }
+
+  dd, dt {
+    width: 100px;
+    margin: 0 auto;
   }
 
   dt {
-    width: 100%;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     line-height: 2em;
-  }
-
-  dd {
-    margin: 0;
   }
 }

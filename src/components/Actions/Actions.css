@@ -43,11 +43,11 @@
     }
 
     &:hover {
-      transform: scale(1.4);
+      transform: scale(1.2);
     }
 
     &:active {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }
 
