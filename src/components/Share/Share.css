@@ -1,14 +1,12 @@
 .Share {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  margin: 0.5rem;
-  line-height: 1.5rem;
+  display: flex;
+  margin: 0 0 1rem;
+  line-height: 1.5em;
+  white-space: nowrap;
 
   h1 {
-    display: inline-block;
-    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    font-size: 1.5em;
     font-weight: 100;
 
     strong {
@@ -22,39 +20,38 @@
   }
 
   a {
-    display: inline-block;
-    margin-left: 0.5rem;
     border-bottom: 2px solid black;
     color: inherit;
     text-decoration: none;
-    vertical-align: top;
   }
 
   [aria-label] {
     position: relative;
   }
 
-  [aria-label]:hover:before {
-    content: ' ';
-    position: absolute;
-    top: 50%;
-    right: -1rem;
-    margin-top: -0.1rem;
-    width: 0.5rem;
-    height: 0.5rem;
-    background: black;
-    transform: rotate(45deg);
-  }
+  @media (min-width: 768px) {
+    [aria-label]:hover:before {
+      content: ' ';
+      position: absolute;
+      top: 50%;
+      right: -1rem;
+      margin-top: -0.15rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      background: black;
+      transform: rotate(45deg);
+    }
 
-  [aria-label]:hover:after {
-    content: attr(aria-label);
-    position: absolute;
-    margin-left: 0.7rem;
-    padding: 0.1rem 0.4rem;
-    border-radius: 3px;
-    background: black;
-    font-size: 0.5rem;
-    color: white;
-    white-space: nowrap;
+    [aria-label]:hover:after {
+      content: attr(aria-label);
+      position: absolute;
+      margin-left: 0.7rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      background: black;
+      font-size: x-small;
+      color: white;
+      white-space: nowrap;
+    }
   }
 }

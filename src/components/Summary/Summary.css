@@ -1,9 +1,11 @@
 :root {
-  --summary-item-height: 6rem;
+  --summary-item-font-size: 1.5em;
+  --summary-item-height: 3em;
 }
 
 .Summary {
   transition: opacity 0.5s ease;
+  font-size: var(--summary-item-font-size);
   opacity: 0;
 
   &.show {
@@ -25,7 +27,6 @@
 
   dt {
     margin-left: 0.5rem;
-    font-size: calc(var(--summary-item-height) / 4);
     line-height: var(--summary-item-height);
     white-space: nowrap;
   }
@@ -38,7 +39,6 @@
     border-radius: 50%;
     background-color: LightGrey;
     color: DarkSlateGrey;
-    font-size: calc(var(--summary-item-height) / 3);
     line-height: var(--summary-item-height);
     text-align: center;
   }

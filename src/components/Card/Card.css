@@ -1,5 +1,6 @@
 :root {
   --card-height: 150px;
+  --card-height-phone: 100px;
 }
 
 .Card {
@@ -60,4 +61,17 @@
   20% { transform: translateY(0) }
   30% { transform: translateY(calc(var(--card-height) / -10)) }
   40% { transform: translateY(0) }
+}
+
+@media (max-width: 500px) {
+  .Card {
+    width: calc(var(--card-height-phone) / 1.5);
+    height: var(--card-height-phone);
+    font-size: calc(var(--card-height-phone) / 3);
+    line-height: var(--card-height-phone);
+
+    .face {
+      border-radius: calc(var(--card-height-phone) / 10);
+    }
+  }
 }
