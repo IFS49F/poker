@@ -1,5 +1,6 @@
 :root {
-  --actions-button-size: 3rem;
+  --actions-font-size: 1.5em;
+  --actions-button-size: 2em;
   --actions-button-border-radius: calc(var(--actions-button-size) / 5);
 }
 
@@ -7,15 +8,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  font-size: var(--actions-font-size);
 
   ul {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     margin: 1rem 0;
     list-style-type: none;
     transition: transform 0.2s ease;
 
-    &:hover {
-      transform: scale(1.1);
+    @media (min-width: 768px) {
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 
@@ -27,13 +33,13 @@
     cursor: pointer;
     transition: transform 0.2s ease;
     font-family: inherit;
-    font-size: calc(var(--actions-button-size) / 2);
+    font-size: inherit;
     outline: none;
 
     &.selected::after {
       content: '';
       position: absolute;
-      bottom: 6px;
+      bottom: 0.2em;
       left: 50%;
       width: 4px;
       height: 4px;
@@ -42,19 +48,21 @@
       background-color: white;
     }
 
-    &:hover {
-      transform: scale(1.2);
-    }
+    @media (min-width: 768px) {
+      &:hover {
+        transform: scale(1.2);
+      }
 
-    &:active {
-      transform: scale(1.1);
+      &:active {
+        transform: scale(1.1);
+      }
     }
   }
 
   .scores {
     background-image: linear-gradient(to left, #feac5e, #c779d0, #4bc0c8);
     border-radius: var(--actions-button-border-radius);
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   .scores button {
@@ -72,6 +80,18 @@
 
     &.danger {
       background: crimson;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .Actions {
+    ul {
+      margin: 0;
+    }
+
+    .operations {
+      margin: 0.5rem;
     }
   }
 }

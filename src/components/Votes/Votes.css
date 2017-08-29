@@ -1,5 +1,8 @@
 :root {
-  --vote-width: 100px;
+  --card-height: 150px;
+  --card-height-phone: 100px;
+  --vote-width: calc(var(--card-height) / 1.5);
+  --vote-width-phone: calc(var(--card-height-phone) / 1.5);
 }
 
 .Votes {
@@ -17,7 +20,7 @@
   }
 
   dd, dt {
-    width: 100px;
+    width: var(--vote-width);
     margin: 0 auto;
   }
 
@@ -27,5 +30,17 @@
     white-space: nowrap;
     overflow: hidden;
     line-height: 2em;
+  }
+}
+
+@media (max-width: 500px) {
+  .Votes {
+    li {
+      min-width: 25%;
+    }
+
+    dd, dt {
+      width: var(--vote-width-phone);
+    }
   }
 }

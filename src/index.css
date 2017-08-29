@@ -11,4 +11,16 @@ body,
 
 body {
   font-family: -apple-system, "BlinkMacSystemFont", "Helvetica Neue", "Lucida Grande", "Segoe UI", sans-serif;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+input {
+  border-radius: 0; /* reset for iOS */
+  box-shadow: none; /* reset for Firefox (HTML5 form validation) */
 }
