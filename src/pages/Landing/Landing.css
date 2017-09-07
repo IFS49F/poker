@@ -69,4 +69,38 @@
     font-size: inherit;
     outline: none;
   }
+
+  .unsplash-credit {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5vh;
+    text-align: center;
+
+    a {
+      display: inline-block;
+      background-color: black;
+      color: white;
+      text-decoration: none;
+      padding: 4px 6px;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.2;
+      border-radius: 3px;
+
+      span {
+        display: inline-block;
+        padding: 2px 3px;
+      }
+
+      svg {
+        height: 12px;
+        width: auto;
+        position: relative;
+        vertical-align: middle;
+        top: -1px;
+        fill: white;
+      }
+    }
+  }
 }
