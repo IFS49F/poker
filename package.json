@@ -12,7 +12,6 @@
     "test": "node scripts/test.js --env=jsdom"
   },
   "dependencies": {
-    "chai": "^4.1.2",
     "classnames": "^2.2.5",
     "human-readable-ids": "^1.0.1",
     "react": "^15.5.4",
