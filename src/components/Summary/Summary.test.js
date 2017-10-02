@@ -9,27 +9,32 @@ describe('<Summary />', () => {
 
     beforeEach(() => {
       me = {
+        id: 1,
         name: 'just4fun',
         score: 8,
         voted: true
       };
       team = [
         {
+          id: 2,
           name: 'frank',
           score: 5,
           voted: true
         },
         {
+          id: 3,
           name: 'hyjk2000',
           score: 13,
           voted: true
         },
         {
+          id: 4,
           name: 'hiveer',
           score: 5,
           voted: true
         },
         {
+          id: 5,
           name: 'teresa',
           score: null,
           voted: false
