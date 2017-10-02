@@ -6,9 +6,17 @@ class Summary extends Component {
   render() {
     const { me, team, show } = this.props;
     const summaryClass = classNames('Summary', { show });
-    if (!show) return (
-      <div className={summaryClass}></div>
-    );
+
+    // we want the summary could be displayed from opacity: 0
+    // to opacity: 1 with transition (`show` class), so we pass
+    // `show` property down instead of checking it in Room component
+    // like {show && <Summary />}.
+    if (!show) {
+      return (
+        <div className={summaryClass}></div>
+      );
+    }
+
     let votes = {};
     team
       .concat([me])
@@ -29,6 +37,7 @@ class Summary extends Component {
           <dt>× {score[1]}</dt>
         </li>
       );
+
     return (
       <div className={summaryClass}>
         <ul>
