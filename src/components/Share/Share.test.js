@@ -15,7 +15,7 @@ describe('<Share />', () => {
 
     it('should render a link to click for copy', () => {
       const wrapper = shallow(<Share roomName={'acl-grooming'} />);
-      expect(wrapper.find('a').text()).toEqual('poker4.fun/acl-grooming');
+      expect(wrapper.find('a').text()).toEqual(expect.stringContaining('/acl-grooming'));
     });
   });
 
