@@ -20,19 +20,12 @@ describe('<Join />', () => {
   });
 
   describe('Behaviors', () => {
-    let onSubmit;
-    let wrapper;
-
-    onSubmit = jest.fn();
-    wrapper = mount(<Join onSubmit={onSubmit} playerName={''} />);
-
-    it('requires necessary action props', () => {
-      expect(wrapper.props().onSubmit).toBeDefined;
-    });
+    const onSubmit = jest.fn();
+    const wrapper = mount(<Join onSubmit={onSubmit} playerName={''} />);
 
     it('should call `onSubmit` if submit form', () => {
-      const form = wrapper.find('form').first();
-      const input = wrapper.find('input[type="text"]').first();
+      const form = wrapper.find('form');
+      const input = wrapper.find('input[type="text"]');
       input.simulate('change', {
         target: {
           name: 'myName',

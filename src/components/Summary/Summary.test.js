@@ -46,7 +46,7 @@ describe('<Summary />', () => {
       shallow(<Summary />);
     });
 
-    it('should render an empty <div> with proper CSS class if `show` if false', () => {
+    it('should render an empty <div> with proper CSS class if `show` is `false`', () => {
       const wrapper = shallow(<Summary show={false} />);
       expect(wrapper.contains(<div className="Summary"></div>)).toEqual(true);
     });

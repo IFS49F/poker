@@ -29,24 +29,4 @@ describe('<Actions />', () => {
       expect(wrapper.find('.operations button').hasClass('danger')).toEqual(true);
     });
   });
-
-  describe('Behaviors', () => {
-    let onVote;
-    let onShow;
-    let onClear;
-    let wrapper;
-
-    beforeEach(() => {
-      onVote = jest.fn();
-      onShow = jest.fn();
-      onClear = jest.fn();
-      wrapper = mount(<Actions onVote={onVote} onShow={onShow} onClear={onClear} />);
-    });
-
-    it('requires necessary action props', () => {
-      expect(wrapper.props().onVote).toBeDefined;
-      expect(wrapper.props().onShow).toBeDefined;
-      expect(wrapper.props().onClear).toBeDefined;
-    });
-  });
 });

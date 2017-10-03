@@ -8,7 +8,7 @@ describe('<Notification />', () => {
       shallow(<Notification />);
     });
 
-    it('should render proper CSS class if `active` is true', () => {
+    it('should render proper CSS class if `active` is `true`', () => {
       const wrapper = shallow(<Notification active={true} />);
       expect(wrapper.find('.Notification').hasClass('active')).toEqual(true);
     });
@@ -22,18 +22,6 @@ describe('<Notification />', () => {
     it('should render reconnect link', () => {
       const wrapper = shallow(<Notification />);
       expect(wrapper.find('a').text()).toEqual('Reconnect Now');
-    });
-  });
-
-  describe('Behaviors', () => {
-    let onReconn;
-    let wrapper;
-
-    onReconn = jest.fn();
-    wrapper = mount(<Notification onReconn={onReconn} />);
-
-    it('requires necessary action props', () => {
-      expect(wrapper.props().onReconn).toBeDefined;
     });
   });
 });
