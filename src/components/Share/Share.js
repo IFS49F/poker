@@ -36,7 +36,8 @@ class Share extends Component {
           onClick={this.handleCopy}
           onMouseLeave={this.handleDone}
           aria-label={this.state.tooltip}>
-          {caption}</a>
+          {caption}
+        </a>
       </div>
     );
   }
