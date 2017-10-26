@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { hri } from 'human-readable-ids';
 import './Landing.css';
+import bgImg from './bram-naus-200967.jpg';
 
 class Landing extends Component {
   constructor(props) {
@@ -24,8 +25,15 @@ class Landing extends Component {
   };
 
   render() {
+    const styles = {
+      backgroundImage: `url(${bgImg})`,
+      backgroundSize: 'cover'
+    };
+
     return (
-      <div className="Landing">
+      <div
+        className="Landing"
+        style={styles}>
         <form className="Form" onSubmit={this.handleSubmit}>
           <h1>Poker4<strong>Fun</strong></h1>
           <p>
