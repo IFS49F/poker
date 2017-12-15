@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Card from 'components/Card/Card';
 import './Votes.css';
 
 const collator = Intl && ('Collator' in Intl)
   ? new Intl.Collator()
   : { compare: (a, b) => a.localeCompare(b) };
+
+const Fade = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={500}
+    classNames="fade">
+    {children}
+  </CSSTransition>
+);
 
 class Votes extends Component { 
   render() {
@@ -13,32 +23,36 @@ class Votes extends Component {
       .slice() // shallow copy to avoid mutating the state directly
       .sort((a, b) => collator.compare(a.name, b.name))
       .map((member) =>
-        <li key={member.id}>
-          <dd>
-            <Card
-              score={member.score}
-              voted={member.voted}
-              show={show} />
-          </dd>
-          <dt>{member.name}</dt>
-        </li>
+        <Fade key={member.id}>
+          <li>
+            <dd>
+              <Card
+                score={member.score}
+                voted={member.voted}
+                show={show} />
+            </dd>
+            <dt>{member.name}</dt>
+          </li>
+        </Fade>
       );
     return (
       <div className="Votes">
-        <ul>
+        <TransitionGroup component="ul">
           {me && (
-            <li key={me.id}>
-              <dd>
-                <Card
-                  score={myScore}
-                  voted={me.voted}
-                  show={show} />
-              </dd>
-              <dt>{me.name}</dt>
-            </li>
+            <Fade key={me.id}>
+              <li>
+                <dd>
+                  <Card
+                    score={myScore}
+                    voted={me.voted}
+                    show={show} />
+                </dd>
+                <dt>{me.name}</dt>
+              </li>
+            </Fade>
           )}
           {listItems}
-        </ul>
+        </TransitionGroup>
       </div>
     );
   }
