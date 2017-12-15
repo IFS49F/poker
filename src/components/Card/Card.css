@@ -24,7 +24,7 @@
     transform-style: preserve-3d;
     backface-visibility: hidden;
     background-color: white;
-    box-shadow: 0 0 0 2px DarkSlateGrey;
+    box-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.2);
     border-radius: calc(var(--card-height) / 10);
     color: DarkSlateGrey;
   }
