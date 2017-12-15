@@ -9,9 +9,13 @@
   height: var(--card-height);
   font-size: calc(var(--card-height) / 3);
   line-height: var(--card-height);
-  transition: opacity 0.5s ease;
+  transition: all 0.5s ease;
   opacity: 0.3;
   perspective: 1000px;
+
+  &.highlight {
+    transform: translateY(-0.2em) scale(1.1) rotate(3deg);
+  }
 
   .face {
     position: absolute;

@@ -14,8 +14,8 @@ class Card extends Component {
   }
 
   render() {
-    const { voted, show, suit } = this.props;
-    const cardClass = classNames('Card', { voted, show });
+    const { highlight, voted, show, suit } = this.props;
+    const cardClass = classNames('Card', { highlight, voted, show });
 
     return (
       <div className={cardClass}>

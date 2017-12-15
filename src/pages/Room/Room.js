@@ -14,6 +14,7 @@ class Room extends Component {
     this.state = {
       me: null,
       myScore: null,
+      highlightScore: null,
       team: [],
       show: false,
       disconnected: false,
@@ -108,6 +109,7 @@ class Room extends Component {
     this.setState(prevState => ({
       me: Object.assign({}, prevState.me, { score: null, voted: false }),
       myScore: null,
+      highlightScore: null,
       team: prevState.team.map(player => (
         Object.assign({}, player, { score: null, voted: false })
       )),
@@ -116,8 +118,14 @@ class Room extends Component {
     this.socket.emit('clear');
   };
 
+  handleHighlightScore = (highlightScore) => { // eslint-disable-line
+    this.setState({
+      highlightScore
+    });
+  };
+
   render() {
-    const { me, myScore, team, show, disconnected, reconnCountdown } = this.state;
+    const { me, myScore, highlightScore, team, show, disconnected, reconnCountdown } = this.state;
     const playerName = localStorage.getItem('playerName') || '';
     return (
       <div className="Room">
@@ -142,12 +150,14 @@ class Room extends Component {
         <Votes
           me={me}
           myScore={myScore}
+          highlightScore={highlightScore}
           team={team}
           show={show} />
         <Summary
           me={me}
           team={team}
-          show={show} />
+          show={show}
+          onChangeHighlight={this.handleHighlightScore} />
       </div>
     );
   }

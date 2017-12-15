@@ -18,7 +18,7 @@ const Fade = ({ children, ...props }) => (
 
 class Votes extends Component { 
   render() {
-    const { me, myScore, team, show } = this.props;
+    const { me, myScore, highlightScore, team, show } = this.props;
     const listItems = team
       .slice() // shallow copy to avoid mutating the state directly
       .sort((a, b) => collator.compare(a.name, b.name))
@@ -27,6 +27,7 @@ class Votes extends Component {
           <li>
             <dd>
               <Card
+                highlight={member.score === highlightScore && highlightScore !== null}
                 score={member.score}
                 show={show}
                 suit={member.suit}
@@ -44,6 +45,7 @@ class Votes extends Component {
               <li>
                 <dd>
                   <Card
+                    highlight={myScore === highlightScore && highlightScore !== null}
                     score={myScore}
                     show={show}
                     suit={me.suit}
