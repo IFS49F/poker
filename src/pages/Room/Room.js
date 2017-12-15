@@ -76,17 +76,19 @@ class Room extends Component {
   };
 
   handlePlayerJoin = (name) => { // eslint-disable-line
+    const suit = "♤♧♡♢"[Math.floor(Math.random() * 4)];
     this.playing = true;
     this.setState({
       me: {
         id: this.socket.id,
         name,
+        suit,
         score: null,
         voted: false
       }
     });
     localStorage.setItem('playerName', name);
-    this.socket.emit('play', name);
+    this.socket.emit('play', { name, suit });
   };
 
   handleVote = (e) => { // eslint-disable-line

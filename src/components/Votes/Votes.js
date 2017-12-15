@@ -28,8 +28,9 @@ class Votes extends Component {
             <dd>
               <Card
                 score={member.score}
-                voted={member.voted}
-                show={show} />
+                show={show}
+                suit={member.suit}
+                voted={member.voted} />
             </dd>
             <dt>{member.name}</dt>
           </li>
@@ -44,8 +45,9 @@ class Votes extends Component {
                 <dd>
                   <Card
                     score={myScore}
-                    voted={me.voted}
-                    show={show} />
+                    show={show}
+                    suit={me.suit}
+                    voted={me.voted} />
                 </dd>
                 <dt>{me.name}</dt>
               </li>
