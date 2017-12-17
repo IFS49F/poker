@@ -24,6 +24,10 @@ script:
   - yarn test
   - yarn build
 
+# https://surge.sh/help/adding-a-200-page-for-client-side-routing
+before_deploy:
+  - cp ./build/index.html ./build/200.html
+
 deploy:
   - provider: surge
     project: ./build/
