@@ -11,7 +11,16 @@ const Fade = ({ children, ...props }) => (
   <CSSTransition
     {...props}
     timeout={500}
-    classNames="fade">
+    classNames='fade'>
+    {children}
+  </CSSTransition>
+);
+
+const Bounce = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={1000}
+    classNames='bounce'>
     {children}
   </CSSTransition>
 );
@@ -26,12 +35,14 @@ class Votes extends Component {
         <Fade key={member.id}>
           <li>
             <dd>
-              <Card
-                highlight={member.score === highlightScore && highlightScore !== null}
-                score={member.score}
-                show={show}
-                suit={member.suit}
-                voted={member.voted} />
+              <Bounce in={member.voted}>
+                <Card
+                  highlight={member.score === highlightScore && highlightScore !== null}
+                  score={member.score}
+                  show={show}
+                  suit={member.suit}
+                  voted={member.voted} />
+              </Bounce>
             </dd>
             <dt>{member.name}</dt>
           </li>
@@ -44,12 +55,14 @@ class Votes extends Component {
             <Fade key={me.id}>
               <li>
                 <dd>
-                  <Card
-                    highlight={myScore === highlightScore && highlightScore !== null}
-                    score={myScore}
-                    show={show}
-                    suit={me.suit}
-                    voted={me.voted} />
+                  <Bounce in={me.voted}>
+                    <Card
+                      highlight={myScore === highlightScore && highlightScore !== null}
+                      score={myScore}
+                      show={show}
+                      suit={me.suit}
+                      voted={me.voted} />
+                  </Bounce>
                 </dd>
                 <dt>{me.name}</dt>
               </li>

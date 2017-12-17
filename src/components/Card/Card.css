@@ -13,10 +13,6 @@
   opacity: 0.3;
   perspective: 1000px;
 
-  &.highlight {
-    transform: translateY(-0.2em) scale(1.1) rotate(3deg);
-  }
-
   .face {
     position: absolute;
     top: 0;
@@ -45,7 +41,10 @@
 
   &.voted {
     opacity: 1;
-    animation: bounce ease 2s 1;
+  }
+
+  &.bounce-enter.bounce-enter-active {
+    animation: 1s ease-out 1 bounce;
   }
 
   &.show {
@@ -57,14 +56,18 @@
       transform: rotateY(0deg);
     }
   }
+
+  &.highlight {
+    transform: translateY(-0.2em) scale(1.1) rotate(3deg);
+  }
 }
 
 @keyframes bounce {
   0% { transform: translateY(0) }
-  10% { transform: translateY(calc(var(--card-height) / -5)) }
-  20% { transform: translateY(0) }
-  30% { transform: translateY(calc(var(--card-height) / -10)) }
+  20% { transform: translateY(calc(var(--card-height) / -5)) }
   40% { transform: translateY(0) }
+  60% { transform: translateY(calc(var(--card-height) / -10)) }
+  80% { transform: translateY(0) }
 }
 
 @media (max-width: 500px) {
