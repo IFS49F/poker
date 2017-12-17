@@ -25,7 +25,7 @@ const Bounce = ({ children, ...props }) => (
   </CSSTransition>
 );
 
-class Votes extends Component { 
+class Votes extends Component {
   render() {
     const { me, myScore, highlightScore, team, show } = this.props;
     const listItems = team
@@ -35,7 +35,7 @@ class Votes extends Component {
         <Fade key={member.id}>
           <li>
             <dd>
-              <Bounce in={member.voted}>
+              <Bounce in={member.voting}>
                 <Card
                   highlight={member.score === highlightScore && highlightScore !== null}
                   score={member.score}
@@ -55,7 +55,7 @@ class Votes extends Component {
             <Fade key={me.id}>
               <li>
                 <dd>
-                  <Bounce in={me.voted}>
+                  <Bounce in={me.voting}>
                     <Card
                       highlight={myScore === highlightScore && highlightScore !== null}
                       score={myScore}

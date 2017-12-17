@@ -32,7 +32,7 @@ class Room extends Component {
     this.socket.on('stateUpdate', (response, isClearAction) => {
       const me = response.team.find(client => client.id === this.socket.id);
       const team = response.team.filter(client => client.id !== this.socket.id);
-      const show = response.show;
+      const { show, action } = response;
 
       this.setState(prevState => ({
         me,
@@ -40,6 +40,8 @@ class Room extends Component {
         team,
         show
       }));
+
+      if (action) this.handleAction(action);
     });
 
     this.socket.on('connect_error', (reason) => {
@@ -69,6 +71,28 @@ class Room extends Component {
 
   componentWillUnmount() {
     this.socket.close();
+  }
+
+  handleAction(action) {
+    switch (action.type) {
+      case 'vote':
+        this.setPlayerState(action.playerId, 'voting', true);
+        setTimeout(() => {
+          this.setPlayerState(action.playerId, 'voting', false);
+        }, 1000);
+        break;
+      default:
+    }
+  }
+
+  setPlayerState(playerId, state, value) {
+    this.setState(prevState => {
+      const nextState = Object.assign({}, prevState);
+      const { me, team } = nextState;
+      const player = [me, ...team].find(client => client.id === playerId);
+      player[state] = value;
+      return nextState;
+    });
   }
 
   handleReconn = (e) => { // eslint-disable-line
