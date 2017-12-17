@@ -77,7 +77,7 @@ class Room extends Component {
   };
 
   handlePlayerJoin = (name) => { // eslint-disable-line
-    const suit = "♤♧♡♢"[Math.floor(Math.random() * 4)];
+    const suit = '♤♧♡♢'[Math.floor(Math.random() * 4)];
     this.playing = true;
     this.setState({
       me: {
