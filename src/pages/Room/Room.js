@@ -7,6 +7,7 @@ import Votes from 'components/Votes/Votes';
 import Summary from 'components/Summary/Summary';
 import './Room.css';
 import io from 'socket.io-client';
+import PlayerStatePinger from 'lib/player-state-pinger';
 
 class Room extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class Room extends Component {
     // to avoid `undefined` room link in first render.
     this.room = this.props.match.params.room;
     this.playing = false;
+    this.playerStatePinger = new PlayerStatePinger({ setState: this.setState.bind(this) });
   }
 
   componentDidMount() {
@@ -71,15 +73,13 @@ class Room extends Component {
 
   componentWillUnmount() {
     this.socket.close();
+    this.playerStatePinger.clearTimeouts();
   }
 
   handleAction(action) {
     switch (action.type) {
       case 'vote':
-        this.setPlayerState(action.playerId, 'voting', true);
-        setTimeout(() => {
-          this.setPlayerState(action.playerId, 'voting', false);
-        }, 1000);
+        this.playerStatePinger.pingPlayerState(action.playerId, 'voting', 1000);
         break;
       default:
     }
