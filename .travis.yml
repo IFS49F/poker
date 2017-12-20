@@ -10,15 +10,13 @@ env:
   - REACT_APP_DOMAIN=ifs49f-poker.surge.sh REACT_APP_SOCKET_SERVER_URL=https://afternoon-gorge-59515.herokuapp.com/
   - REACT_APP_DOMAIN=poker4.fun REACT_APP_SOCKET_SERVER_URL=https://api.poker4.fun/ REACT_APP_GA_ID=UA-104177068-1
 
-addons:
-  ssh_known_hosts: poker4.fun
-
 before_script:
   - openssl aes-256-cbc -K $encrypted_edffe1b3d92e_key -iv $encrypted_edffe1b3d92e_iv
     -in deploy_key.enc -out ~/.ssh/deploy_key -d
   - chmod 600 ~/.ssh/deploy_key
   - eval "$(ssh-agent -s)"
   - ssh-add ~/.ssh/deploy_key
+  - ssh-keyscan -p $SSH_PORT poker4.fun >> ~/.ssh/known_hosts
 
 script:
   - yarn test
