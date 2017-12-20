@@ -24,8 +24,8 @@ class PlayerStatePinger {
     });
   }
 
-  clearTimeouts() {
-    for (let elm in this.timeouts) {
+  clearTimeouts(timeouts = this.timeouts) {
+    for (let elm in timeouts) {
       if (typeof elm === 'object') this.clearTimeouts(elm);
       else clearTimeout(elm);
     }
