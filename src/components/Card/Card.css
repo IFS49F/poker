@@ -11,7 +11,7 @@
   line-height: var(--card-height);
   transition: all 0.5s ease;
   opacity: 0.3;
-  perspective: 1000px;
+  perspective: calc(var(--card-height) * 2);
 
   .face {
     position: absolute;
@@ -19,7 +19,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    transition: transform 0.5s ease;
+    transition: transform 500ms ease;
     text-align: center;
     transform-style: preserve-3d;
     backface-visibility: hidden;
