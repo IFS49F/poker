@@ -85,16 +85,6 @@ class Room extends Component {
     }
   }
 
-  setPlayerState(playerId, state, value) {
-    this.setState(prevState => {
-      const nextState = Object.assign({}, prevState);
-      const { me, team } = nextState;
-      const player = [me, ...team].find(client => client.id === playerId);
-      player[state] = value;
-      return nextState;
-    });
-  }
-
   handleReconn = (e) => { // eslint-disable-line
     e.preventDefault();
     this.socket.open();
