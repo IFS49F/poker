@@ -36,7 +36,7 @@ deploy:
     on:
       condition: $REACT_APP_DOMAIN = ifs49f-poker.surge.sh
   - provider: script
-    script: rsync -r --delete-after --quiet ./build/. deploy@poker4.fun:/websites/poker
+    script: rsync -r --delete-after -e "ssh -p $SSH_PORT" --quiet ./build/. deploy@poker4.fun:/websites/poker
     skip_cleanup: true
     on:
       condition: $REACT_APP_DOMAIN = poker4.fun
