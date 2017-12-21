@@ -4,7 +4,7 @@ import './Summary.css';
 
 class Summary extends Component {
   render() {
-    const { me, team, show } = this.props;
+    const { me, team, show, onChangeHighlight } = this.props;
     const summaryClass = classNames('Summary', { show });
 
     // we want the summary could be displayed from opacity: 0
@@ -33,7 +33,11 @@ class Summary extends Component {
       .sort((a, b) => (b[1] - a[1]))
       .map((score) =>
         <li key={score[0]}>
-          <dd>{score[0]}</dd>
+          <dd
+            onMouseEnter={() => { onChangeHighlight(score[0]) }}
+            onMouseLeave={() => { onChangeHighlight(null) }}>
+            {score[0]}
+          </dd>
           <dt>× {score[1]}</dt>
         </li>
       );

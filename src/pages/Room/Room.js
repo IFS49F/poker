@@ -7,6 +7,7 @@ import Votes from 'components/Votes/Votes';
 import Summary from 'components/Summary/Summary';
 import './Room.css';
 import io from 'socket.io-client';
+import PlayerStatePinger from 'lib/player-state-pinger';
 
 class Room extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Room extends Component {
     this.state = {
       me: null,
       myScore: null,
+      highlightScore: null,
       team: [],
       show: false,
       disconnected: false,
@@ -23,6 +25,7 @@ class Room extends Component {
     // to avoid `undefined` room link in first render.
     this.room = this.props.match.params.room;
     this.playing = false;
+    this.playerStatePinger = new PlayerStatePinger({ setState: this.setState.bind(this) });
   }
 
   componentDidMount() {
@@ -31,7 +34,7 @@ class Room extends Component {
     this.socket.on('stateUpdate', (response, isClearAction) => {
       const me = response.team.find(client => client.id === this.socket.id);
       const team = response.team.filter(client => client.id !== this.socket.id);
-      const show = response.show;
+      const { show, action } = response;
 
       this.setState(prevState => ({
         me,
@@ -39,6 +42,8 @@ class Room extends Component {
         team,
         show
       }));
+
+      if (action) this.handleAction(action);
     });
 
     this.socket.on('connect_error', (reason) => {
@@ -68,6 +73,16 @@ class Room extends Component {
 
   componentWillUnmount() {
     this.socket.close();
+    this.playerStatePinger.clearTimeouts();
+  }
+
+  handleAction(action) {
+    switch (action.type) {
+      case 'vote':
+        this.playerStatePinger.pingPlayerState(action.playerId, 'voting', 1000);
+        break;
+      default:
+    }
   }
 
   handleReconn = (e) => { // eslint-disable-line
@@ -76,17 +91,19 @@ class Room extends Component {
   };
 
   handlePlayerJoin = (name) => { // eslint-disable-line
+    const suit = '♤♧♡♢'[Math.floor(Math.random() * 4)];
     this.playing = true;
     this.setState({
       me: {
         id: this.socket.id,
         name,
+        suit,
         score: null,
         voted: false
       }
     });
     localStorage.setItem('playerName', name);
-    this.socket.emit('play', name);
+    this.socket.emit('play', { name, suit });
   };
 
   handleVote = (e) => { // eslint-disable-line
@@ -106,6 +123,7 @@ class Room extends Component {
     this.setState(prevState => ({
       me: Object.assign({}, prevState.me, { score: null, voted: false }),
       myScore: null,
+      highlightScore: null,
       team: prevState.team.map(player => (
         Object.assign({}, player, { score: null, voted: false })
       )),
@@ -114,8 +132,14 @@ class Room extends Component {
     this.socket.emit('clear');
   };
 
+  handleHighlightScore = (highlightScore) => { // eslint-disable-line
+    this.setState({
+      highlightScore
+    });
+  };
+
   render() {
-    const { me, myScore, team, show, disconnected, reconnCountdown } = this.state;
+    const { me, myScore, highlightScore, team, show, disconnected, reconnCountdown } = this.state;
     const playerName = localStorage.getItem('playerName') || '';
     return (
       <div className="Room">
@@ -140,12 +164,14 @@ class Room extends Component {
         <Votes
           me={me}
           myScore={myScore}
+          highlightScore={highlightScore}
           team={team}
           show={show} />
         <Summary
           me={me}
           team={team}
-          show={show} />
+          show={show}
+          onChangeHighlight={this.handleHighlightScore} />
       </div>
     );
   }

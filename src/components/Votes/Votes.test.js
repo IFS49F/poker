@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Votes from './Votes';
 
 describe('<Votes />', () => {
@@ -46,22 +46,22 @@ describe('<Votes />', () => {
       shallow(<Votes team={team} />);
     });
 
-    it('should render correct numbers of card', () => {
+    it('should render correct number of cards', () => {
       const wrapper = shallow(<Votes me={me} team={team} show={true} />);
       expect(wrapper.find('Card')).toHaveLength(5);
     });
 
     it('should render `me` as the first card', () => {
       const wrapper = shallow(<Votes me={me} team={team} show={true} />);
-      expect(wrapper.find('.Votes ul').childAt(0).find('dt').text()).toEqual('just4fun');
+      expect(wrapper.find('.Votes li').at(0).find('dt').text()).toEqual('just4fun');
     });
 
     it('should sort other player names alphabetically', () => {
       const wrapper = shallow(<Votes me={me} team={team} show={true} />);
-      expect(wrapper.find('.Votes ul').childAt(1).find('dt').text()).toEqual('frank');
-      expect(wrapper.find('.Votes ul').childAt(2).find('dt').text()).toEqual('hiveer');
-      expect(wrapper.find('.Votes ul').childAt(3).find('dt').text()).toEqual('hyjk2000');
-      expect(wrapper.find('.Votes ul').childAt(4).find('dt').text()).toEqual('teresa');
+      expect(wrapper.find('.Votes li').at(1).find('dt').text()).toEqual('frank');
+      expect(wrapper.find('.Votes li').at(2).find('dt').text()).toEqual('hiveer');
+      expect(wrapper.find('.Votes li').at(3).find('dt').text()).toEqual('hyjk2000');
+      expect(wrapper.find('.Votes li').at(4).find('dt').text()).toEqual('teresa');
     });
   });
 });

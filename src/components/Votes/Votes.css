@@ -31,6 +31,28 @@
     overflow: hidden;
     line-height: 2em;
   }
+
+  .fade-enter {
+    opacity: 0.01;
+    transform: scale(1.2);
+  }
+
+  .fade-enter.fade-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 500ms ease-in;
+  }
+
+  .fade-exit {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .fade-exit.fade-exit-active {
+    opacity: 0.01;
+    transform: scale(1.2);
+    transition: all 300ms ease-in;
+  }
 }
 
 @media (max-width: 500px) {

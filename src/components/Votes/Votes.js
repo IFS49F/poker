@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Card from 'components/Card/Card';
 import './Votes.css';
 
@@ -6,39 +7,69 @@ const collator = Intl && ('Collator' in Intl)
   ? new Intl.Collator()
   : { compare: (a, b) => a.localeCompare(b) };
 
-class Votes extends Component { 
+const Fade = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={500}
+    classNames='fade'>
+    {children}
+  </CSSTransition>
+);
+
+const Bounce = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={1000}
+    classNames='bounce'>
+    {children}
+  </CSSTransition>
+);
+
+class Votes extends Component {
   render() {
-    const { me, myScore, team, show } = this.props;
+    const { me, myScore, highlightScore, team, show } = this.props;
     const listItems = team
       .slice() // shallow copy to avoid mutating the state directly
       .sort((a, b) => collator.compare(a.name, b.name))
       .map((member) =>
-        <li key={member.id}>
-          <dd>
-            <Card
-              score={member.score}
-              voted={member.voted}
-              show={show} />
-          </dd>
-          <dt>{member.name}</dt>
-        </li>
+        <Fade key={member.id}>
+          <li>
+            <dd>
+              <Bounce in={member.voting}>
+                <Card
+                  highlight={member.score === highlightScore && highlightScore !== null}
+                  score={member.score}
+                  show={show}
+                  suit={member.suit}
+                  voted={member.voted} />
+              </Bounce>
+            </dd>
+            <dt>{member.name}</dt>
+          </li>
+        </Fade>
       );
     return (
       <div className="Votes">
-        <ul>
+        <TransitionGroup component="ul">
           {me && (
-            <li key={me.id}>
-              <dd>
-                <Card
-                  score={myScore}
-                  voted={me.voted}
-                  show={show} />
-              </dd>
-              <dt>{me.name}</dt>
-            </li>
+            <Fade key={me.id}>
+              <li>
+                <dd>
+                  <Bounce in={me.voting}>
+                    <Card
+                      highlight={myScore === highlightScore && highlightScore !== null}
+                      score={myScore}
+                      show={show}
+                      suit={me.suit}
+                      voted={me.voted} />
+                  </Bounce>
+                </dd>
+                <dt>{me.name}</dt>
+              </li>
+            </Fade>
           )}
           {listItems}
-        </ul>
+        </TransitionGroup>
       </div>
     );
   }

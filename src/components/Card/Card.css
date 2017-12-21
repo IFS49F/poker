@@ -9,9 +9,9 @@
   height: var(--card-height);
   font-size: calc(var(--card-height) / 3);
   line-height: var(--card-height);
-  transition: opacity 0.5s ease;
+  transition: all 0.5s ease;
   opacity: 0.3;
-  perspective: 1000px;
+  perspective: calc(var(--card-height) * 2);
 
   .face {
     position: absolute;
@@ -19,12 +19,12 @@
     right: 0;
     bottom: 0;
     left: 0;
-    transition: transform 0.5s ease;
+    transition: transform 500ms ease;
     text-align: center;
     transform-style: preserve-3d;
     backface-visibility: hidden;
     background-color: white;
-    box-shadow: 0 0 0 2px DarkSlateGrey;
+    box-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.2);
     border-radius: calc(var(--card-height) / 10);
     color: DarkSlateGrey;
   }
@@ -41,7 +41,10 @@
 
   &.voted {
     opacity: 1;
-    animation: bounce ease 2s 1;
+  }
+
+  &.bounce-enter.bounce-enter-active {
+    animation: 1s ease-out 1 bounce;
   }
 
   &.show {
@@ -53,14 +56,18 @@
       transform: rotateY(0deg);
     }
   }
+
+  &.highlight {
+    transform: translateY(-0.2em) scale(1.1) rotate(3deg);
+  }
 }
 
 @keyframes bounce {
   0% { transform: translateY(0) }
-  10% { transform: translateY(calc(var(--card-height) / -5)) }
-  20% { transform: translateY(0) }
-  30% { transform: translateY(calc(var(--card-height) / -10)) }
+  20% { transform: translateY(calc(var(--card-height) / -5)) }
   40% { transform: translateY(0) }
+  60% { transform: translateY(calc(var(--card-height) / -10)) }
+  80% { transform: translateY(0) }
 }
 
 @media (max-width: 500px) {
