@@ -185,7 +185,10 @@ module.exports = {
                   loader: require.resolve('css-loader'),
                   options: {
                     importLoaders: 1,
-                    minimize: true,
+                    minimize: {
+                      // Prevent minification from altering font-family definition
+                      minifyFontValues: { removeAfterKeyword: false }
+                    },
                     sourceMap: true,
                   },
                 },
