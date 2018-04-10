@@ -1,5 +1,3 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
 import PlayerStatePinger from './player-state-pinger';
 
 describe('lib/player-state-pinger', () => {
