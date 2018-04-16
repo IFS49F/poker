@@ -1,10 +1,10 @@
 {
   "name": "poker",
   "version": "0.1.0",
-  "description": "A Scrum pointing poker app.",
+  "description": "Vivid, registration-free, easy-to-use scrum poker.",
   "main": "src/index.js",
   "homepage": "https://poker4.fun",
-  "repository": "git@github.com:IFS49F/poker.git",
+  "repository": "IFS49F/poker",
   "license": "GPL-3.0",
   "scripts": {
     "start": "node scripts/start.js",

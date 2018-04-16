@@ -1,6 +1,7 @@
 {
-  "short_name": "Poker",
-  "name": "Scrum Poker",
+  "short_name": "Poker4Fun",
+  "name": "Poker4Fun",
+  "description": "Vivid, registration-free, easy-to-use scrum poker.",
   "icons": [
     {
       "src": "apple-touch-icon.png",
@@ -8,7 +9,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
+  "start_url": "./?utm_source=homescreen",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
