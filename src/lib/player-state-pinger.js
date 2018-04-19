@@ -16,7 +16,7 @@ class PlayerStatePinger {
 
   setPlayerState(playerId, state, value) {
     this.setState(prevState => {
-      const nextState = { ...prevState };
+      const nextState = { ...prevState, playerAction: { ...prevState.playerAction } };
       if (nextState.playerAction[playerId] === undefined)
         nextState.playerAction[playerId] = {};
       nextState.playerAction[playerId][state] = value;
