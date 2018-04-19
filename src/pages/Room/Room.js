@@ -17,6 +17,7 @@ class Room extends Component {
       myScore: null,
       highlightScore: null,
       team: [],
+      playerAction: {},
       show: false,
       disconnected: false,
       reconnCountdown: 0
@@ -139,7 +140,7 @@ class Room extends Component {
   };
 
   render() {
-    const { me, myScore, highlightScore, team, show, disconnected, reconnCountdown } = this.state;
+    const { me, myScore, highlightScore, team, playerAction, show, disconnected, reconnCountdown } = this.state;
     const playerName = localStorage.getItem('playerName') || '';
     return (
       <div className="Room">
@@ -166,6 +167,7 @@ class Room extends Component {
           myScore={myScore}
           highlightScore={highlightScore}
           team={team}
+          playerAction={playerAction}
           show={show} />
         <Summary
           me={me}

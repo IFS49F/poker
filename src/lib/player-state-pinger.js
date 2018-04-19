@@ -16,10 +16,10 @@ class PlayerStatePinger {
 
   setPlayerState(playerId, state, value) {
     this.setState(prevState => {
-      const nextState = Object.assign({}, prevState);
-      const { me, team } = nextState;
-      const player = [me, ...team].find(client => client && client.id === playerId);
-      player[state] = value;
+      const nextState = { ...prevState };
+      if (nextState.playerAction[playerId] === undefined)
+        nextState.playerAction[playerId] = {};
+      nextState.playerAction[playerId][state] = value;
       return nextState;
     });
   }
