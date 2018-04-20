@@ -15,13 +15,15 @@ class PlayerStatePinger {
   }
 
   setPlayerState(playerId, state, value) {
-    this.setState(prevState => {
-      const nextState = Object.assign({}, prevState);
-      const { me, team } = nextState;
-      const player = [me, ...team].find(client => client && client.id === playerId);
-      player[state] = value;
-      return nextState;
-    });
+    this.setState(prevState => ({
+      ...prevState,
+      playerAction: {
+        ...prevState.playerAction,
+        [playerId]: {
+          [state]: value
+        }
+      }
+    }));
   }
 
   clearTimeouts(timeouts = this.timeouts) {

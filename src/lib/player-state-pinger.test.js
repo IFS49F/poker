@@ -9,7 +9,8 @@ describe('lib/player-state-pinger', () => {
         {
           id: '9527'
         }
-      ]
+      ],
+      playerAction: {}
     };
     let nextState = null;
     let instance = new PlayerStatePinger({
@@ -20,6 +21,6 @@ describe('lib/player-state-pinger', () => {
       }
     });
     instance.setPlayerState('9527', 'voting', true);
-    expect(nextState.team.find(player => player.id === '9527').voting).toEqual(true);
+    expect(nextState.playerAction['9527'].voting).toEqual(true);
   });
 });

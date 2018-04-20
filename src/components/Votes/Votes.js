@@ -27,7 +27,7 @@ const Bounce = ({ children, ...props }) => (
 
 class Votes extends Component {
   render() {
-    const { me, myScore, highlightScore, team, show } = this.props;
+    const { me, myScore, highlightScore, team, playerAction, show } = this.props;
     const listItems = team
       .slice() // shallow copy to avoid mutating the state directly
       .sort((a, b) => collator.compare(a.name, b.name))
@@ -35,7 +35,7 @@ class Votes extends Component {
         <Fade key={member.id}>
           <li>
             <dd>
-              <Bounce in={member.voting}>
+              <Bounce in={playerAction[member.id] && playerAction[member.id].voting}>
                 <Card
                   highlight={member.score === highlightScore && highlightScore !== null}
                   score={member.score}
@@ -55,7 +55,7 @@ class Votes extends Component {
             <Fade key={me.id}>
               <li>
                 <dd>
-                  <Bounce in={me.voting}>
+                  <Bounce in={playerAction[me.id] && playerAction[me.id].voting}>
                     <Card
                       highlight={myScore === highlightScore && highlightScore !== null}
                       score={myScore}
