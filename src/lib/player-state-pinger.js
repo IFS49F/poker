@@ -15,13 +15,15 @@ class PlayerStatePinger {
   }
 
   setPlayerState(playerId, state, value) {
-    this.setState(prevState => {
-      const nextState = { ...prevState, playerAction: { ...prevState.playerAction } };
-      if (nextState.playerAction[playerId] === undefined)
-        nextState.playerAction[playerId] = {};
-      nextState.playerAction[playerId][state] = value;
-      return nextState;
-    });
+    this.setState(prevState => ({
+      ...prevState,
+      playerAction: {
+        ...prevState.playerAction,
+        [playerId]: {
+          [state]: value
+        }
+      }
+    }));
   }
 
   clearTimeouts(timeouts = this.timeouts) {
