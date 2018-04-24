@@ -31,7 +31,7 @@ Most online poker tools are cool, but
 
 ## Donate
 
-Basically it's a side project we enjoy in spare time, but it has also been used widely in our company and there are many feedbacks from our workmates. You can also use it in your company even commercial use per its [license](https://github.com/IFS49F/poker/blob/master/LICENSE). As a tool, it's free, but domain and server are [not](#cost). It will be much appreciated if you donate to support the cool poker.
+Basically it's a side project we enjoy in spare time, but it has also been used widely in our company and there are many feedbacks from our workmates. You can also use it in your company even commercial use per its [license](https://github.com/IFS49F/poker/blob/master/LICENSE). As a tool, it's free, but domain and server are [not](#cost). It will be much appreciated if you donate the cool poker with cup of coffee ☕️.
 
 | WeChat | Alipay | PayPal |
 | --- | --- | --- |
