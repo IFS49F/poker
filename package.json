@@ -102,8 +102,7 @@
     "Firefox ESR",
     "not ie <= 11",
     "not ie_mob <= 11",
-    "not op_mini all",
-    "not dead"
+    "not op_mini all"
   ],
   "eslintConfig": {
     "extends": "react-app"
