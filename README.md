@@ -37,17 +37,30 @@ Most online poker tools are cool, but
 - Domain from [GoDaddy](https://www.godaddy.com/): 30$ / year
 - Server from [Linode](https://www.linode.com/): 60$ / year
 
+| Item | Cost | Date | Until | Comment |
+| --- | --- | --- | --- | --- |
+| Domain | 3$ | Jul 23, 2017 | Jul 23, 2018 | The cost to renew will be 30$ |
+| Server | 5$ | 1st day every month |
+
 ## Donate
 
-Basically it's a side project we enjoy in spare time, but it has also been used widely in our company and there are many feedbacks from our workmates. You can also use it in your company even commercial use per its [license](https://github.com/IFS49F/poker/blob/master/LICENSE). As a tool, it's free, but domain and server are [not](#cost). It will be much appreciated if you donate the cool poker with cup of coffee ☕️.
+Basically it's a side project we enjoy in spare time, but it has also been used widely in our company and there are many feedbacks from our workmates. You can also use it in your company even commercial use per its [license](#license). As a tool, it's free, but domain and server are [not](#cost). It will be much appreciated if you donate Poker4Fun with cup of coffee ☕️.
 
 | WeChat | Alipay | PayPal |
 | --- | --- | --- |
 |![donate_via_wechat](https://user-images.githubusercontent.com/7512625/39191933-96503b6a-480a-11e8-94a0-ec5efc16dc5d.jpg)|![donate_via_alipay](https://user-images.githubusercontent.com/7512625/39191930-95c25598-480a-11e8-8508-7a48d009db55.png)|[![donate_via_paypal](https://user-images.githubusercontent.com/7512625/39193475-39a8fccc-480e-11e8-926d-b2f86050db69.png)](https://www.paypal.me/houritsunohikari)|
 
+## Sponsors
+
+Please send us your GitHub account or personal blog if you donated Poker4Fun.
+
+| Name | Amount | Date |
+| --- | --- | --- |
+| [hiveer](https://github.com/hiveer) | 60￥| Apr 25, 2018 |
+
 ## License
 
-Copyright 2017-2018 IFS49F
+Copyright 2017-present IFS49F.
 
 Poker4Fun is licensed under [GPL-3.0](https://github.com/IFS49F/poker/blob/master/LICENSE).
 
