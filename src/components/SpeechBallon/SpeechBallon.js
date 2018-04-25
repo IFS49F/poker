@@ -2,8 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './SpeechBallon.css';
 
-const SpeechBallon = ({ children, ...props }) => {
-  const { color } = props;
+const SpeechBallon = ({ children, color }) => {
   const speechBallonClass = classNames('SpeechBallon', color);
 
   return (
