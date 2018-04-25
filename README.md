@@ -1,5 +1,6 @@
 <p align="center">
   <img width="300" alt="Poker4Fun Logo" src="https://user-images.githubusercontent.com/4647136/28408722-fec2a050-6d6a-11e7-9729-798bc945801b.png">
+  <h3 align="center">Poker4Fun</h3>
   <p align="center">♠︎ Vivid, registration-free, easy-to-use scrum poker.</p>
   <p align="center">
     <a href="https://travis-ci.org/IFS49F/poker">
@@ -34,13 +35,13 @@ Most online poker tools are cool, but
 
 ## Cost
 
-- Domain from [GoDaddy](https://www.godaddy.com/): 30$ / year
-- Server from [Linode](https://www.linode.com/): 60$ / year
+- Domain from [GoDaddy](https://www.godaddy.com/): US $30 / year
+- Server from [Linode](https://www.linode.com/): US $60 / year
 
-| Item | Cost | Date | Until | Comment |
-| --- | --- | --- | --- | --- |
-| Domain | 3$ | Jul 23, 2017 | Jul 23, 2018 | The cost to renew will be 30$ |
-| Server | 5$ | 1st day every month |
+| Item | Cost | Date | Until |
+| --- | --- | --- | --- |
+| Domain | US $30 / year | Jul 23, 2017 | Jul 23, 2018 |
+| Server | US $5 / month | 1st day every month | Last day every month |
 
 ## Donate
 
@@ -56,7 +57,7 @@ Please send us your GitHub account or personal blog if you donated Poker4Fun.
 
 | Name | Amount | Date |
 | --- | --- | --- |
-| [hiveer](https://github.com/hiveer) | 60￥| Apr 25, 2018 |
+| [hiveer](https://github.com/hiveer) | CN ￥60 | Apr 25, 2018 |
 
 ## License
 
