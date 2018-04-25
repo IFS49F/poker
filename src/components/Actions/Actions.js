@@ -1,43 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { validScores } from 'lib/constants';
 import classNames from 'classnames';
 import './Actions.css';
 
-class Actions extends Component {
-  checkSelectedValue(value, selectedValue) {
-    if (typeof value === 'string') {
-      return value === selectedValue;
-    }
+const checkSelectedValue = (value, selectedValue) => (
+  typeof value === 'string'
+    ? value === selectedValue
+    : value === parseInt(selectedValue, 10)
+);
 
-    return value === parseInt(selectedValue, 10);
-  }
-
-  render() {
-    const { show, myScore, onVote, onShow, onClear } = this.props;
-    const listItems = validScores.map((item) => {
-      const buttonClass = classNames({ 'selected': this.checkSelectedValue(item, myScore) });
-      return (
-        <li key={item}>
-          <button onClick={onVote} className={buttonClass} value={item}>{item}</button>
-        </li>
-      );
-    });
-
+const Actions = ({ show, myScore, onVote, onShow, onClear }) => {
+  const listItems = validScores.map((item) => {
+    const buttonClass = classNames({ 'selected': checkSelectedValue(item, myScore) });
     return (
-      <div className="Actions">
-        <ul className="scores">
-          {listItems}
-        </ul>
-        <ul className="operations">
-          {show ? (
-            <li><button onClick={onClear} className="danger">Clear</button></li>
-          ) : (
-            <li><button onClick={onShow}>Show</button></li>
-          )}
-        </ul>
-      </div>
+      <li key={item}>
+        <button onClick={onVote} className={buttonClass} value={item}>{item}</button>
+      </li>
     );
-  }
-}
+  });
+
+  return (
+    <div className="Actions">
+      <ul className="scores">
+        {listItems}
+      </ul>
+      <ul className="operations">
+        {show ? (
+          <li><button onClick={onClear} className="danger">Clear</button></li>
+        ) : (
+          <li><button onClick={onShow}>Show</button></li>
+        )}
+      </ul>
+    </div>
+  );
+};
 
 export default Actions;

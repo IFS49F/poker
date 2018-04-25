@@ -104,6 +104,6 @@ const Votes = ({ me, myScore, highlightScore, team, playerAction, show }) => {
       </TransitionGroup>
     </div>
   );
-}
+};
 
 export default Votes;
