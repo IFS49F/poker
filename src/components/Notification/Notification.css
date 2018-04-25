@@ -1,9 +1,7 @@
-:root {
+.Notification {
   --notification-alert-color: white;
   --notification-alert-bg-color: crimson;
-}
 
-.Notification {
   position: absolute;
   top: -4rem;
   right: 1rem;

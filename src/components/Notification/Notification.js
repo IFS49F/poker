@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import './Notification.css';
 
-class Notification extends Component {
-  render() {
-    const { active, reconnCountdown, onReconn } = this.props;
-    const notificationClass = classNames('Notification', { active });
+const Notification = ({ active, reconnCountdown, onReconn }) => {
+  const notificationClass = classNames('Notification', { active });
 
-    return (
-      <div className={notificationClass}>
-        <span>Your seems offline, </span>
-        <span className="countdown">we will try reconnecting in {reconnCountdown}s... </span>
-        <a href="#reconnect" onClick={onReconn}>Reconnect Now</a>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={notificationClass}>
+      <span>Your seems offline, </span>
+      <span className="countdown">we will try reconnecting in {reconnCountdown}s... </span>
+      <a href="#reconnect" onClick={onReconn}>Reconnect Now</a>
+    </div>
+  );
+};
 
 export default Notification;

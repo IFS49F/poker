@@ -4,12 +4,12 @@ class PlayerStatePinger {
     this.timeouts = {};
   }
 
-  pingPlayerState(playerId, state, timeout) {
-    this.setPlayerState(playerId, state, true);
+  pingPlayerState(playerId, state, value = true, timeout) {
+    this.setPlayerState(playerId, state, value);
     if (!this.timeouts[playerId]) this.timeouts[playerId] = {};
     if (this.timeouts[playerId][state]) clearTimeout(this.timeouts[playerId][state]);
     this.timeouts[playerId][state] = setTimeout(() => {
-      this.setPlayerState(playerId, state, false);
+      this.setPlayerState(playerId, state, undefined);
       delete this.timeouts[playerId][state];
     }, timeout);
   }
@@ -20,6 +20,7 @@ class PlayerStatePinger {
       playerAction: {
         ...prevState.playerAction,
         [playerId]: {
+          ...prevState.playerAction[playerId],
           [state]: value
         }
       }

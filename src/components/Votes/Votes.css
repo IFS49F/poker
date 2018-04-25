@@ -1,11 +1,9 @@
-:root {
+.Votes {
   --card-height: 150px;
   --card-height-phone: 100px;
   --vote-width: calc(var(--card-height) / 1.5);
   --vote-width-phone: calc(var(--card-height-phone) / 1.5);
-}
 
-.Votes {
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -22,6 +20,10 @@
   dd, dt {
     width: var(--vote-width);
     margin: 0 auto;
+  }
+
+  dd {
+    position: relative;
   }
 
   dt {

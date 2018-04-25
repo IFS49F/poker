@@ -1,9 +1,7 @@
-:root {
+.Summary {
   --summary-item-font-size: 1.5em;
   --summary-item-height: 3em;
-}
 
-.Summary {
   transition: opacity 0.5s ease;
   font-size: var(--summary-item-font-size);
   opacity: 0;
