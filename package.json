@@ -22,7 +22,7 @@
     "socket.io-client": "^2.0.4"
   },
   "devDependencies": {
-    "autoprefixer": "7.1.6",
+    "autoprefixer": "^8.3.0",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "21.2.0",
@@ -48,11 +48,9 @@
     "html-webpack-plugin": "2.30.1",
     "jest": "21.2.1",
     "object-assign": "4.1.1",
-    "postcss-calc": "^6.0.1",
-    "postcss-custom-properties": "^6.2.0",
-    "postcss-flexbugs-fixes": "3.2.0",
-    "postcss-loader": "2.0.8",
-    "postcss-nested": "^2.1.2",
+    "postcss-flexbugs-fixes": "^3.3.0",
+    "postcss-loader": "~2.1.4",
+    "postcss-nested": "^3.0.0",
     "promise": "8.0.1",
     "react-dev-utils": "^4.1.0",
     "react-test-renderer": "^16.0.0",
@@ -98,6 +96,15 @@
       "react-app"
     ]
   },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie <= 11",
+    "not ie_mob <= 11",
+    "not op_mini all",
+    "not dead"
+  ],
   "eslintConfig": {
     "extends": "react-app"
   }
