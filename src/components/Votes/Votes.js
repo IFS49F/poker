@@ -52,14 +52,12 @@ const Votes = ({ me, myScore, highlightScore, team, playerAction, show }) => {
                 voted={member.voted} />
             </Bounce>
             <TransitionGroup component={null}>
-              {playerAction[member.id] && playerAction[member.id].showing && (
+              {playerAction[member.id] && playerAction[member.id].speaking && (
                 <PopIn>
-                  <SpeechBallon color="green">Show!</SpeechBallon>
-                </PopIn>
-              )}
-              {playerAction[member.id] && playerAction[member.id].clearing && (
-                <PopIn>
-                  <SpeechBallon color="red">Clear!</SpeechBallon>
+                  <SpeechBallon
+                    color={playerAction[member.id].speaking.color}>
+                    {playerAction[member.id].speaking.content}
+                  </SpeechBallon>
                 </PopIn>
               )}
             </TransitionGroup>
@@ -84,14 +82,12 @@ const Votes = ({ me, myScore, highlightScore, team, playerAction, show }) => {
                     voted={me.voted} />
                 </Bounce>
                 <TransitionGroup component={null}>
-                  {playerAction[me.id] && playerAction[me.id].showing && (
+                  {playerAction[me.id] && playerAction[me.id].speaking && (
                     <PopIn>
-                      <SpeechBallon color="green">Show!</SpeechBallon>
-                    </PopIn>
-                  )}
-                  {playerAction[me.id] && playerAction[me.id].clearing && (
-                    <PopIn>
-                      <SpeechBallon color="red">Clear!</SpeechBallon>
+                      <SpeechBallon
+                        color={playerAction[me.id].speaking.color}>
+                        {playerAction[me.id].speaking.content}
+                      </SpeechBallon>
                     </PopIn>
                   )}
                 </TransitionGroup>

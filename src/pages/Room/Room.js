@@ -77,16 +77,16 @@ class Room extends Component {
     this.playerStatePinger.clearTimeouts();
   }
 
-  handleAction(action) {
-    switch (action.type) {
+  handleAction({ type, playerId }) {
+    switch (type) {
       case 'vote':
-        this.playerStatePinger.pingPlayerState(action.playerId, 'voting', 1000);
+        this.playerStatePinger.pingPlayerState(playerId, 'voting', true, 1000);
         break;
       case 'show':
-        this.playerStatePinger.pingPlayerState(action.playerId, 'showing', 4000);
+        this.playerStatePinger.pingPlayerState(playerId, 'speaking', { color: 'green', content: 'Show!' }, 4000);
         break;
       case 'clear':
-        this.playerStatePinger.pingPlayerState(action.playerId, 'clearing', 4000);
+        this.playerStatePinger.pingPlayerState(playerId, 'speaking', { color: 'red', content: 'Clear!' }, 4000);
         break;
       default:
     }
