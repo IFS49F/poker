@@ -1,15 +1,12 @@
-:root {
+.Landing {
   --button-size: 3rem;
   --button-border-radius: calc(var(--button-size) / 5);
-}
 
-.Landing {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-
 
   .Form {
     margin: 30vh auto;
