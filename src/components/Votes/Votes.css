@@ -22,6 +22,10 @@
     margin: 0 auto;
   }
 
+  dd {
+    position: relative;
+  }
+
   dt {
     text-align: center;
     text-overflow: ellipsis;

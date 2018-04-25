@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Card from 'components/Card/Card';
 import './Votes.css';
+import SpeechBallon from '../SpeechBallon/SpeechBallon';
 
 const collator = Intl && ('Collator' in Intl)
   ? new Intl.Collator()
@@ -25,54 +26,84 @@ const Bounce = ({ children, ...props }) => (
   </CSSTransition>
 );
 
-class Votes extends Component {
-  render() {
-    const { me, myScore, highlightScore, team, playerAction, show } = this.props;
-    const listItems = team
-      .slice() // shallow copy to avoid mutating the state directly
-      .sort((a, b) => collator.compare(a.name, b.name))
-      .map((member) =>
-        <Fade key={member.id}>
-          <li>
-            <dd>
-              <Bounce in={playerAction[member.id] && playerAction[member.id].voting}>
-                <Card
-                  highlight={member.score === highlightScore && highlightScore !== null}
-                  score={member.score}
-                  show={show}
-                  suit={member.suit}
-                  voted={member.voted} />
-              </Bounce>
-            </dd>
-            <dt>{member.name}</dt>
-          </li>
-        </Fade>
-      );
-    return (
-      <div className="Votes">
-        <TransitionGroup component="ul">
-          {me && (
-            <Fade key={me.id}>
-              <li>
-                <dd>
-                  <Bounce in={playerAction[me.id] && playerAction[me.id].voting}>
-                    <Card
-                      highlight={myScore === highlightScore && highlightScore !== null}
-                      score={myScore}
-                      show={show}
-                      suit={me.suit}
-                      voted={me.voted} />
-                  </Bounce>
-                </dd>
-                <dt>{me.name}</dt>
-              </li>
-            </Fade>
-          )}
-          {listItems}
-        </TransitionGroup>
-      </div>
+const PopIn = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    classNames="popin"
+    timeout={300}>
+    {children}
+  </CSSTransition>
+);
+
+const Votes = ({ me, myScore, highlightScore, team, playerAction, show }) => {
+  const listItems = team
+    .slice() // shallow copy to avoid mutating the state directly
+    .sort((a, b) => collator.compare(a.name, b.name))
+    .map((member) =>
+      <Fade key={member.id}>
+        <li>
+          <dd>
+            <Bounce in={playerAction[member.id] && playerAction[member.id].voting}>
+              <Card
+                highlight={member.score === highlightScore && highlightScore !== null}
+                score={member.score}
+                show={show}
+                suit={member.suit}
+                voted={member.voted} />
+            </Bounce>
+            <TransitionGroup component={null}>
+              {playerAction[member.id] && playerAction[member.id].showing && (
+                <PopIn>
+                  <SpeechBallon color="green">Show!</SpeechBallon>
+                </PopIn>
+              )}
+              {playerAction[member.id] && playerAction[member.id].clearing && (
+                <PopIn>
+                  <SpeechBallon color="red">Clear!</SpeechBallon>
+                </PopIn>
+              )}
+            </TransitionGroup>
+          </dd>
+          <dt>{member.name}</dt>
+        </li>
+      </Fade>
     );
-  }
+  return (
+    <div className="Votes">
+      <TransitionGroup component="ul">
+        {me && (
+          <Fade key={me.id}>
+            <li>
+              <dd>
+                <Bounce in={playerAction[me.id] && playerAction[me.id].voting}>
+                  <Card
+                    highlight={myScore === highlightScore && highlightScore !== null}
+                    score={myScore}
+                    show={show}
+                    suit={me.suit}
+                    voted={me.voted} />
+                </Bounce>
+                <TransitionGroup component={null}>
+                  {playerAction[me.id] && playerAction[me.id].showing && (
+                    <PopIn>
+                      <SpeechBallon color="green">Show!</SpeechBallon>
+                    </PopIn>
+                  )}
+                  {playerAction[me.id] && playerAction[me.id].clearing && (
+                    <PopIn>
+                      <SpeechBallon color="red">Clear!</SpeechBallon>
+                    </PopIn>
+                  )}
+                </TransitionGroup>
+              </dd>
+              <dt>{me.name}</dt>
+            </li>
+          </Fade>
+        )}
+        {listItems}
+      </TransitionGroup>
+    </div>
+  );
 }
 
 export default Votes;

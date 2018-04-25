@@ -82,6 +82,12 @@ class Room extends Component {
       case 'vote':
         this.playerStatePinger.pingPlayerState(action.playerId, 'voting', 1000);
         break;
+      case 'show':
+        this.playerStatePinger.pingPlayerState(action.playerId, 'showing', 4000);
+        break;
+      case 'clear':
+        this.playerStatePinger.pingPlayerState(action.playerId, 'clearing', 4000);
+        break;
       default:
     }
   }
