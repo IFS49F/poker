@@ -1,8 +1,8 @@
-<p align="center">
+<p style="text-align: center">
   <img width="300" alt="Poker4Fun Logo" src="https://user-images.githubusercontent.com/4647136/28408722-fec2a050-6d6a-11e7-9729-798bc945801b.png">
-  <h3 align="center">Poker4Fun</h3>
-  <p align="center">♠︎ Vivid, registration-free, easy-to-use scrum poker.</p>
-  <p align="center">
+  <h1 style="margin: 0; border: none; text-align: center; font-size: 48px; font-weight: 100">Poker4<strong style="font-weight: 600">Fun</strong></h1>
+  <p style="text-align: center">
+    ♠︎ Vivid, registration-free, easy-to-use scrum poker.<br><br>
     <a href="https://travis-ci.org/IFS49F/poker">
       <img alt="Build Status" src="https://travis-ci.org/IFS49F/poker.svg?branch=master" />
     </a>
@@ -29,9 +29,7 @@ Most online poker tools are cool, but
 
 ## Maintainers
 
-| [![hyjk2000](https://avatars0.githubusercontent.com/u/4647136?s=300&v=4)](https://github.com/hyjk2000) | [![hiveer](https://avatars0.githubusercontent.com/u/3827780?s=300&v=4)](https://github.com/hiveer) | [![just4fun](https://avatars0.githubusercontent.com/u/7512625?s=300&v=4)](https://github.com/just4fun) |
-| --- | --- | --- |
-| [hyjk2000](https://github.com/hyjk2000) | [hiveer](https://github.com/hiveer) | [just4fun](https://github.com/just4fun) |
+[![hyjk2000](https://avatars0.githubusercontent.com/u/4647136?s=100&v=4)](https://github.com/hyjk2000) [![hiveer](https://avatars0.githubusercontent.com/u/3827780?s=100&v=4)](https://github.com/hiveer) [![just4fun](https://avatars0.githubusercontent.com/u/7512625?s=100&v=4)](https://github.com/just4fun)
 
 ## Cost
 
