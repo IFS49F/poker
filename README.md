@@ -43,7 +43,7 @@ Most online poker tools are cool, but
 
 ## Donate
 
-Basically it's a side project we enjoy in spare time, but it has also been used widely in our company and there are many feedbacks from our workmates. You can also use it in your company even commercial use per its [license](#license). As a tool, it's free, but domain and server are [not](#cost). It will be much appreciated if you donate Poker4Fun with cup of coffee ☕️.
+Poker4Fun is a side project we built in our spare time. This app has become popular thanks to the hard working of our [contributors](https://github.com/IFS49F/poker/graphs/contributors) and valuable feedbacks from our users. As an open source software, Poker4Fun is and will always be free for everyone, but it [costs money](#cost) to run the server and renew the domain. We need your help to keep Poker4Fun free and sustainable, and would be much appreciated if you could buy us a cup of coffee ☕️  to fuel our coding frenzy 🔥.
 
 | WeChat | Alipay | PayPal |
 | --- | --- | --- |
@@ -51,7 +51,7 @@ Basically it's a side project we enjoy in spare time, but it has also been used 
 
 ## Sponsors
 
-Please send us your GitHub account or personal blog if you donated Poker4Fun.
+Please send us your GitHub username or personal website when you donate to Poker4Fun.
 
 | Name | Amount | Date |
 | --- | --- | --- |
