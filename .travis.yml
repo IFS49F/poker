@@ -19,7 +19,7 @@ before_script:
   - ssh-keyscan -p $SSH_PORT poker4.fun >> ~/.ssh/known_hosts
 
 script:
-  - yarn test
+  - yarn test --coverage
   - yarn build
 
 # https://surge.sh/help/adding-a-200-page-for-client-side-routing
@@ -27,6 +27,12 @@ before_deploy:
   - cp ./build/index.html ./build/200.html
 
 deploy:
+  - provider: pages
+    local_dir: ./coverage/
+    github_token: $POKER_LCOV_REPORT_TOKEN
+    skip_cleanup: true
+    on:
+      branch: master
   - provider: surge
     project: ./build/
     domain: ifs49f-poker.surge.sh
