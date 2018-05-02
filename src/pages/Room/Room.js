@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import Share from 'components/Share/Share';
 import Notification from 'components/Notification/Notification';
 import Join from 'components/Join/Join';
@@ -148,8 +149,18 @@ class Room extends Component {
   render() {
     const { me, myScore, highlightScore, team, playerAction, show, disconnected, reconnCountdown } = this.state;
     const playerName = localStorage.getItem('playerName') || '';
+    const ogTitle = `${this.room} ♠︎ Poker4Fun`;
+    const ogUrl = `https://${process.env.REACT_APP_DOMAIN}/${this.room}`;
+    const ogDescription = `Join Scrum poker ${this.room} on Poker4Fun`;
+
     return (
       <div className="Room">
+        <Helmet>
+          <title>{ogTitle}</title>
+          <meta property="og:title" content={ogTitle} />
+          <meta property="og:url" content={ogUrl} />
+          <meta property="og:description" content={ogDescription} />
+        </Helmet>
         <Share
           roomName={this.room} />
         <Notification
