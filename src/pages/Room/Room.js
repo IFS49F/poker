@@ -150,7 +150,6 @@ class Room extends Component {
     const { me, myScore, highlightScore, team, playerAction, show, disconnected, reconnCountdown } = this.state;
     const playerName = localStorage.getItem('playerName') || '';
     const ogTitle = `${this.room} ♠︎ Poker4Fun`;
-    const ogUrl = `https://${process.env.REACT_APP_DOMAIN}/${this.room}`;
     const ogDescription = `Join Scrum poker ${this.room} on Poker4Fun`;
 
     return (
@@ -158,7 +157,6 @@ class Room extends Component {
         <Helmet>
           <title>{ogTitle}</title>
           <meta property="og:title" content={ogTitle} />
-          <meta property="og:url" content={ogUrl} />
           <meta property="og:description" content={ogDescription} />
         </Helmet>
         <Share
