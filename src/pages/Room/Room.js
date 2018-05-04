@@ -153,7 +153,7 @@ class Room extends Component {
     return (
       <div className="Room">
         <Helmet>
-          <title>{`${this.room} ♠︎ Poker4Fun`}</title>
+          <title>{this.room}</title>
         </Helmet>
         <Share
           roomName={this.room} />
