@@ -149,15 +149,11 @@ class Room extends Component {
   render() {
     const { me, myScore, highlightScore, team, playerAction, show, disconnected, reconnCountdown } = this.state;
     const playerName = localStorage.getItem('playerName') || '';
-    const ogTitle = `${this.room} ♠︎ Poker4Fun`;
-    const ogDescription = `Join Scrum poker ${this.room} on Poker4Fun`;
 
     return (
       <div className="Room">
         <Helmet>
-          <title>{ogTitle}</title>
-          <meta property="og:title" content={ogTitle} />
-          <meta property="og:description" content={ogDescription} />
+          <title>{`${this.room} ♠︎ Poker4Fun`}</title>
         </Helmet>
         <Share
           roomName={this.room} />
