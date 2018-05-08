@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="300" alt="Poker4Fun Logo" src="https://user-images.githubusercontent.com/4647136/28408722-fec2a050-6d6a-11e7-9729-798bc945801b.png">
+  <img width="256" alt="Poker4Fun Logo" src="https://user-images.githubusercontent.com/4647136/39746191-2c4e4964-52dc-11e8-8b68-435cd12e4315.png">
   <h3 align="center">Poker4Fun</h3>
   <p align="center">♠︎ Vivid, registration-free, easy-to-use Scrum poker</p>
   <p align="center">
@@ -66,4 +66,4 @@ Copyright 2017-present IFS49F.
 
 Poker4Fun is licensed under [GPL-3.0](https://github.com/IFS49F/poker/blob/master/LICENSE).
 
-[Poker4Fun Logo](https://github.com/IFS49F/poker/blob/master/public/apple-touch-icon.png) is licensed under [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+[Poker4Fun Logo](https://github.com/IFS49F/poker/blob/master/public/icon-144.png) is licensed under [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
