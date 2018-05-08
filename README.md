@@ -59,6 +59,7 @@ Please send us your GitHub username or personal website when you donate to Poker
 | [虚无飘渺](http://www.dianping.com/shop/93573479) | CN ￥6.66 | Apr 26, 2018 |
 | [yoyodream2017](https://github.com/yoyodream2017) | CN ￥10 | Apr 27, 2018 |
 | [hum4dna](https://www.instagram.com/hum4dna/) | CN ￥16.66 | Apr 27, 2018 |
+| [xhuang68](https://github.com/xhuang68) | CN ￥16.66 | May 7, 2018 |
 
 ## License
 
