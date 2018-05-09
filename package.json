@@ -1,7 +1,7 @@
 {
   "name": "poker",
   "version": "0.1.0",
-  "description": "Vivid, registration-free, easy-to-use scrum poker.",
+  "description": "♠︎ Vivid, registration-free, easy-to-use Scrum poker",
   "main": "src/index.js",
   "homepage": "https://poker4.fun",
   "repository": "IFS49F/poker",
@@ -17,6 +17,7 @@
     "human-readable-ids": "^1.0.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-helmet": "^5.2.0",
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.3.1",
     "socket.io-client": "^2.0.4"

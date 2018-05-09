@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import Share from 'components/Share/Share';
 import Notification from 'components/Notification/Notification';
 import Join from 'components/Join/Join';
@@ -148,8 +149,12 @@ class Room extends Component {
   render() {
     const { me, myScore, highlightScore, team, playerAction, show, disconnected, reconnCountdown } = this.state;
     const playerName = localStorage.getItem('playerName') || '';
+
     return (
       <div className="Room">
+        <Helmet>
+          <title>{this.room}</title>
+        </Helmet>
         <Share
           roomName={this.room} />
         <Notification
