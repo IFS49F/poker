@@ -23,8 +23,6 @@ class Room extends Component {
       disconnected: false,
       reconnCountdown: 0
     };
-    // put this line in `constructor` instead of `componentDidMount`
-    // to avoid `undefined` room link in first render.
     this.room = this.props.match.params.room;
     this.playing = false;
     this.playerStatePinger = new PlayerStatePinger({ setState: this.setState.bind(this) });
@@ -32,6 +30,12 @@ class Room extends Component {
 
   componentDidMount() {
     this.socket = io(process.env.REACT_APP_SOCKET_SERVER_URL);
+
+    // Avoid to type `%20` as room name in address bar.
+    if (!this.room.trim()) {
+      this.props.history.push('/');
+      return;
+    }
 
     this.socket.on('stateUpdate', (response, isClearAction) => {
       const me = response.team.find(client => client.id === this.socket.id);
