@@ -21,6 +21,14 @@ class Landing extends Component {
   handleSubmit = (e) => { // eslint-disable-line
     e.preventDefault();
     const roomName = this.state.roomName || this.state.randomRoomName;
+    // The room name could be started with whitespaces, but it's invalid
+    // if there are only whitespaces.
+    if (!roomName.trim()) {
+      this.setState({
+        roomName: ''
+      });
+      return;
+    }
     this.props.history.push(roomName);
   };
 
