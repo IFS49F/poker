@@ -38,8 +38,9 @@ Most online poker tools are cool, but
 
 | Item | Cost | Date | Until |
 | --- | --- | --- | --- |
-| Domain | US $30 / year | Jul 23, 2017 | Jul 23, 2018 |
-| Server | US $5 / month | 1st day every month | Last day every month |
+| Domain | CN ￥18.14 | Jul 23, 2017 | Jul 23, 2018 |
+| Domain | CN ￥192.16 | May 23, 2018 | Jul 22, 2019 |
+| Server | US $5 | 1st day every month | Last day every month |
 
 ## Donate
 
