@@ -36,7 +36,8 @@ input {
 }
 
 @media (max-width:500px) {
-  .github-corner {
-    display: none
+  .github-corner svg {
+    width: 50px;
+    height: 50px;
   }
 }

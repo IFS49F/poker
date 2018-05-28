@@ -12,7 +12,7 @@ const Fade = ({ children, ...props }) => (
   <CSSTransition
     {...props}
     timeout={500}
-    classNames='fade'>
+    classNames="fade">
     {children}
   </CSSTransition>
 );
@@ -21,7 +21,7 @@ const Bounce = ({ children, ...props }) => (
   <CSSTransition
     {...props}
     timeout={1000}
-    classNames='bounce'>
+    classNames="bounce">
     {children}
   </CSSTransition>
 );
