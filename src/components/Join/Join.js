@@ -17,6 +17,14 @@ class Join extends Component {
 
   handleSubmit = (e) => { // eslint-disable-line
     e.preventDefault();
+    // The player name could be started with whitespaces, but it's invalid
+    // if there are only whitespaces.
+    if (!this.state.myName.trim()) {
+      this.setState({
+        myName: ''
+      });
+      return;
+    }
     this.props.onSubmit(this.state.myName);
   };
 
