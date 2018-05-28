@@ -8,9 +8,9 @@ describe('<Notification />', () => {
       shallow(<Notification />);
     });
 
-    it('should render proper CSS class if `active` is `true`', () => {
-      const wrapper = shallow(<Notification active={true} />);
-      expect(wrapper.find('.Notification').hasClass('active')).toEqual(true);
+    it('should render proper CSS class', () => {
+      const wrapper = shallow(<Notification />);
+      expect(wrapper.prop('className')).toEqual('Notification');
     });
 
     it('should render offline tips', () => {
