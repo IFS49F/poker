@@ -86,8 +86,10 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 850px) {
   .Actions {
+    display: block;
+
     .operations {
       justify-content: space-between;
     }
