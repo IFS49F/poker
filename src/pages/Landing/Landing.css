@@ -9,7 +9,6 @@
   /* background-position: center; */
 
   .Form {
-    -ms-grid-row: 2;
     grid-row-start: 2;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.7);
