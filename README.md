@@ -61,7 +61,7 @@ Please send us your GitHub username or personal website when you donate to Poker
 | [yoyodream2017](https://github.com/yoyodream2017) | CN ￥10 | Apr 27, 2018 |
 | [hum4dna](https://www.instagram.com/hum4dna/) | CN ￥16.66 | Apr 27, 2018 |
 | [xhuang68](https://github.com/xhuang68) | CN ￥16.66 | May 7, 2018 |
-| Unknown | CN ￥80 | May 15, 2018 |
+| [WindhorseTour.com](https://windhorsetour.com) | CN ￥80 | May 15, 2018 |
 
 ## License
 
