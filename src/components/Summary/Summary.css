@@ -2,11 +2,16 @@
   --summary-item-font-size: 1.5em;
   --summary-item-height: 3em;
 
-  transition: opacity 0.5s ease;
+  margin-top: 1rem;
   font-size: var(--summary-item-font-size);
-  opacity: 0;
+  transition: opacity 500ms ease;
 
-  &.show {
+  &.fade-enter,
+  &.fade-exit {
+    opacity: 0.01;
+  }
+
+  &.fade-enter-active {
     opacity: 1;
   }
 
@@ -14,13 +19,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 1rem 0;
     list-style-type: none;
   }
 
   li {
     display: flex;
-    margin: 0 20px 20px 20px;
+    margin: 0 0 1rem;
   }
 
   dt {
@@ -39,5 +43,6 @@
     color: DarkSlateGrey;
     line-height: var(--summary-item-height);
     text-align: center;
+    user-select: none;
   }
 }

@@ -3,13 +3,14 @@
   --join-button-size: 2em;
   --join-button-border-radius: calc(var(--join-button-size) / 5);
 
-  padding: 1rem 0;
+  margin: 1rem 0;
   text-align: center;
   font-size: var(--join-font-size);
+  white-space: nowrap;
 
   button {
     display: inline-block;
-    margin: 0 0.5rem;
+    margin-left: 0.5rem;
     width: calc(var(--join-button-size) * 2);
     height: var(--join-button-size);
     border: none;
@@ -47,9 +48,12 @@
 
 @media (max-width: 500px) {
   .Join {
-    input[type=text] {
-      display: block;
-      margin: 1rem auto;
-    }
+    --join-font-size: 1.4em;
+  }
+}
+
+@media (max-width: 374px) {
+  .Join {
+    --join-font-size: 1.1em;
   }
 }

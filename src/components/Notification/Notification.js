@@ -1,12 +1,9 @@
 import React from 'react';
-import classNames from 'classnames';
 import './Notification.css';
 
-const Notification = ({ active, reconnCountdown, onReconn }) => {
-  const notificationClass = classNames('Notification', { active });
-
+const Notification = ({ reconnCountdown, onReconn }) => {
   return (
-    <div className={notificationClass}>
+    <div className="Notification">
       <span>Your seems offline, </span>
       <span className="countdown">we will try reconnecting in {reconnCountdown}s... </span>
       <a href="#reconnect" onClick={onReconn}>Reconnect Now</a>

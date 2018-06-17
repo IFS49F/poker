@@ -2,23 +2,26 @@
   --notification-alert-color: white;
   --notification-alert-bg-color: crimson;
 
-  position: absolute;
-  top: -4rem;
-  right: 1rem;
-  left: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 2rem;
-  margin: 0.5rem 0;
   background-color: var(--notification-alert-bg-color);
-  border-radius: 0.5rem;
   color: var(--notification-alert-color);
   text-align: center;
   line-height: 2rem;
   white-space: nowrap;
   overflow: hidden;
-  transition: transform 0.2s;
+  transition: transform 200ms linear;
 
-  &.active {
-    transform: translateY(4rem);
+  &.slideOut-enter,
+  &.slideOut-exit {
+    transform: translateY(-2rem);
+  }
+
+  &.slideOut-enter-active {
+    transform: translateY(0);
   }
 
   a {
@@ -29,19 +32,19 @@
 @media (max-width: 500px) {
   .Notification {
     position: fixed;
-    top: 100%;
-    left: 0;
-    right: 0;
-    height: 2rem;
-    margin: 0;
-    border-radius: 0;
+    bottom: 0;
 
     .countdown {
       display: none;
     }
 
-    &.active {
-      transform: translateY(-2rem);
+    &.slideOut-enter,
+    &.slideOut-exit {
+      transform: translateY(2rem);
+    }
+
+    &.slideOut-enter-active {
+      transform: translateY(0);
     }
   }
 }

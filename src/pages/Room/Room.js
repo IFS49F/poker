@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Share from 'components/Share/Share';
 import Notification from 'components/Notification/Notification';
 import Join from 'components/Join/Join';
@@ -9,6 +10,24 @@ import Summary from 'components/Summary/Summary';
 import './Room.css';
 import io from 'socket.io-client';
 import PlayerStatePinger from 'lib/player-state-pinger';
+
+const Fade = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={500}
+    classNames="fade">
+    {children}
+  </CSSTransition>
+);
+
+const SlideOut = ({ children, ...props }) => (
+  <CSSTransition
+    {...props}
+    timeout={200}
+    classNames="slideOut">
+    {children}
+  </CSSTransition>
+);
 
 class Room extends Component {
   constructor(props) {
@@ -157,10 +176,6 @@ class Room extends Component {
         </Helmet>
         <Share
           roomName={this.room} />
-        <Notification
-          active={disconnected}
-          reconnCountdown={reconnCountdown}
-          onReconn={this.handleReconn} />
         {me ? (
           <Actions
             show={show}
@@ -180,11 +195,23 @@ class Room extends Component {
           team={team}
           playerAction={playerAction}
           show={show} />
-        <Summary
-          me={me}
-          team={team}
-          show={show}
-          onChangeHighlight={this.handleHighlightScore} />
+        <TransitionGroup component={null}>
+          {show && (
+            <Fade>
+              <Summary
+                me={me}
+                team={team}
+                onChangeHighlight={this.handleHighlightScore} />
+            </Fade>
+          )}
+          {disconnected && (
+            <SlideOut>
+              <Notification
+                reconnCountdown={reconnCountdown}
+                onReconn={this.handleReconn} />
+            </SlideOut>
+          )}
+        </TransitionGroup>
       </div>
     );
   }

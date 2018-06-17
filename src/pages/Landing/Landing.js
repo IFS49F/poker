@@ -26,8 +26,7 @@ class Landing extends Component {
 
   render() {
     const styles = {
-      backgroundImage: `url(${bgImg})`,
-      backgroundSize: 'cover'
+      backgroundImage: `url(${bgImg})`
     };
 
     return (

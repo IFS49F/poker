@@ -1,20 +1,7 @@
 import React from 'react';
-import classNames from 'classnames';
 import './Summary.css';
 
-const Summary = ({ me, team, show, onChangeHighlight }) => {
-  const summaryClass = classNames('Summary', { show });
-
-  // we want the summary could be displayed from opacity: 0
-  // to opacity: 1 with transition (`show` class), so we pass
-  // `show` property down instead of checking it in Room component
-  // like {show && <Summary />}.
-  if (!show) {
-    return (
-      <div className={summaryClass}></div>
-    );
-  }
-
+const Summary = ({ me, team, onChangeHighlight }) => {
   let votes = {};
   team
     .concat([me])
@@ -33,7 +20,9 @@ const Summary = ({ me, team, show, onChangeHighlight }) => {
       <li key={score[0]}>
         <dd
           onMouseEnter={() => { onChangeHighlight(score[0]) }}
-          onMouseLeave={() => { onChangeHighlight(null) }}>
+          onMouseLeave={() => { onChangeHighlight(null) }}
+          onTouchStart={() => { onChangeHighlight(score[0]) }}
+          onTouchEnd={() => { onChangeHighlight(null) }}>
           {score[0]}
         </dd>
         <dt>× {score[1]}</dt>
@@ -41,7 +30,7 @@ const Summary = ({ me, team, show, onChangeHighlight }) => {
     );
 
   return (
-    <div className={summaryClass}>
+    <div className="Summary">
       <ul>
         {listItems}
       </ul>

@@ -43,23 +43,23 @@ describe('<Summary />', () => {
     });
 
     it('should render without crashing', () => {
-      shallow(<Summary />);
+      shallow(<Summary me={me} team={team} />);
     });
 
-    it('should render an empty <div> with proper CSS class if `show` is `false`', () => {
-      const wrapper = shallow(<Summary show={false} />);
-      expect(wrapper.contains(<div className="Summary"></div>)).toEqual(true);
+    it('should render proper CSS class', () => {
+      const wrapper = shallow(<Summary me={me} team={team} />);
+      expect(wrapper.prop('className')).toEqual('Summary');
     });
 
     it('should sort the scores from smallest to largest', () => {
-      const wrapper = shallow(<Summary me={me} team={team} show={true} />);
+      const wrapper = shallow(<Summary me={me} team={team} />);
       expect(wrapper.find('.Summary ul').childAt(0).find('dd').text()).toEqual('5');
       expect(wrapper.find('.Summary ul').childAt(1).find('dd').text()).toEqual('8');
       expect(wrapper.find('.Summary ul').childAt(2).find('dd').text()).toEqual('13');
     });
 
     it('should render correct scores distribution', () => {
-      const wrapper = shallow(<Summary me={me} team={team} show={true} />);
+      const wrapper = shallow(<Summary me={me} team={team} />);
       expect(wrapper.find('.Summary ul').childAt(0).find('dt').text()).toEqual('× 2');
       expect(wrapper.find('.Summary ul').childAt(1).find('dt').text()).toEqual('× 1');
       expect(wrapper.find('.Summary ul').childAt(2).find('dt').text()).toEqual('× 1');
