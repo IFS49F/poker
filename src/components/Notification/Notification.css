@@ -32,6 +32,7 @@
 @media (max-width: 500px) {
   .Notification {
     position: fixed;
+    top: auto;
     bottom: 0;
 
     .countdown {
