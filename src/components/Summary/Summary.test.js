@@ -51,18 +51,25 @@ describe('<Summary />', () => {
       expect(wrapper.prop('className')).toEqual('Summary');
     });
 
-    it('should sort the scores from smallest to largest', () => {
+    it('should sort the scores in the same order as score buttons', () => {
       const wrapper = shallow(<Summary me={me} team={team} />);
-      expect(wrapper.find('.Summary ul').childAt(0).find('dd').text()).toEqual('5');
-      expect(wrapper.find('.Summary ul').childAt(1).find('dd').text()).toEqual('8');
-      expect(wrapper.find('.Summary ul').childAt(2).find('dd').text()).toEqual('13');
+      expect(wrapper.find('.Summary ul').childAt(0).find('dt').childAt(1).text()).toEqual('5');
+      expect(wrapper.find('.Summary ul').childAt(1).find('dt').childAt(1).text()).toEqual('8');
+      expect(wrapper.find('.Summary ul').childAt(2).find('dt').childAt(1).text()).toEqual('13');
     });
 
     it('should render correct scores distribution', () => {
       const wrapper = shallow(<Summary me={me} team={team} />);
-      expect(wrapper.find('.Summary ul').childAt(0).find('dt').text()).toEqual('× 2');
-      expect(wrapper.find('.Summary ul').childAt(1).find('dt').text()).toEqual('× 1');
-      expect(wrapper.find('.Summary ul').childAt(2).find('dt').text()).toEqual('× 1');
+      expect(wrapper.find('.Summary ul').childAt(0).find('dt > small').text()).toEqual('× 2');
+      expect(wrapper.find('.Summary ul').childAt(1).find('dt > small').text()).toEqual('× 1');
+      expect(wrapper.find('.Summary ul').childAt(2).find('dt > small').text()).toEqual('× 1');
+    });
+
+    it('should render correct scores percentage', () => {
+      const wrapper = shallow(<Summary me={me} team={team} />);
+      expect(wrapper.find('.Summary ul').childAt(0).find('dd > i').prop('style')).toHaveProperty('maxHeight', '50%');
+      expect(wrapper.find('.Summary ul').childAt(1).find('dd > i').prop('style')).toHaveProperty('maxHeight', '75%');
+      expect(wrapper.find('.Summary ul').childAt(2).find('dd > i').prop('style')).toHaveProperty('maxHeight', '75%');
     });
   });
 });
