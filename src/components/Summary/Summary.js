@@ -1,33 +1,40 @@
 import React from 'react';
+import { validScores } from 'lib/constants';
 import './Summary.css';
 
 const Summary = ({ me, team, onChangeHighlight }) => {
   let votes = {};
-  team
-    .concat([me])
-    .forEach((val) => {
-      if (!val || !val.voted || val.score === null) return;
-      if (votes[val.score]) {
-        votes[val.score]++;
-      } else {
-        votes[val.score] = 1;
-      }
-    });
+  validScores.reduce((_, curr) => votes[curr] = 0);
+  let validVotesCount = 0;
+  team.concat([me]).forEach((val) => {
+    if (!val || !val.voted || val.score === null) return;
+    validVotesCount++;
+    votes[val.score]++;
+  });
   const listItems = Object
     .entries(votes)
-    .sort((a, b) => (b[1] - a[1]))
-    .map((score) =>
-      <li key={score[0]}>
-        <dd
-          onMouseEnter={() => { onChangeHighlight(score[0]) }}
-          onMouseLeave={() => { onChangeHighlight(null) }}
-          onTouchStart={() => { onChangeHighlight(score[0]) }}
-          onTouchEnd={() => { onChangeHighlight(null) }}>
-          {score[0]}
-        </dd>
-        <dt>× {score[1]}</dt>
-      </li>
-    );
+    .map(([score, count]) => {
+      if (count === 0) return null;
+      const percentage = (1 - count / validVotesCount) * 100;
+      const onMouseEnter = () => { onChangeHighlight(score) };
+      const onMouseLeave = () => { onChangeHighlight(null) };
+      return (
+        <li 
+          key={score}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          onTouchStart={onMouseEnter}
+          onTouchEnd={onMouseLeave}>
+          <dd>
+            <i style={{maxHeight: `${percentage}%`}}></i>
+          </dd>
+          <dt>
+            <small>&times; {count}</small>
+            {score}
+          </dt>
+        </li>
+      );
+    });
 
   return (
     <div className="Summary">
