@@ -27,6 +27,7 @@
     margin: calc(var(--summary-item-width) / 10);
     margin-bottom: 1em;
     text-align: center;
+    user-select: none;
   }
 
 
