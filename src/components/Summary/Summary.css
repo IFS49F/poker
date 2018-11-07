@@ -61,3 +61,10 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .Summary {
+    --summary-item-width: 40px;
+    --summary-item-height: 100px;
+  }
+}
