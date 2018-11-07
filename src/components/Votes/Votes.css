@@ -1,8 +1,5 @@
 .Votes {
-  --card-height: 150px;
-  --card-height-phone: 100px;
-  --vote-width: calc(var(--card-height) / 1.5);
-  --vote-width-phone: calc(var(--card-height-phone) / 1.5);
+  --vote-width: 100px;
 
   ul {
     display: flex;
@@ -58,12 +55,10 @@
 
 @media (max-width: 500px) {
   .Votes {
+    --vote-width: 67px;
+
     li {
       min-width: 25%;
-    }
-
-    dd, dt {
-      width: var(--vote-width-phone);
     }
   }
 }

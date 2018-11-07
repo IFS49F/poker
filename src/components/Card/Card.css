@@ -1,6 +1,9 @@
 .Card {
+  --card-height: 150px;
+  --card-width: 100px;
+
   position: relative;
-  width: calc(var(--card-height) / 1.5);
+  width: var(--card-width);
   height: var(--card-height);
   font-size: calc(var(--card-height) / 3);
   line-height: var(--card-height);
@@ -68,13 +71,7 @@
 
 @media (max-width: 500px) {
   .Card {
-    width: calc(var(--card-height-phone) / 1.5);
-    height: var(--card-height-phone);
-    font-size: calc(var(--card-height-phone) / 3);
-    line-height: var(--card-height-phone);
-
-    .face {
-      border-radius: calc(var(--card-height-phone) / 10);
-    }
+    --card-height: 100px;
+    --card-width: 67px;
   }
 }
