@@ -3,7 +3,6 @@
   --summary-item-width: 60px;
   --summary-item-height: 150px;
 
-  margin-top: 1rem;
   font-size: var(--summary-item-font-size);
   transition: opacity 500ms ease;
 
