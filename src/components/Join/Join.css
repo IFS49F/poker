@@ -38,7 +38,10 @@
     width: 9em;
     margin: 0 0.5rem;
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid;
+    border-bottom-color: inherit;
+    background: transparent;
+    color: inherit;
     text-align: center;
     font-family: inherit;
     font-size: inherit;

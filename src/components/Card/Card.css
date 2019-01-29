@@ -25,16 +25,16 @@
     background-color: white;
     box-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.2);
     border-radius: calc(var(--card-height) / 10);
-    color: DarkSlateGrey;
+    color: DarkSlateGray;
   }
 
   .back.face {
-    color: LightSlateGrey;
-    background-image: linear-gradient(130deg, LightSlateGrey, DarkSlateGrey);
+    color: LightSteelBlue;
+    background-image: linear-gradient(130deg, LightSteelBlue, SteelBlue);
   }
 
   .front.face {
-    background-image: linear-gradient(130deg, white, LightGrey);
+    background-image: linear-gradient(130deg, white, LightGray);
     transform: rotateY(180deg);
   }
 
