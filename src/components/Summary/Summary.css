@@ -33,7 +33,7 @@
   dt {
     margin-top: -1.5em;
     white-space: nowrap;
-    color: DarkSlateGrey;
+    color: DarkSlateGray;
 
     small {
       display: block;
@@ -48,7 +48,7 @@
     width: var(--summary-item-width);
     height: var(--summary-item-height);
     margin: 0;
-    color: DarkSlateGrey;
+    color: DarkSlateGray;
     background-image: linear-gradient(to bottom, #1cd8d2, #93edc7);
     border-radius: calc(var(--summary-item-height) / 10);
     overflow: hidden;

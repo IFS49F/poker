@@ -8,12 +8,21 @@
   background-size: cover;
   /* background-position: center; */
 
+  @media screen and (prefers-color-scheme: dark) {
+    background-blend-mode: multiply;
+    background-color: DimGray;
+  }
+
   .Form {
     grid-row-start: 2;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: saturate(180%) blur(20px);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+    @media screen and (prefers-color-scheme: dark) {
+      background: rgba(0, 0, 0, 0.7);
+    }
   }
 
   h1 {
@@ -22,6 +31,10 @@
 
     strong {
       font-weight: 600;
+    }
+
+    @media screen and (prefers-color-scheme: dark) {
+      color: rgb(254, 255, 254);
     }
   }
 
@@ -57,8 +70,10 @@
     width: 200px;
     margin-left: 0.5rem;
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid;
+    border-bottom-color: inherit;
     background: transparent;
+    color: inherit;
     text-align: center;
     font-family: inherit;
     font-size: inherit;

@@ -11,6 +11,10 @@
     strong {
       font-weight: 600;
     }
+
+    @media screen and (prefers-color-scheme: dark) {
+      color: rgb(254, 255, 254);
+    }
   }
 
   input {
@@ -19,7 +23,8 @@
   }
 
   a {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid;
+    border-bottom-color: inherit;
     color: inherit;
     text-decoration: none;
   }
@@ -51,6 +56,17 @@
       font-size: x-small;
       color: white;
       white-space: nowrap;
+    }
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    [aria-label]:hover:before {
+      background: rgb(215, 215, 216);
+    }
+
+    [aria-label]:hover:after {
+      background: rgb(215, 215, 216);
+      color: black;
     }
   }
 }
