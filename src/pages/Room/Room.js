@@ -174,6 +174,17 @@ class Room extends Component {
         <Helmet>
           <title>{this.room}</title>
         </Helmet>
+          <section className="site-notification">
+            <p>
+              Poker4Fun costs US $60 for server and US $30 for domain every year.
+            </p>
+            <p>
+              Currently the domain is available until <span className="renew-date">Jul 22, 2019</span>.
+            </p>
+            <p>
+              Please click <a href="https://github.com/IFS49F/poker#donate" target="_blank" rel="noopener noreferrer">here</a> to help us keeping Poker4Fun free and sustainable.
+            </p>
+          </section>
         <Share
           roomName={this.room} />
         {me ? (
