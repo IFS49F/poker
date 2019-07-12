@@ -33,14 +33,15 @@ Most online poker tools are cool, but
 
 ## Cost
 
-- Domain from [GoDaddy](https://www.godaddy.com/): US $30 / year
-- Server from [Linode](https://www.linode.com/): US $60 / year
+- Domain from [GoDaddy](https://www.godaddy.com/): USD $30 / year
+- Server from [Linode](https://www.linode.com/): USD $60 / year
 
 | Item | Cost | Date | Until |
 | --- | --- | --- | --- |
-| Domain | CN ￥18.14 | Jul 23, 2017 | Jul 23, 2018 |
-| Domain | CN ￥192.16 | May 23, 2018 | Jul 22, 2019 |
-| Server | US $5 | 1st day every month | Last day every month |
+| Domain | CNY ￥18.14 | Jul 23, 2017 | Jul 23, 2018 |
+| Domain | CNY ￥192.16 | May 23, 2018 | Jul 22, 2019 |
+| Domain | CNY ￥208.14 | Jul 12, 2019 | Jul 23, 2020 |
+| Server | USD $5 | 1st day every month | Last day every month |
 
 ## Donate
 
@@ -56,12 +57,16 @@ Please send us your GitHub username or personal website when you donate to Poker
 
 | Name | Amount | Date |
 | --- | --- | --- |
-| [hiveer](https://github.com/hiveer) | CN ￥60 | Apr 25, 2018 |
-| [虚无飘渺](http://www.dianping.com/shop/93573479) | CN ￥6.66 | Apr 26, 2018 |
-| [yoyodream2017](https://github.com/yoyodream2017) | CN ￥10 | Apr 27, 2018 |
-| [hum4dna](https://www.instagram.com/hum4dna/) | CN ￥16.66 | Apr 27, 2018 |
-| [xhuang68](https://github.com/xhuang68) | CN ￥16.66 | May 7, 2018 |
-| [WindhorseTour.com](https://windhorsetour.com) | CN ￥80 | May 15, 2018 |
+| [hiveer](https://github.com/hiveer) | CNY ￥60 | Apr 25, 2018 |
+| [虚无飘渺](http://www.dianping.com/shop/93573479) | CNY ￥6.66 | Apr 26, 2018 |
+| [yoyodream2017](https://github.com/yoyodream2017) | CNY ￥10 | Apr 27, 2018 |
+| [hum4dna](https://www.instagram.com/hum4dna/) | CNY ￥16.66 | Apr 27, 2018 |
+| [xhuang68](https://github.com/xhuang68) | CNY ￥16.66 | May 7, 2018 |
+| [WindhorseTour.com](https://windhorsetour.com) | CNY ￥80 | May 15, 2018 |
+| [hum4dna](https://www.instagram.com/hum4dna/) | CNY ￥50 | Jul 5, 2019 |
+| [姗姗吃得含](https://github.com/MrCuriosity) | CNY ￥50 | Jul 6, 2019 |
+| [干吃不胖妞](https://github.com/LeoLeoLei) | CNY ￥66 | Jul 8, 2019 |
+| [坏笑胖狗](https://github.com/BerdyPango) | CNY ￥60 | Jul 8, 2019 |
 
 ## License
 
