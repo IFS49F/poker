@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import classNames from 'classnames';
 import Share from 'components/Share/Share';
 import Notification from 'components/Notification/Notification';
+import SiteNotification from 'components/SiteNotification/SiteNotification';
 import Join from 'components/Join/Join';
 import Actions from 'components/Actions/Actions';
 import Votes from 'components/Votes/Votes';
@@ -169,30 +169,13 @@ class Room extends Component {
   render() {
     const { me, myScore, highlightScore, team, playerAction, show, disconnected, reconnCountdown } = this.state;
     const playerName = localStorage.getItem('playerName') || '';
-    const expiryDate = new Date(process.env.REACT_APP_DOMAIN_EXPIRY_DATE);
-    const today = new Date();
-    const isLessThanOneMonth = ((expiryDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)) < 30
-    const expiryDateClasses = classNames({
-      'expiry-date': true,
-      'expiry-date--close': isLessThanOneMonth
-    });
 
     return (
       <div className="Room">
         <Helmet>
           <title>{this.room}</title>
         </Helmet>
-        <section className="site-notification">
-          <p>
-            Poker4Fun costs US $60 for server and US $30 for domain every year.
-          </p>
-          <p>
-            Currently the domain is available until <span className={expiryDateClasses}>{process.env.REACT_APP_DOMAIN_EXPIRY_DATE}</span>.
-          </p>
-          <p>
-            Please click <a href="https://github.com/IFS49F/poker#donate" target="_blank" rel="noopener noreferrer">here</a> to help us keeping Poker4Fun free and sustainable.
-          </p>
-        </section>
+        <SiteNotification />
         <Share
           roomName={this.room} />
         {me ? (

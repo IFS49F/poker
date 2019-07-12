@@ -1,0 +1,25 @@
+.SiteNotification {
+  padding: 0.9em;
+  border: 1px solid #ddd;
+  border-radius: 0.4em;
+  background-color: #f9f9f9;
+
+  > p {
+    margin-bottom: 0.5rem;
+    font-weight: 100;
+    font-size: 0.9em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .expiry-date {
+    color: YellowGreen;
+    font-weight: bold;
+
+    &--close {
+      color: red;
+    }
+  }
+}
