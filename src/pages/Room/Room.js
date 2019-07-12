@@ -179,7 +179,7 @@ class Room extends Component {
             Poker4Fun costs US $60 for server and US $30 for domain every year.
           </p>
           <p>
-            Currently the domain is available until <span className="renew-date">Jul 22, 2019</span>.
+            Currently the domain is available until <span className="renew-date">{process.env.REACT_APP_DOMAIN_EXPIRY_DATE}</span>.
           </p>
           <p>
             Please click <a href="https://github.com/IFS49F/poker#donate" target="_blank" rel="noopener noreferrer">here</a> to help us keeping Poker4Fun free and sustainable.
