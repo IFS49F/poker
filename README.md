@@ -67,6 +67,7 @@ Please send us your GitHub username or personal website when you donate to Poker
 | [姗姗吃得含](https://github.com/MrCuriosity) | CNY ￥50 | Jul 6, 2019 |
 | [干吃不胖妞](https://github.com/LeoLeoLei) | CNY ￥66 | Jul 8, 2019 |
 | [坏笑胖狗](https://github.com/BerdyPango) | CNY ￥60 | Jul 8, 2019 |
+| [Vincent](https://github.com/yaowuping) | CNY ￥100 | Jul 26, 2019 |
 
 ## License
 
