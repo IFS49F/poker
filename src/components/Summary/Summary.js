@@ -4,7 +4,7 @@ import './Summary.css';
 
 const Summary = ({ me, team, onChangeHighlight }) => {
   let votes = {};
-  validScores.reduce((_, curr) => votes[curr] = 0);
+  validScores.forEach(score => votes[score] = 0);
   let validVotesCount = 0;
   team.concat([me]).forEach((val) => {
     if (!val || !val.voted || val.score === null) return;

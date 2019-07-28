@@ -14,7 +14,7 @@ describe('<Actions />', () => {
     });
 
     it('should know which score has been voted', () => {
-      const wrapper = shallow(<Actions myScore={8} />);
+      const wrapper = shallow(<Actions myScore={'8'} />);
       expect(wrapper.find('.scores button.selected').text()).toEqual('8');
     });
 
