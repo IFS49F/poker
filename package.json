@@ -53,7 +53,7 @@
     "postcss-loader": "~2.1.4",
     "postcss-nested": "^3.0.0",
     "promise": "8.0.1",
-    "react-dev-utils": "^4.1.0",
+    "react-dev-utils": "^4.2.2",
     "react-test-renderer": "^16.0.0",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
