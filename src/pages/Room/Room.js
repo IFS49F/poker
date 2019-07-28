@@ -175,9 +175,9 @@ class Room extends Component {
         <Helmet>
           <title>{this.room}</title>
         </Helmet>
-        <SiteNotification />
         <Share
           roomName={this.room} />
+        <SiteNotification />  
         {me ? (
           <Actions
             show={show}

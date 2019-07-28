@@ -1,8 +1,9 @@
 .SiteNotification {
   padding: 0.9em;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(150, 150, 150, 0.3);
   border-radius: 0.4em;
-  background-color: #f9f9f9;
+  background-color: rgba(200, 200, 200, 0.3);
+  text-align: center;
 
   > p {
     margin-bottom: 0.5rem;
@@ -15,11 +16,19 @@
   }
 
   .expiry-date {
-    color: YellowGreen;
+    color: yellowgreen;
     font-weight: bold;
 
     &--close {
-      color: red;
+      color: crimson;
+    }
+  }
+
+  a {
+    color: royalblue;
+
+    &:hover {
+      text-decoration: none;
     }
   }
 }
