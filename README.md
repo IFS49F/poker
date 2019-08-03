@@ -68,6 +68,7 @@ Please send us your GitHub username or personal website when you donate to Poker
 | [干吃不胖妞](https://github.com/LeoLeoLei) | CNY ￥66 | Jul 8, 2019 |
 | [坏笑胖狗](https://github.com/BerdyPango) | CNY ￥60 | Jul 8, 2019 |
 | [Vincent](https://github.com/yaowuping) | CNY ￥100 | Jul 26, 2019 |
+| [xhuang68](https://github.com/xhuang68) | CNY ￥66 | Aug 1, 2019 |
 
 ## License
 
