@@ -49,7 +49,7 @@ Poker4Fun is a side project we built in our spare time. This app has become popu
 
 | WeChat | Alipay | PayPal |
 | --- | --- | --- |
-|![donate_via_wechat](https://user-images.githubusercontent.com/7512625/39191933-96503b6a-480a-11e8-94a0-ec5efc16dc5d.jpg)|![donate_via_alipay](https://user-images.githubusercontent.com/7512625/39191930-95c25598-480a-11e8-8508-7a48d009db55.png)|[![donate_via_paypal](https://user-images.githubusercontent.com/7512625/39193475-39a8fccc-480e-11e8-926d-b2f86050db69.png)](https://www.paypal.me/houritsunohikari)|
+|![donate_via_wechat](https://user-images.githubusercontent.com/7512625/39191933-96503b6a-480a-11e8-94a0-ec5efc16dc5d.jpg)|![donate_via_alipay](https://user-images.githubusercontent.com/7512625/39191930-95c25598-480a-11e8-8508-7a48d009db55.png)|[![donate_via_paypal](https://user-images.githubusercontent.com/7512625/39193475-39a8fccc-480e-11e8-926d-b2f86050db69.png)](https://www.paypal.me/zorojiang)|
 
 ## Sponsors
 
