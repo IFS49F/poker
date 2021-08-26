@@ -38,7 +38,7 @@ jobs:
     name: Deploy to Surge
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v2.2.4
+    - uses: actions/download-artifact@v2.0.10
       with:
         name: dist
     # https://surge.sh/help/adding-a-200-page-for-client-side-routing
