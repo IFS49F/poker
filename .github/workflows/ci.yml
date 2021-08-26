@@ -35,6 +35,7 @@ jobs:
   deploy-surge:
     needs: build-surge
     if: ${{ github.ref == 'refs/heads/master' }}
+    environment: Surge
     name: Deploy to Surge
     runs-on: ubuntu-latest
     steps:
