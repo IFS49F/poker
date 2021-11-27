@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "poker4fun-web": "apps/poker4fun-web",
+    "poker4fun-web-e2e": "apps/poker4fun-web-e2e"
+  }
+}

@@ -1,81 +1,94 @@
-<p align="center">
-  <img width="256" alt="Poker4Fun Logo" src="https://user-images.githubusercontent.com/4647136/39746191-2c4e4964-52dc-11e8-8b68-435cd12e4315.png">
-  <h3 align="center">Poker4Fun</h3>
-  <p align="center">♠︎ Vivid, registration-free, easy-to-use Scrum poker</p>
-  <p align="center">
-    <a href="https://travis-ci.org/IFS49F/poker">
-      <img alt="Build Status" src="https://travis-ci.org/IFS49F/poker.svg?branch=master" />
-    </a>
-    <a href="https://david-dm.org/IFS49F/poker">
-      <img alt="Dependency Status" src="https://david-dm.org/IFS49F/poker.svg" />
-    </a>
-    <a href="https://david-dm.org/IFS49F/poker?type=dev">
-      <img alt="Dev Dependency Status" src="https://david-dm.org/IFS49F/poker/dev-status.svg" />
-    </a>
-  </p>
-</p>
 
-## What
 
-https://en.wikipedia.org/wiki/Planning_poker
+# Poker4fun
 
-## Why
+This project was generated using [Nx](https://nx.dev).
 
-Most online poker tools are cool, but
+<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
-- Registration needed. Not friendly.
-- Not vivid. No fun.
-- Connection sucks. Especially from China.
+🔎 **Smart, Extensible Build Framework**
 
-## Maintainers
+## Adding capabilities to your workspace
 
-[![hyjk2000](https://avatars0.githubusercontent.com/u/4647136?s=100&v=4)](https://github.com/hyjk2000) [![hiveer](https://avatars0.githubusercontent.com/u/3827780?s=100&v=4)](https://github.com/hiveer) [![just4fun](https://avatars0.githubusercontent.com/u/7512625?s=100&v=4)](https://github.com/just4fun)
+Nx supports many plugins which add capabilities for developing different types of applications and different tools.
 
-## Cost
+These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
 
-- Domain from [GoDaddy](https://www.godaddy.com/): USD $30 / year
-- Server from [Linode](https://www.linode.com/): USD $60 / year
+Below are our core plugins:
 
-| Item | Cost | Date | Until |
-| --- | --- | --- | --- |
-| Domain | CNY ￥18.14 | Jul 23, 2017 | Jul 23, 2018 |
-| Domain | CNY ￥192.16 | May 23, 2018 | Jul 22, 2019 |
-| Domain | CNY ￥208.14 | Jul 12, 2019 | Jul 23, 2020 |
-| Domain | CNY ￥230.42 | Oct 17, 2020 | Oct 18, 2022 |
-| Server | USD $5 | 1st day every month | Last day every month |
+- [React](https://reactjs.org)
+  - `npm install --save-dev @nrwl/react`
+- Web (no framework frontends)
+  - `npm install --save-dev @nrwl/web`
+- [Angular](https://angular.io)
+  - `npm install --save-dev @nrwl/angular`
+- [Nest](https://nestjs.com)
+  - `npm install --save-dev @nrwl/nest`
+- [Express](https://expressjs.com)
+  - `npm install --save-dev @nrwl/express`
+- [Node](https://nodejs.org)
+  - `npm install --save-dev @nrwl/node`
 
-## Donate
+There are also many [community plugins](https://nx.dev/community) you could add.
 
-Poker4Fun is a side project we built in our spare time. This app has become popular thanks to the hard working of our [contributors](https://github.com/IFS49F/poker/graphs/contributors) and valuable feedbacks from our users. As an open source software, Poker4Fun is and will always be free for everyone, but it [costs money](#cost) to run the server and renew the domain. We need your help to keep Poker4Fun free and sustainable, and would be much appreciated if you could buy us a cup of coffee ☕️  to fuel our coding frenzy 🔥.
+## Generate an application
 
-| WeChat | Alipay | PayPal |
-| --- | --- | --- |
-|![donate_via_wechat](https://user-images.githubusercontent.com/7512625/39191933-96503b6a-480a-11e8-94a0-ec5efc16dc5d.jpg)|![donate_via_alipay](https://user-images.githubusercontent.com/7512625/39191930-95c25598-480a-11e8-8508-7a48d009db55.png)|[![donate_via_paypal](https://user-images.githubusercontent.com/7512625/39193475-39a8fccc-480e-11e8-926d-b2f86050db69.png)](https://www.paypal.me/zorojiang)|
+Run `nx g @nrwl/react:app my-app` to generate an application.
 
-## Sponsors
+> You can use any of the plugins above to generate applications as well.
 
-Please send us your GitHub username or personal website when you donate to Poker4Fun.
+When using Nx, you can create multiple applications and libraries in the same workspace.
 
-| Name | Amount | Date |
-| --- | --- | --- |
-| [hiveer](https://github.com/hiveer) | CNY ￥60 | Apr 25, 2018 |
-| [虚无飘渺](http://www.dianping.com/shop/93573479) | CNY ￥6.66 | Apr 26, 2018 |
-| [yoyodream2017](https://github.com/yoyodream2017) | CNY ￥10 | Apr 27, 2018 |
-| [hum4dna](https://www.instagram.com/hum4dna/) | CNY ￥16.66 | Apr 27, 2018 |
-| [xhuang68](https://github.com/xhuang68) | CNY ￥16.66 | May 7, 2018 |
-| [WindhorseTour.com](https://windhorsetour.com) | CNY ￥80 | May 15, 2018 |
-| [hum4dna](https://www.instagram.com/hum4dna/) | CNY ￥50 | Jul 5, 2019 |
-| [姗姗吃得含](https://github.com/MrCuriosity) | CNY ￥50 | Jul 6, 2019 |
-| [干吃不胖妞](https://github.com/LeoLeoLei) | CNY ￥66 | Jul 8, 2019 |
-| [坏笑胖狗](https://github.com/BerdyPango) | CNY ￥60 | Jul 8, 2019 |
-| [Vincent](https://github.com/yaowuping) | CNY ￥100 | Jul 26, 2019 |
-| [xhuang68](https://github.com/xhuang68) | CNY ￥66 | Aug 1, 2019 |
-| 厦门市民叶先生 | CNY ￥6 | Apr 20, 2020 |
+## Generate a library
 
-## License
+Run `nx g @nrwl/react:lib my-lib` to generate a library.
 
-Copyright 2017-present IFS49F.
+> You can also use any of the plugins above to generate libraries as well.
 
-Poker4Fun is licensed under [GPL-3.0](https://github.com/IFS49F/poker/blob/master/LICENSE).
+Libraries are shareable across libraries and applications. They can be imported from `@poker4fun/mylib`.
 
-[Poker4Fun Logo](https://github.com/IFS49F/poker/blob/master/public/icon-144.png) is licensed under [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+## Development server
+
+Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+
+## Build
+
+Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+
+Run `nx affected:test` to execute the unit tests affected by a change.
+
+## Running end-to-end tests
+
+Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+
+Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+
+## Understand your workspace
+
+Run `nx dep-graph` to see a diagram of the dependencies of your projects.
+
+## Further help
+
+Visit the [Nx Documentation](https://nx.dev) to learn more.
+
+
+
+## ☁ Nx Cloud
+
+### Distributed Computation Caching & Distributed Task Execution
+
+<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
+
+Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
+
+Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
+
+Visit [Nx Cloud](https://nx.app/) to learn more.
