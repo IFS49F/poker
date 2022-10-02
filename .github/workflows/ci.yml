@@ -45,10 +45,9 @@ jobs:
     - uses: actions/download-artifact@v2.0.10
       with:
         name: dist
-    - run: |
-      echo "$ssh_key" > ~/ssh_key
-      chmod 600 ~/ssh_key
-      rsync -e "ssh -i ~/ssh_key" ./dist deploy@poker4.fun:/websites/poker
+    - run: echo "$ssh_key" > ~/ssh_key
+    - run: chmod 600 ~/ssh_key
+    - run: rsync -e "ssh -i ~/ssh_key" ./dist deploy@poker4.fun:/websites/poker
 
   build-surge:
     name: Test & Build for Surge
