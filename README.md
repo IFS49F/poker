@@ -3,14 +3,8 @@
   <h3 align="center">Poker4Fun</h3>
   <p align="center">♠︎ Vivid, registration-free, easy-to-use Scrum poker</p>
   <p align="center">
-    <a href="https://travis-ci.org/IFS49F/poker">
-      <img alt="Build Status" src="https://travis-ci.org/IFS49F/poker.svg?branch=master" />
-    </a>
-    <a href="https://david-dm.org/IFS49F/poker">
-      <img alt="Dependency Status" src="https://david-dm.org/IFS49F/poker.svg" />
-    </a>
-    <a href="https://david-dm.org/IFS49F/poker?type=dev">
-      <img alt="Dev Dependency Status" src="https://david-dm.org/IFS49F/poker/dev-status.svg" />
+    <a href="https://github.com/IFS49F/poker/actions">
+      <img alt="Build Status" src="https://github.com/ifs49f/poker/actions/workflows/ci.yml/badge.svg" />
     </a>
   </p>
 </p>
