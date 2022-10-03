@@ -48,7 +48,7 @@ jobs:
         name: dist
     - run: echo "$ssh_key" > ~/ssh_key
     - run: chmod 600 ~/ssh_key
-    - run: rsync -e "ssh -p $ssh_port -i ~/ssh_key -o StrictHostKeyChecking=no" ${{ github.workspace }}  deploy@poker4.fun:/websites/poker
+    - run: rsync -e "ssh -p $ssh_port -i ~/ssh_key -o StrictHostKeyChecking=no" -a ${{ github.workspace }}  deploy@poker4.fun:/websites/poker
 
   build-surge:
     name: Test & Build for Surge
