@@ -49,7 +49,7 @@ jobs:
     - run: echo "$ssh_key" > ~/ssh_key
     - run: chmod 600 ~/ssh_key
     - run: eval "$(ssh-agent -s)"
-    - run: ssh-add ~/ssh_key
+    - run: cat ~/ssh_key
     - run: ssh-keyscan -p "$ssh_port" poker4.fun >> ~/.ssh/known_hosts
     - run: rsync -e "ssh -p $ssh_port -i ~/ssh_key -o StrictHostKeyChecking=no" ./dist deploy@poker4.fun:/websites/poker
 
