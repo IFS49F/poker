@@ -18,6 +18,7 @@ jobs:
       REACT_APP_DOMAIN: poker4.fun
       REACT_APP_SOCKET_SERVER_URL: https://api.poker4.fun/
       REACT_APP_GA_ID: UA-104177068-1
+      REACT_APP_DOMAIN_EXPIRY_DATE: Oct 18, 2023
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
