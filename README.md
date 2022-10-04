@@ -3,8 +3,8 @@
   <h3 align="center">Poker4Fun</h3>
   <p align="center">♠︎ Vivid, registration-free, easy-to-use Scrum poker</p>
   <p align="center">
-    <a href="https://github.com/IFS49F/poker/actions">
-      <img alt="Build Status" src="https://github.com/ifs49f/poker/actions/workflows/ci.yml/badge.svg" />
+    <a href="https://github.com/IFS49F/poker/actions/workflows/linode_ci.yml">
+      <img alt="Build Status" src="https://github.com/ifs49f/poker/actions/workflows/linode_ci.yml/badge.svg" />
     </a>
   </p>
 </p>
