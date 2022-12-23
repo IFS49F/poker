@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "nrwl.angular-console",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "csstools.postcss",
+    "firsttris.vscode-jest-runner"
+  ]
+}
