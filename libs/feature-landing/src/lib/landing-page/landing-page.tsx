@@ -2,9 +2,13 @@ import { hri } from 'human-readable-ids';
 import { useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Form } from 'react-router-dom';
-import styles from './landing.module.css';
+import styles from './landing-page.module.css';
 
-export const Landing = () => {
+export type LandingPageProps = {
+  appDomain: string;
+};
+
+export const LandingPage = ({ appDomain }: LandingPageProps) => {
   const { current: randomRoomName } = useRef(hri.random());
 
   return (
@@ -17,7 +21,7 @@ export const Landing = () => {
           Poker4<strong>Fun</strong>
         </h1>
         <p>
-          <label>{import.meta.env.VITE_APP_DOMAIN} /</label>
+          <label>{appDomain} /</label>
           <input
             type="text"
             name="roomName"
@@ -50,4 +54,4 @@ export const Landing = () => {
   );
 };
 
-export default Landing;
+export default LandingPage;

@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Landing from './landing';
+import RoomPage from './room-page';
 
-describe('Landing', () => {
+describe('RoomPage', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Landing />);
+    const { baseElement } = render(<RoomPage />);
     expect(baseElement).toBeTruthy();
   });
 });
