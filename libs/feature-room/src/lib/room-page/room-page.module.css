@@ -1,7 +1,10 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.container {
+  display: grid;
+  grid-template-rows: repeat(4, min-content);
+  grid-row-gap: 1rem;
+  row-gap: 1rem;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}

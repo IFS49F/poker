@@ -8,7 +8,7 @@ export type CardProps = {
   voted: boolean;
   show: boolean;
   suit: CardSuit;
-  score: CardScore;
+  score?: CardScore;
 };
 
 export const Card = ({ highlighted, voted, show, suit, score }: CardProps) => (

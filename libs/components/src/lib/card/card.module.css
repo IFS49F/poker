@@ -80,7 +80,7 @@
 }
 
 @media (max-width: 500px) {
-  .Card {
+  .container {
     --card-height: 100px;
     --card-width: 67px;
   }
