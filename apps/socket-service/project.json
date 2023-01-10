@@ -11,6 +11,7 @@
         "target": "node",
         "compiler": "tsc",
         "outputPath": "dist/apps/socket-service",
+        "generatePackageJson": true,
         "main": "apps/socket-service/src/main.ts",
         "tsConfig": "apps/socket-service/tsconfig.app.json",
         "assets": ["apps/socket-service/src/assets"]
@@ -53,6 +54,30 @@
       "options": {
         "jestConfig": "apps/socket-service/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "options": {
+        "metadata": {
+          "images": ["ghcr.io/IFS49F/poker/socket-service"],
+          "load": true,
+          "tags": [
+            "type=schedule",
+            "type=ref,event=branch",
+            "type=ref,event=tag",
+            "type=ref,event=pr",
+            "type=semver,pattern={{version}}",
+            "type=semver,pattern={{major}}.{{minor}}",
+            "type=semver,pattern={{major}}",
+            "type=sha"
+          ],
+          "labels": [
+            "org.opencontainers.image.source=https://github.com/IFS49F/poker",
+            "org.opencontainers.image.description=The socket service of Poker4Fun",
+            "org.opencontainers.image.licenses=GPL-3.0"
+          ]
+        }
       }
     }
   },

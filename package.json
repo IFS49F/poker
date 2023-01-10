@@ -21,6 +21,8 @@
     "@nrwl/react": "15.4.0",
     "@nrwl/vite": "15.4.0",
     "@nrwl/workspace": "15.4.0",
+    "@nx-tools/container-metadata": "^4.0.2",
+    "@nx-tools/nx-container": "^4.0.2",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/express": "4.17.13",
