@@ -1,0 +1,33 @@
+.container {
+  --offline-banner-alert-color: white;
+  --offline-banner-alert-bg-color: crimson;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+  background-color: var(--offline-banner-alert-bg-color);
+  color: var(--offline-banner-alert-color);
+  text-align: center;
+  line-height: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: transform 200ms linear;
+
+  &.slideOut-enter,
+  &.slideOut-exit {
+    transform: translateY(2rem);
+  }
+
+  &.slideOut-enter-active {
+    transform: translateY(0);
+  }
+
+  a {
+    color: var(--offline-banner-alert-color);
+  }
+}
