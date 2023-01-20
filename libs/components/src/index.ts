@@ -1,3 +1,6 @@
+export * from './lib/player/player';
+export * from './lib/player/player-state';
+export * from './lib/summary/summary';
 export * from './lib/actions/actions';
 export * from './lib/card/card';
 export * from './lib/card/card-scores';
