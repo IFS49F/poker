@@ -13,10 +13,16 @@ export type CardProps = {
 
 export const Card = ({ highlighted, voted, show, suit, score }: CardProps) => (
   <div
-    className={classNames(styles['container'], { highlighted, voted, show })}
+    className={classNames(styles['container'], {
+      [styles['highlighted']]: highlighted,
+      [styles['voted']]: voted,
+      [styles['show']]: show,
+    })}
   >
-    <div className="front face">{show && (voted ? score : '😴')}</div>
-    <div className="back face">{suit}</div>
+    <div className={classNames(styles['front'], styles['face'])}>
+      {show && (voted ? score : '😴')}
+    </div>
+    <div className={classNames(styles['back'], styles['face'])}>{suit}</div>
   </div>
 );
 
