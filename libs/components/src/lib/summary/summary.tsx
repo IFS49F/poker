@@ -36,7 +36,10 @@ const Fade = ({ children, ...props }: PropsWithChildren) => (
   </CSSTransition>
 );
 
-const emptyTally = zipObject(cardScores, times(cardScores.length, constant(0)));
+const emptyTally = zipObject(
+  cardScores,
+  times(cardScores.length, constant(0))
+) as Record<CardScore, number>;
 
 export function Summary({ show, players, onChangeHighlight }: SummaryProps) {
   let tally = clone(emptyTally);
@@ -47,7 +50,7 @@ export function Summary({ show, players, onChangeHighlight }: SummaryProps) {
       votesCount += 1;
     }
   }
-  tally = pickBy(tally, (count) => count > 0);
+  tally = pickBy(tally, (count) => count > 0) as Record<CardScore, number>;
 
   return (
     <div className={styles['container']} aria-live="assertive">
@@ -55,9 +58,13 @@ export function Summary({ show, players, onChangeHighlight }: SummaryProps) {
         {show && votesCount && (
           <Fade>
             <ul aria-label="Result">
-              {map(tally, (count, score) => (
+              {map(tally, (count, score: CardScore) => (
                 <li
                   key={score}
+                  onMouseEnter={() => onChangeHighlight(score)}
+                  onMouseLeave={() => onChangeHighlight(null)}
+                  onTouchStart={() => onChangeHighlight(score)}
+                  onTouchEnd={() => onChangeHighlight(null)}
                   aria-label={`${formatVotesCount(count)} voted ${score}`}
                 >
                   <dd aria-hidden>

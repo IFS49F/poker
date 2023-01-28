@@ -1,4 +1,6 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Mock } from 'vitest';
 import { PlayerState } from '../player/player-state';
 import Summary, { SummaryProps } from './summary';
 
@@ -50,6 +52,7 @@ describe('Summary', () => {
 
   describe('when showing and there is at least one vote', () => {
     beforeEach(() => {
+      (defaultProps.onChangeHighlight as Mock).mockClear();
       render(<Summary {...defaultProps} show={true} />);
     });
 
@@ -70,6 +73,15 @@ describe('Summary', () => {
           "one person voted 13",
         ]
       `);
+    });
+
+    it('calls onChangeHighlight callback when the user hovers on a score', async () => {
+      const user = userEvent.setup();
+      const eight = screen.getByText('8');
+      await user.hover(eight);
+      expect(defaultProps.onChangeHighlight).toHaveBeenNthCalledWith(1, '8');
+      await user.unhover(eight);
+      expect(defaultProps.onChangeHighlight).toHaveBeenNthCalledWith(2, null);
     });
   });
 });
