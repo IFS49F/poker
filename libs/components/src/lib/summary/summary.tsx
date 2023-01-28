@@ -27,9 +27,10 @@ const Fade = ({ children, ...props }: PropsWithChildren) => (
     {...props}
     timeout={500}
     classNames={{
-      enter: styles['fade-enter'],
-      enterActive: styles['fade-enter-active'],
-      exit: styles['fade-exit'],
+      enter: styles['popUp-enter'],
+      enterActive: styles['popUp-enter-active'],
+      exit: styles['popUp-exit'],
+      exitActive: styles['popUp-exit-active'],
     }}
   >
     {children}

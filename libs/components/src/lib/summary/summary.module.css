@@ -4,22 +4,32 @@
   --summary-item-height: 150px;
 
   font-size: var(--summary-item-font-size);
-  transition: opacity 500ms ease;
-
-  &.fade-enter,
-  &.fade-exit {
-    opacity: 0.01;
-  }
-
-  &.fade-enter-active {
-    opacity: 1;
-  }
-
   ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     list-style-type: none;
+
+    &.popUp-enter {
+      transform-origin: bottom;
+      transform: scaleY(0);
+    }
+
+    &.popUp-enter-active {
+      transform: scaleY(1);
+      transition: transform 300ms cubic-bezier(0.45, 0.45, 0.42, 1.36);
+    }
+
+    &.popUp-exit {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    &.popUp-exit-active {
+      opacity: 0;
+      transform: scale(1.2);
+      transition: transform 300ms ease-in, opacity 300ms linear;
+    }
   }
 
   li {
