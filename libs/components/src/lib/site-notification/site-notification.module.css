@@ -1,0 +1,22 @@
+.container {
+  position: relative;
+  padding: 0.9rem 2rem;
+  border: 1px solid rgba(150, 150, 150, 0.3);
+  border-radius: 0.4rem;
+  background-color: rgba(200, 200, 200, 0.3);
+
+  > button {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    border: none;
+    background: none;
+    font-weight: 100;
+    cursor: pointer;
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+}
