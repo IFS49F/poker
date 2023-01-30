@@ -3,6 +3,7 @@ import Card, { CardProps } from './card';
 
 describe('Card', () => {
   const defaultProps: CardProps = {
+    bouncing: false,
     highlighted: false,
     voted: false,
     show: false,

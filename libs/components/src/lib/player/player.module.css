@@ -1,7 +1,30 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.container {
+  --player-width: 100px;
+
+  position: relative;
+  width: var(--player-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    text-overflow: ellipsis;
+  }
+
+  .speech {
+    position: absolute;
+    top: -1rem;
+    left: 67%;
+  }
+
+  @media (max-width: 500px) {
+    .container {
+      --player-width: 67px;
+    }
+  }
+}

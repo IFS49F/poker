@@ -42,10 +42,6 @@
     opacity: 1;
   }
 
-  &.bounce-enter.bounce-enter-active {
-    animation: 1s ease-out 1 bounce;
-  }
-
   &.show {
     .back.face {
       transform: rotateY(-180deg);
@@ -54,6 +50,10 @@
     .front.face {
       transform: rotateY(0deg);
     }
+  }
+
+  &.bouncing {
+    animation: 1s ease-out 1 bounce;
   }
 
   &.highlighted {

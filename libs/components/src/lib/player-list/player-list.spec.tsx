@@ -1,18 +1,12 @@
 import { render } from '@testing-library/react';
 import { of } from 'rxjs';
 
-import Player from './player';
+import PlayerList from './player-list';
 
-describe('Player', () => {
+describe('PlayerList', () => {
   it('renders', () => {
     const { baseElement } = render(
-      <Player
-        name="James"
-        action$={of()}
-        voted={false}
-        show={false}
-        suit={'♤'}
-      />
+      <PlayerList players={[]} show={false} action$={of()} />
     );
     expect(baseElement).toBeTruthy();
   });

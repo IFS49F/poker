@@ -1,3 +1,4 @@
+export * from './lib/player-list/player-list';
 export * from './lib/speech-ballon/speech-ballon';
 export * from './lib/site-notification/site-notification';
 export * from './lib/player/player';
