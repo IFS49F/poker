@@ -1,7 +1,6 @@
 import { SyntheticEvent } from 'react';
 import styles from './join.module.css';
 
-/* eslint-disable-next-line */
 export type JoinProps = {
   defaultPlayerName: string;
   onJoin: (playName: string) => void;

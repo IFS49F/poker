@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Mock } from 'vitest';
-import { PlayerState } from '../player/player-state';
+import { PlayerState } from '../../types/player-state';
 import Summary, { SummaryProps } from './summary';
 
 describe('Summary', () => {

@@ -1,6 +1,4 @@
 import classNames from 'classnames';
-import { CardScore } from './card-scores';
-import { CardSuit } from './card-suits';
 import styles from './card.module.css';
 
 export type CardProps = {
@@ -8,8 +6,8 @@ export type CardProps = {
   highlighted: boolean;
   voted: boolean;
   show: boolean;
-  suit: CardSuit;
-  score?: CardScore;
+  suit: string;
+  score?: string;
 };
 
 export const Card = ({

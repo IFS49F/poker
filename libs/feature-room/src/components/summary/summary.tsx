@@ -1,8 +1,8 @@
 import { clone, constant, map, pickBy, times, zipObject } from 'lodash-es';
 import { PropsWithChildren } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { CardScore, cardScores } from '../card/card-scores';
-import { PlayerState } from '../player/player-state';
+import { CardScore, cardScores } from '../../types/card-scores';
+import { PlayerState } from '../../types/player-state';
 import styles from './summary.module.css';
 
 export type SummaryProps = {
@@ -37,10 +37,7 @@ const Fade = ({ children, ...props }: PropsWithChildren) => (
   </CSSTransition>
 );
 
-const emptyTally = zipObject(
-  cardScores,
-  times(cardScores.length, constant(0))
-) as Record<CardScore, number>;
+const emptyTally = zipObject(cardScores, times(cardScores.length, constant(0)));
 
 export function Summary({ show, players, onChangeHighlight }: SummaryProps) {
   let tally = clone(emptyTally);

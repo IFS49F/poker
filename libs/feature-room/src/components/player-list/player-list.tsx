@@ -2,9 +2,9 @@ import { partition } from 'lodash-es';
 import { PropsWithChildren, useMemo } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { filter, Observable } from 'rxjs';
+import { PlayerAction } from '../../types/player-action';
+import { PlayerState } from '../../types/player-state';
 import Player from '../player/player';
-import { PlayerAction } from '../player/player-action';
-import { PlayerState } from '../player/player-state';
 import styles from './player-list.module.css';
 
 const Fade = ({ children, ...props }: PropsWithChildren) => (

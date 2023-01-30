@@ -1,4 +1,4 @@
-import { cardScores } from '../card/card-scores';
+import { cardScores } from '../../types/card-scores';
 import styles from './actions.module.css';
 
 export type ActionsProps = {

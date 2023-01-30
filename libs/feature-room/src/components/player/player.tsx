@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { delay, filter, Observable, of, startWith, switchMap } from 'rxjs';
-import Card from '../card/card';
-import { CardScore } from '../card/card-scores';
-import { CardSuit } from '../card/card-suits';
+import Card from '../../../../components/src/lib/card/card';
 import SpeechBallon, {
   SpeechBallonProps,
-} from '../speech-ballon/speech-ballon';
-import { PlayerAction } from './player-action';
+} from '../../../../components/src/lib/speech-ballon/speech-ballon';
+import { CardScore } from '../../types/card-scores';
+import { CardSuit } from '../../types/card-suits';
+import { PlayerAction } from '../../types/player-action';
 import styles from './player.module.css';
 
 export type PlayerProps = {

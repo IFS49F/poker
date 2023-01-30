@@ -1,5 +1,5 @@
-import { CardScore } from '../card/card-scores';
-import { CardSuit } from '../card/card-suits';
+import { CardScore } from './card-scores';
+import { CardSuit } from './card-suits';
 
 export type PlayerState = {
   id: string;

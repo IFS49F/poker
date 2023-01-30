@@ -8,7 +8,8 @@ export type LandingPageProps = {
   appDomain: string;
 };
 
-export const LandingPage = ({ appDomain }: LandingPageProps) => {
+export const LandingPage = () => {
+  const { current: appDomain } = useRef(window.location.host);
   const { current: randomRoomName } = useRef(hri.random());
 
   return (

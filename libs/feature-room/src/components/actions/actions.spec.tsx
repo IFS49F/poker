@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { cardScores } from '../card/card-scores';
+import { cardScores } from '../../types/card-scores';
 import Actions, { ActionsProps } from './actions';
 
 describe('Actions', () => {

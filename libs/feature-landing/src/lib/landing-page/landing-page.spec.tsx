@@ -6,7 +6,7 @@ vitest.mock('react-router-dom');
 
 describe('LandingPage', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<LandingPage appDomain={'poker4.fun'} />);
+    const { baseElement } = render(<LandingPage />);
     expect(baseElement).toBeTruthy();
   });
 });

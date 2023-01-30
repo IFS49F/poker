@@ -5,7 +5,7 @@ import { createBrowserRouter, redirect } from 'react-router-dom';
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <LandingPage appDomain={import.meta.env.VITE_APP_DOMAIN} />,
+    element: <LandingPage />,
     async action({ request }) {
       const formData = await request.formData();
       return redirect(
@@ -15,7 +15,9 @@ export const router = createBrowserRouter([
   },
   {
     path: '/:roomName',
-    element: <RoomPage />,
+    element: (
+      <RoomPage remoteUrl={import.meta.env.VITE_APP_SOCKET_SERVER_URL} />
+    ),
   },
 ]);
 
