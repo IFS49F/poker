@@ -1,48 +1,59 @@
-import { cardScores } from '../../types/card-scores';
+import { CardScore, cardScores } from '@poker4-fun/types';
+import { useEffect, useState } from 'react';
+import { filter } from 'rxjs';
+import useRemoteGameState from '../../hooks/use-remote-game-state/use-remote-game-state';
 import styles from './actions.module.css';
 
-export type ActionsProps = {
-  show: boolean;
-  myScore?: string;
-  onVote: (score: string) => void;
-  onShow: () => void;
-  onClear: () => void;
-};
+export const Actions = () => {
+  const [myScore, setMyScore] = useState<CardScore>();
+  const { isShowing, action$, socket } = useRemoteGameState();
 
-export const Actions = ({
-  show,
-  myScore,
-  onVote,
-  onShow,
-  onClear,
-}: ActionsProps) => (
-  <div className={styles['container']}>
-    <ul role="radiogroup">
-      {cardScores.map((score) => (
-        <li key={score}>
+  useEffect(() => {
+    const sub = action$
+      .pipe(filter(({ type }) => type === 'clear'))
+      .subscribe(() => setMyScore(undefined));
+    return () => sub.unsubscribe();
+  });
+
+  return (
+    <div className={styles['container']}>
+      <ul role="radiogroup">
+        {cardScores.map((score) => (
+          <li key={score}>
+            <button
+              role="radio"
+              aria-checked={score === myScore}
+              onClick={() => {
+                setMyScore(score);
+                socket?.emit('vote', score);
+              }}
+            >
+              {score}
+            </button>
+          </li>
+        ))}
+      </ul>
+      <ul className={styles['operations']}>
+        <li>
           <button
-            role="radio"
-            aria-checked={score === myScore}
-            onClick={() => onVote(score)}
+            onClick={() => {
+              setMyScore(undefined);
+              socket?.emit('clear');
+            }}
+            className={styles['danger']}
+            disabled={!isShowing}
           >
-            {score}
+            Clear
           </button>
         </li>
-      ))}
-    </ul>
-    <ul className={styles['operations']}>
-      <li>
-        <button onClick={onClear} className={styles['danger']} disabled={!show}>
-          Clear
-        </button>
-      </li>
-      <li>
-        <button onClick={onShow} disabled={show}>
-          Show
-        </button>
-      </li>
-    </ul>
-  </div>
-);
+        <li>
+          <button onClick={() => socket?.emit('show')} disabled={isShowing}>
+            Show
+          </button>
+        </li>
+      </ul>
+    </div>
+  );
+};
 
 export default Actions;

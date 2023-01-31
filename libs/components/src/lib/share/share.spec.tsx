@@ -3,8 +3,6 @@ import userEvent from '@testing-library/user-event';
 import Share from './share';
 
 describe('Share', () => {
-  const roomName = 'dummy-room';
-
   beforeAll(() => {
     Object.defineProperty(window, 'location', {
       value: {
@@ -17,15 +15,17 @@ describe('Share', () => {
   });
 
   it('renders the Poker4Fun title', () => {
-    render(<Share roomName={roomName} />);
+    render(<Share roomName="neat-walrus-20" />);
     expect(screen.getByRole('heading', { name: 'Poker4 Fun' })).toBeTruthy();
   });
 
   it('renders the link', () => {
-    render(<Share roomName={roomName} />);
-    const link = screen.getByRole('link', { name: 'poker4.fun/dummy-room' });
+    render(<Share roomName="neat-walrus-20" />);
+    const link = screen.getByRole('link', {
+      name: 'poker4.fun/neat-walrus-20',
+    });
     expect(link).toBeTruthy();
-    expect(link.getAttribute('href')).toBe('https://poker4.fun/dummy-room');
+    expect(link.getAttribute('href')).toBe('https://poker4.fun/neat-walrus-20');
   });
 
   describe('when Web Share API is supported', () => {
@@ -37,12 +37,12 @@ describe('Share', () => {
     });
 
     it('calls Web Share API when the link is clicked', async () => {
-      render(<Share roomName={roomName} />);
+      render(<Share roomName="neat-walrus-20" />);
       const user = userEvent.setup();
       await user.click(screen.getByRole('link'));
       expect(navigator.share).toHaveBeenCalledWith({
-        title: 'dummy-room ♠︎ Poker4Fun',
-        url: 'https://poker4.fun/dummy-room',
+        title: 'neat-walrus-20 ♠︎ Poker4Fun',
+        url: 'https://poker4.fun/neat-walrus-20',
       });
     });
 
@@ -53,11 +53,11 @@ describe('Share', () => {
 
   describe('when Clipboard API is supported', () => {
     it('calls Clipboard API when the link is clicked', async () => {
-      render(<Share roomName={roomName} />);
+      render(<Share roomName="neat-walrus-20" />);
       const user = userEvent.setup();
       await user.click(screen.getByRole('link'));
       expect(await navigator.clipboard.readText()).toBe(
-        'https://poker4.fun/dummy-room'
+        'https://poker4.fun/neat-walrus-20'
       );
     });
   });

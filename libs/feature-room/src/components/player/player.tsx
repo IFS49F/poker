@@ -1,13 +1,11 @@
-import { useContext, useEffect, useState } from 'react';
+import { CardSuit, CardScore } from '@poker4-fun/types';
+import { useEffect, useState } from 'react';
 import { debounceTime, filter, map, merge } from 'rxjs';
 import Card from '../../../../components/src/lib/card/card';
 import SpeechBallon, {
   SpeechBallonProps,
 } from '../../../../components/src/lib/speech-ballon/speech-ballon';
-import RoomContext from '../../contexts/room-context';
 import useRemoteGameState from '../../hooks/use-remote-game-state/use-remote-game-state';
-import { CardScore } from '../../types/card-scores';
-import { CardSuit } from '../../types/card-suits';
 import styles from './player.module.css';
 
 export type PlayerProps = {
@@ -20,8 +18,7 @@ export type PlayerProps = {
 };
 
 export const Player = ({ id, name, ...cardProps }: PlayerProps) => {
-  const { remoteUrl } = useContext(RoomContext);
-  const { action$ } = useRemoteGameState(remoteUrl);
+  const { action$ } = useRemoteGameState();
 
   const [bouncing, setBouncing] = useState(false);
   useEffect(() => {

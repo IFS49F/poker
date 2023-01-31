@@ -18,7 +18,8 @@
       "@poker4-fun/components": ["libs/components/src/index.ts"],
       "@poker4-fun/feature-landing": ["libs/feature-landing/src/index.ts"],
       "@poker4-fun/feature-room": ["libs/feature-room/src/index.ts"],
-      "@poker4-fun/hooks": ["libs/hooks/src/index.ts"]
+      "@poker4-fun/hooks": ["libs/hooks/src/index.ts"],
+      "@poker4-fun/types": ["libs/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,8 +1,7 @@
+import { PlayerState, CardScore, cardScores } from '@poker4-fun/types';
 import { clone, constant, map, pickBy, times, zipObject } from 'lodash-es';
 import { PropsWithChildren } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { CardScore, cardScores } from '../../types/card-scores';
-import { PlayerState } from '../../types/player-state';
 import styles from './summary.module.css';
 
 export type SummaryProps = {

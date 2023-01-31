@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import RoomPage from './room-page';
+import Game from './game';
 
-describe('RoomPage', () => {
+describe('Game', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<RoomPage remoteUrl="" />);
+    const { baseElement } = render(<Game roomName="neat-walrus-20" />);
     expect(baseElement).toBeTruthy();
   });
 });

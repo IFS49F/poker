@@ -1,8 +1,8 @@
 import { Share, SiteNotification } from '@poker4-fun/components';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
-import RoomContext from '../../contexts/room-context';
-import PlayerList from '../player-list/player-list';
+import Game from '../game/game';
+import RemoteGameStateProvider from '../remote-game-state-provider/remote-game-state-provider';
 import styles from './room-page.module.css';
 
 export type RoomPageProps = {
@@ -16,14 +16,14 @@ export const RoomPage = ({ remoteUrl }: RoomPageProps) => {
 
   return (
     <div className={styles['container']}>
-      <RoomContext.Provider value={{ remoteUrl }}>
+      <RemoteGameStateProvider remoteUrl={remoteUrl}>
         <Helmet>
           <title>{roomName} ♠︎ Poker4Fun</title>
         </Helmet>
         <Share roomName={roomName} />
         <SiteNotification />
-        <PlayerList />
-      </RoomContext.Provider>
+        <Game roomName={roomName} />
+      </RemoteGameStateProvider>
     </div>
   );
 };

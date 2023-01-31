@@ -1,7 +1,7 @@
+import { PlayerState } from '@poker4-fun/types';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Mock } from 'vitest';
-import { PlayerState } from '../../types/player-state';
 import Summary, { SummaryProps } from './summary';
 
 describe('Summary', () => {

@@ -1,7 +1,6 @@
 import { partition } from 'lodash-es';
-import { PropsWithChildren, useContext, useMemo } from 'react';
+import { PropsWithChildren, useMemo } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import RoomContext from '../../contexts/room-context';
 import useRemoteGameState from '../../hooks/use-remote-game-state/use-remote-game-state';
 import Player from '../player/player';
 import styles from './player-list.module.css';
@@ -26,8 +25,7 @@ export type PlayerListProps = {
 };
 
 export const PlayerList = ({ currentPlayerId }: PlayerListProps) => {
-  const { remoteUrl } = useContext(RoomContext);
-  const { players, show } = useRemoteGameState(remoteUrl);
+  const { players, isShowing } = useRemoteGameState();
 
   const [currentPlayer, otherPlayers] = partition(players, {
     id: currentPlayerId,
@@ -41,7 +39,7 @@ export const PlayerList = ({ currentPlayerId }: PlayerListProps) => {
         {[...currentPlayer, ...otherPlayers].map(({ id, ...playerProps }) => (
           <Fade key={id}>
             <li>
-              <Player id={id} show={show} {...playerProps} />
+              <Player id={id} show={isShowing} {...playerProps} />
             </li>
           </Fade>
         ))}

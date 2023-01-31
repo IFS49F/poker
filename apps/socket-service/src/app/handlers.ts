@@ -1,4 +1,4 @@
-import { CustomIo, CustomSocket } from '../types/custom-socket-io';
+import { CustomServerIo, CustomServerSocket } from '@poker4-fun/types';
 import * as redis from './redis';
 
 const defaultState = {
@@ -24,7 +24,7 @@ const getResultWithoutScores = (result) => {
   };
 };
 
-const isRoomEmpty = (io: CustomIo, currentRoom: string) => {
+const isRoomEmpty = (io: CustomServerIo, currentRoom: string) => {
   // the doc for socket.io sucks, just found the answer on
   // https://stackoverflow.com/a/35527764/2798001
   //
@@ -36,7 +36,7 @@ const isRoomEmpty = (io: CustomIo, currentRoom: string) => {
   return !io.sockets.adapter.rooms[currentRoom];
 };
 
-function handlers(socket: CustomSocket, io: CustomIo) {
+function handlers(socket: CustomServerSocket, io: CustomServerIo) {
   console.log(`Client '${socket.id}' connected`);
   let currentRoom: string | null = null;
 
