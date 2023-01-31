@@ -1,9 +1,8 @@
 import { partition } from 'lodash-es';
-import { PropsWithChildren, useMemo } from 'react';
+import { PropsWithChildren, useContext, useMemo } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { filter, Observable } from 'rxjs';
-import { PlayerAction } from '../../types/player-action';
-import { PlayerState } from '../../types/player-state';
+import RoomContext from '../../contexts/room-context';
+import useRemoteGameState from '../../hooks/use-remote-game-state/use-remote-game-state';
 import Player from '../player/player';
 import styles from './player-list.module.css';
 
@@ -23,18 +22,13 @@ const Fade = ({ children, ...props }: PropsWithChildren) => (
 );
 
 export type PlayerListProps = {
-  players: PlayerState[];
   currentPlayerId?: string;
-  show: boolean;
-  action$: Observable<PlayerAction>;
 };
 
-export const PlayerList = ({
-  players,
-  currentPlayerId,
-  show,
-  action$,
-}: PlayerListProps) => {
+export const PlayerList = ({ currentPlayerId }: PlayerListProps) => {
+  const { remoteUrl } = useContext(RoomContext);
+  const { players, show } = useRemoteGameState(remoteUrl);
+
   const [currentPlayer, otherPlayers] = partition(players, {
     id: currentPlayerId,
   });
@@ -47,13 +41,7 @@ export const PlayerList = ({
         {[...currentPlayer, ...otherPlayers].map(({ id, ...playerProps }) => (
           <Fade key={id}>
             <li>
-              <Player
-                show={show}
-                action$={action$.pipe(
-                  filter(({ playerId }) => playerId === id)
-                )}
-                {...playerProps}
-              />
+              <Player id={id} show={show} {...playerProps} />
             </li>
           </Fade>
         ))}

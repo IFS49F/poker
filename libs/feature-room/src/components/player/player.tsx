@@ -1,43 +1,58 @@
-import { useEffect, useState } from 'react';
-import { delay, filter, Observable, of, startWith, switchMap } from 'rxjs';
+import { useContext, useEffect, useState } from 'react';
+import { debounceTime, filter, map, merge } from 'rxjs';
 import Card from '../../../../components/src/lib/card/card';
 import SpeechBallon, {
   SpeechBallonProps,
 } from '../../../../components/src/lib/speech-ballon/speech-ballon';
+import RoomContext from '../../contexts/room-context';
+import useRemoteGameState from '../../hooks/use-remote-game-state/use-remote-game-state';
 import { CardScore } from '../../types/card-scores';
 import { CardSuit } from '../../types/card-suits';
-import { PlayerAction } from '../../types/player-action';
 import styles from './player.module.css';
 
 export type PlayerProps = {
+  id: string;
   name: string;
-  action$: Observable<PlayerAction>;
   voted: boolean;
   show: boolean;
   suit: CardSuit;
   score?: CardScore;
 };
 
-export const Player = ({ name, action$, ...cardProps }: PlayerProps) => {
+export const Player = ({ id, name, ...cardProps }: PlayerProps) => {
+  const { remoteUrl } = useContext(RoomContext);
+  const { action$ } = useRemoteGameState(remoteUrl);
+
   const [bouncing, setBouncing] = useState(false);
   useEffect(() => {
-    const sub = action$
-      .pipe(
-        filter(({ type }) => type === 'vote'),
-        switchMap(() => of(false).pipe(delay(1000), startWith(true)))
+    const vote$ = action$.pipe(
+      filter(({ playerId, type }) => playerId === id && type === 'vote')
+    );
+    const sub = merge(
+      vote$.pipe(map(() => true)),
+      vote$.pipe(
+        debounceTime(1000),
+        map(() => false)
       )
-      .subscribe(setBouncing);
+    ).subscribe(setBouncing);
     return () => sub.unsubscribe();
   }, [action$]);
 
   const [speech, setSpeech] = useState<string | null>(null);
   useEffect(() => {
-    const sub = action$
-      .pipe(
-        filter(({ type }) => type === 'show' || type === 'clear'),
-        switchMap(({ type }) => of(null).pipe(delay(3000), startWith(type)))
+    const speech$ = action$.pipe(
+      filter(
+        ({ playerId, type }) =>
+          playerId === id && (type === 'show' || type === 'clear')
       )
-      .subscribe(setSpeech);
+    );
+    const sub = merge(
+      speech$.pipe(map(({ type }) => type)),
+      speech$.pipe(
+        debounceTime(3000),
+        map(() => null)
+      )
+    ).subscribe(setSpeech);
     return () => sub.unsubscribe();
   }, [action$]);
 
