@@ -44,9 +44,9 @@ Most online poker tools are cool, but
 
 Poker4Fun is a side project we built in our spare time. This app has become popular thanks to the hard working of our [contributors](https://github.com/IFS49F/poker/graphs/contributors) and valuable feedbacks from our users. As an open source software, Poker4Fun is and will always be free for everyone, but it [costs money](#cost) to run the server and renew the domain. We need your help to keep Poker4Fun free and sustainable, and would be much appreciated if you could buy us a cup of coffee ☕️  to fuel our coding frenzy 🔥.
 
-| WeChat | Alipay | PayPal |
-| --- | --- | --- |
-|![donate_via_wechat](https://user-images.githubusercontent.com/7512625/39191933-96503b6a-480a-11e8-94a0-ec5efc16dc5d.jpg)|![donate_via_alipay](https://user-images.githubusercontent.com/7512625/39191930-95c25598-480a-11e8-8508-7a48d009db55.png)|[![donate_via_paypal](https://user-images.githubusercontent.com/7512625/39193475-39a8fccc-480e-11e8-926d-b2f86050db69.png)](https://www.paypal.me/zorojiang)|
+| WeChat |
+| --- |
+|<img src="public/reward_code.jpeg" alt="donate_via_wechat" width="350">|
 
 ## Sponsors
 
