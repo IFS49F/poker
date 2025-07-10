@@ -37,6 +37,7 @@ Most online poker tools are cool, but
 | Domain | CNY ￥208.14 | Jul 12, 2019 | Jul 23, 2020 |
 | Domain | CNY ￥230.42 | Oct 17, 2020 | Oct 18, 2022 |
 | Domain | CNY ￥207.97 | Oct 02, 2022 | Oct 18, 2023 |
+| Domain | CNY ￥153.47 | Jul 10, 2025 | Jul 11, 2027 |
 | Server | USD $5 | 1st day every month | Last day every month |
 
 ## Donate
