@@ -20,15 +20,15 @@ jobs:
       REACT_APP_GA_ID: UA-104177068-1
       REACT_APP_DOMAIN_EXPIRY_DATE: Jul 11, 2027
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
         node-version: 14
         cache: yarn
     - run: yarn install --frozen-lockfile
     - run: yarn test
     - run: yarn build
-    - uses: actions/upload-artifact@v2.2.4
+    - uses: actions/upload-artifact@v3
       if: ${{ github.ref == 'refs/heads/master' }}
       with:
         name: dist
@@ -44,7 +44,7 @@ jobs:
     name: Deploy to Linode
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v2.0.10
+    - uses: actions/download-artifact@v3
       with:
         name: dist
     - run: echo "$ssh_key" > ~/ssh_key
