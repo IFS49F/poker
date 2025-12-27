@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { hri } from 'human-readable-ids';
+import { getEnv } from 'config/runtimeEnv';
 import './Landing.css';
 import bgImg from './bram-naus-200967.jpg';
 
@@ -36,7 +37,7 @@ class Landing extends Component {
         <form className="Form" onSubmit={this.handleSubmit}>
           <h1>Poker4<strong>Fun</strong></h1>
           <p>
-            <label>{process.env.REACT_APP_DOMAIN} /</label>
+            <label>{getEnv('REACT_APP_DOMAIN', 'poker4.fun')} /</label>
             <input
               type="text"
               value={this.state.roomName}

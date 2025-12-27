@@ -1,0 +1,34 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Containerfile
+    image: poker-frontend:local
+    environment:
+      REACT_APP_DOMAIN: poker4.fun
+      REACT_APP_SOCKET_SERVER_URL: http://localhost:4300
+      REACT_APP_DOMAIN_EXPIRY_DATE: Jan 01, 2000
+      REACT_APP_GA_ID: UA-104177068-1
+    ports:
+      - 3000:80
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ../poker-server
+      dockerfile: Containerfile
+    environment:
+      PORT: 4300
+      REDIS_URL: redis://redis:6379
+      # CLIENT_ORIGIN: https://poker4.fun
+    ports:
+      - 4300:4300
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  redis:
+    image: redis:8.0.1
+    restart: unless-stopped

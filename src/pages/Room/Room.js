@@ -11,6 +11,7 @@ import Summary from 'components/Summary/Summary';
 import './Room.css';
 import io from 'socket.io-client';
 import PlayerStatePinger from 'lib/player-state-pinger';
+import { getEnv } from 'config/runtimeEnv';
 
 const Fade = ({ children, ...props }) => (
   <CSSTransition
@@ -51,7 +52,8 @@ class Room extends Component {
   }
 
   componentDidMount() {
-    this.socket = io(process.env.REACT_APP_SOCKET_SERVER_URL);
+    const socketUrl = getEnv('REACT_APP_SOCKET_SERVER_URL', 'https://api.poker4.fun/');
+    this.socket = io(socketUrl);
 
     this.socket.on('stateUpdate', (response, isClearAction) => {
       const me = response.team.find(client => client.id === this.socket.id);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getEnv } from 'config/runtimeEnv';
 import './Share.css';
 
 const defaultTooltip = 'Click to copy link';
@@ -24,7 +25,8 @@ class Share extends Component {
   
   render() {
     const { roomName } = this.props;
-    const caption = `${process.env.REACT_APP_DOMAIN}/${roomName}`;
+    const domain = getEnv('REACT_APP_DOMAIN', 'poker4.fun');
+    const caption = `${domain}/${roomName}`;
     const link = `${window.location.protocol}//${caption}`;
 
     return (

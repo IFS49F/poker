@@ -1,9 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { getEnv } from 'config/runtimeEnv';
 import './SiteNotification.css';
 
 const SiteNotification = () => {
-  const expiryDate = new Date(process.env.REACT_APP_DOMAIN_EXPIRY_DATE);
+  const expiryDateValue = getEnv('REACT_APP_DOMAIN_EXPIRY_DATE', 'Jul 11, 2027');
+  const expiryDate = new Date(expiryDateValue);
   const today = new Date();
   const isUrgent = ((expiryDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)) < 90
   const expiryDateClasses = classNames({
@@ -17,7 +19,7 @@ const SiteNotification = () => {
         Poker4Fun costs <a href="https://github.com/IFS49F/poker/#cost">USD $90</a> to run every year.
       </p>
       <p>
-        Currently the domain is available until <span className={expiryDateClasses}>{process.env.REACT_APP_DOMAIN_EXPIRY_DATE}</span>.
+        Currently the domain is available until <span className={expiryDateClasses}>{expiryDateValue}</span>.
       </p>
       <p>
         Please <a href="https://github.com/IFS49F/poker#donate" target="_blank" rel="noopener noreferrer">help us</a> keeping Poker4Fun free and sustainable.

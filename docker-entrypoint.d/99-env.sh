@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+: "${REACT_APP_DOMAIN:=poker4.fun}"
+: "${REACT_APP_SOCKET_SERVER_URL:=https://api.poker4.fun/}"
+: "${REACT_APP_DOMAIN_EXPIRY_DATE:=Jul 11, 2027}"
+: "${REACT_APP_GA_ID:=UA-104177068-1}"
+
+envsubst < /usr/share/nginx/html/env.template.js > /usr/share/nginx/html/env.js
+echo "[entrypoint] Generated runtime env.js"
