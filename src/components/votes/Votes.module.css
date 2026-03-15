@@ -1,0 +1,74 @@
+.votes {
+  --vote-width: 100px;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style-type: none;
+  }
+
+  li {
+    min-width: 20%;
+    margin: 0 0 1rem;
+  }
+
+  dd,
+  dt {
+    width: var(--vote-width);
+    margin: 0 auto;
+  }
+
+  dd {
+    position: relative;
+  }
+
+  dt {
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 2em;
+  }
+
+  /* Fade transitions for player list items */
+  :global(.fade-enter) {
+    opacity: 0.01;
+    transform: scale(1.2);
+  }
+
+  :global(.fade-enter-active) {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 500ms ease-in;
+  }
+
+  :global(.fade-exit) {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  :global(.fade-exit-active) {
+    opacity: 0.01;
+    transform: scale(1.2);
+    transition: all 300ms ease-in;
+  }
+}
+
+@media (max-width: 500px) {
+  .votes {
+    --vote-width: 67px;
+
+    li {
+      min-width: 25%;
+    }
+  }
+}
+
+@media (max-width: 374px) {
+  .votes {
+    li {
+      min-width: 33%;
+    }
+  }
+}

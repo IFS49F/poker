@@ -1,8 +1,9 @@
 'use client'
 
-import { use } from 'react'
+import { use, useState } from 'react'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { usePokerRoom } from '@/hooks/usePokerRoom'
+import type { Score } from '@/types/poker'
 import styles from './page.module.css'
 
 // Components will be filled in during Step 10.
@@ -36,6 +37,7 @@ export default function RoomPage({ params }: RoomPageProps) {
   const { room } = use(params)
   const { state, actions } = usePokerRoom(room)
   const { me, myScore, team, playerAction, show, disconnected, reconnCountdown } = state
+  const [highlightScore, setHighlightScore] = useState<Score>(null)
 
   const handleReconn = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -64,11 +66,12 @@ export default function RoomPage({ params }: RoomPageProps) {
         team={team}
         playerAction={playerAction}
         show={show}
+        highlightScore={highlightScore}
       />
       <TransitionGroup component={null}>
         {show && (
           <Fade key="summary">
-            <Summary me={me} team={team} />
+            <Summary me={me} team={team} onChangeHighlight={setHighlightScore} />
           </Fade>
         )}
         {disconnected && (

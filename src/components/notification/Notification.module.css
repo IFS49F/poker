@@ -1,0 +1,52 @@
+.notification {
+  --notification-alert-color: white;
+  --notification-alert-bg-color: crimson;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2rem;
+  background-color: var(--notification-alert-bg-color);
+  color: var(--notification-alert-color);
+  text-align: center;
+  line-height: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: transform 200ms linear;
+
+  a {
+    color: var(--notification-alert-color);
+  }
+}
+
+/* SlideOut transitions applied by CSSTransition wrapper */
+.notification:global(.slideOut-enter),
+.notification:global(.slideOut-exit) {
+  transform: translateY(-2rem);
+}
+
+.notification:global(.slideOut-enter-active) {
+  transform: translateY(0);
+}
+
+@media (max-width: 500px) {
+  .notification {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+
+    .countdown {
+      display: none;
+    }
+
+    &:global(.slideOut-enter),
+    &:global(.slideOut-exit) {
+      transform: translateY(2rem);
+    }
+
+    &:global(.slideOut-enter-active) {
+      transform: translateY(0);
+    }
+  }
+}
