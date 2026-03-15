@@ -1,0 +1,85 @@
+'use client'
+
+import { use } from 'react'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import { usePokerRoom } from '@/hooks/usePokerRoom'
+import styles from './page.module.css'
+
+// Components will be filled in during Step 10.
+// Imported here so the wiring is complete and types are checked.
+import Share from '@/components/share/Share'
+import SiteNotification from '@/components/site-notification/SiteNotification'
+import Join from '@/components/join/Join'
+import Actions from '@/components/actions/Actions'
+import Votes from '@/components/votes/Votes'
+import Summary from '@/components/summary/Summary'
+import Notification from '@/components/notification/Notification'
+
+// Transition wrappers — match old CSSTransition classNames
+const Fade = ({ children, ...props }: { children: React.ReactElement; [key: string]: unknown }) => (
+  <CSSTransition {...(props as object)} timeout={500} classNames="fade">
+    {children}
+  </CSSTransition>
+)
+
+const SlideOut = ({ children, ...props }: { children: React.ReactElement; [key: string]: unknown }) => (
+  <CSSTransition {...(props as object)} timeout={200} classNames="slideOut">
+    {children}
+  </CSSTransition>
+)
+
+interface RoomPageProps {
+  params: Promise<{ room: string }>
+}
+
+export default function RoomPage({ params }: RoomPageProps) {
+  const { room } = use(params)
+  const { state, actions } = usePokerRoom(room)
+  const { me, myScore, team, playerAction, show, disconnected, reconnCountdown } = state
+
+  const handleReconn = (e: React.MouseEvent) => {
+    e.preventDefault()
+    // socket.open() equivalent — remount by navigating to same page
+    window.location.reload()
+  }
+
+  return (
+    <div className={styles.room}>
+      <Share roomName={room} />
+      <SiteNotification />
+      {me ? (
+        <Actions
+          show={show}
+          myScore={myScore}
+          onVote={actions.vote}
+          onShow={actions.show}
+          onClear={actions.clear}
+        />
+      ) : (
+        <Join onSubmit={actions.play} />
+      )}
+      <Votes
+        me={me}
+        myScore={myScore}
+        team={team}
+        playerAction={playerAction}
+        show={show}
+      />
+      <TransitionGroup component={null}>
+        {show && (
+          <Fade key="summary">
+            <Summary me={me} team={team} />
+          </Fade>
+        )}
+        {disconnected && (
+          <SlideOut key="notification">
+            <Notification
+              reconnCountdown={reconnCountdown}
+              onReconn={handleReconn}
+            />
+          </SlideOut>
+        )}
+      </TransitionGroup>
+    </div>
+  )
+}
