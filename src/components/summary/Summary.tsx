@@ -3,12 +3,13 @@ import type { Player, Score } from '@/types/poker'
 import styles from './Summary.module.css'
 
 interface SummaryProps {
+  ref?: React.Ref<HTMLDivElement>
   me: Player | null
   team: Player[]
   onChangeHighlight: (score: Score) => void
 }
 
-export default function Summary({ me, team, onChangeHighlight }: SummaryProps) {
+export default function Summary({ ref, me, team, onChangeHighlight }: SummaryProps) {
   const votes: Record<string, number> = {}
   VALID_SCORES.forEach((score) => (votes[score] = 0))
 
@@ -44,7 +45,7 @@ export default function Summary({ me, team, onChangeHighlight }: SummaryProps) {
     .filter(Boolean)
 
   return (
-    <div className={styles.summary}>
+    <div ref={ref} className={styles.summary}>
       <ul>{items}</ul>
     </div>
   )

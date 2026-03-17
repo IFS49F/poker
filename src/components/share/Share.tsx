@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Share.module.css'
 
 interface ShareProps {
@@ -11,9 +11,14 @@ const DEFAULT_TOOLTIP = 'Click to copy link'
 
 export default function Share({ roomName }: ShareProps) {
   const [tooltip, setTooltip] = useState(DEFAULT_TOOLTIP)
+  const [origin, setOrigin] = useState('')
 
-  const link = typeof window !== 'undefined' ? `${window.location.origin}/${roomName}` : `/${roomName}`
-  const caption = link.replace(/^https?:\/\//, '')
+  useEffect(() => {
+    setOrigin(window.location.origin)
+  }, [])
+
+  const link = `${origin}/${roomName}`
+  const caption = origin ? link.replace(/^https?:\/\//, '') : roomName
 
   const handleCopy = async (e: React.MouseEvent) => {
     e.preventDefault()

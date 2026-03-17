@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { hri } from 'human-readable-ids'
 import styles from './page.module.css'
@@ -10,7 +10,11 @@ const domain = process.env.NEXT_PUBLIC_DOMAIN ?? 'poker4.fun'
 export default function LandingForm() {
   const router = useRouter()
   const [roomName, setRoomName] = useState('')
-  const [randomRoomName] = useState(() => hri.random())
+  const [randomRoomName, setRandomRoomName] = useState('')
+
+  useEffect(() => {
+    setRandomRoomName(hri.random())
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

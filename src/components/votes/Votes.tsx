@@ -1,3 +1,4 @@
+import { useRef, cloneElement } from 'react'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Card from '@/components/card/Card'
 import SpeechBalloon from '@/components/speech-balloon/SpeechBalloon'
@@ -18,34 +19,48 @@ const collator =
     ? new Intl.Collator()
     : { compare: (a: string, b: string) => a.localeCompare(b) }
 
-const Fade = ({ children, ...props }: { children: React.ReactElement; [key: string]: unknown }) => (
-  <CSSTransition {...(props as object)} timeout={500} classNames="fade">
-    {children}
-  </CSSTransition>
-)
+const Fade = ({ children, ...props }: { children: React.ReactElement; [key: string]: unknown }) => {
+  const nodeRef = useRef(null)
+  return (
+    <CSSTransition {...(props as object)} nodeRef={nodeRef} timeout={500} classNames="fade">
+      {cloneElement(children, { ref: nodeRef } as Record<string, unknown>)}
+    </CSSTransition>
+  )
+}
 
 const Bounce = ({
   children,
   ...props
-}: { children: React.ReactElement; [key: string]: unknown }) => (
-  <CSSTransition {...(props as object)} timeout={1000} classNames="bounce">
-    {children}
-  </CSSTransition>
-)
+}: {
+  children: React.ReactElement
+  [key: string]: unknown
+}) => {
+  const nodeRef = useRef(null)
+  return (
+    <CSSTransition {...(props as object)} nodeRef={nodeRef} timeout={1000} classNames="bounce">
+      {cloneElement(children, { ref: nodeRef } as Record<string, unknown>)}
+    </CSSTransition>
+  )
+}
 
-const PopIn = ({ children, ...props }: { children: React.ReactElement; [key: string]: unknown }) => (
-  <CSSTransition {...(props as object)} timeout={300} classNames="popin">
-    {children}
-  </CSSTransition>
-)
+const PopIn = ({ children, ...props }: { children: React.ReactElement; [key: string]: unknown }) => {
+  const nodeRef = useRef(null)
+  return (
+    <CSSTransition {...(props as object)} nodeRef={nodeRef} timeout={300} classNames="popin">
+      {cloneElement(children, { ref: nodeRef } as Record<string, unknown>)}
+    </CSSTransition>
+  )
+}
 
 function PlayerCard({
+  ref,
   player,
   score,
   show,
   highlightScore,
   playerAction,
 }: {
+  ref?: React.Ref<HTMLLIElement>
   player: Player
   score: Score
   show: boolean
@@ -54,7 +69,7 @@ function PlayerCard({
 }) {
   const action = playerAction[player.id]
   return (
-    <li>
+    <li ref={ref}>
       <dd>
         <Bounce in={Boolean(action?.voting)}>
           <Card

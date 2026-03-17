@@ -1,6 +1,6 @@
 'use client'
 
-import { use, useState } from 'react'
+import { use, useState, useRef, cloneElement } from 'react'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { usePokerRoom } from '@/hooks/usePokerRoom'
 import type { Score } from '@/types/poker'
@@ -17,17 +17,23 @@ import Summary from '@/components/summary/Summary'
 import Notification from '@/components/notification/Notification'
 
 // Transition wrappers — match old CSSTransition classNames
-const Fade = ({ children, ...props }: { children: React.ReactElement; [key: string]: unknown }) => (
-  <CSSTransition {...(props as object)} timeout={500} classNames="fade">
-    {children}
-  </CSSTransition>
-)
+const Fade = ({ children, ...props }: { children: React.ReactElement; [key: string]: unknown }) => {
+  const nodeRef = useRef(null)
+  return (
+    <CSSTransition {...(props as object)} nodeRef={nodeRef} timeout={500} classNames="fade">
+      {cloneElement(children, { ref: nodeRef } as Record<string, unknown>)}
+    </CSSTransition>
+  )
+}
 
-const SlideOut = ({ children, ...props }: { children: React.ReactElement; [key: string]: unknown }) => (
-  <CSSTransition {...(props as object)} timeout={200} classNames="slideOut">
-    {children}
-  </CSSTransition>
-)
+const SlideOut = ({ children, ...props }: { children: React.ReactElement; [key: string]: unknown }) => {
+  const nodeRef = useRef(null)
+  return (
+    <CSSTransition {...(props as object)} nodeRef={nodeRef} timeout={200} classNames="slideOut">
+      {cloneElement(children, { ref: nodeRef } as Record<string, unknown>)}
+    </CSSTransition>
+  )
+}
 
 interface RoomPageProps {
   params: Promise<{ room: string }>
