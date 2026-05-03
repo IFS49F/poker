@@ -1,0 +1,47 @@
+name: Web Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "apps/web/**"
+
+env:
+  CLOUDFLARE_PROJECT_NAME: poker4fun
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: Cloudflare
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+
+      - name: Install dependencies
+        run: bun ci
+
+      - name: Build
+        run: bun run --filter './apps/web' build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy apps/web/dist --project-name=${{ env.CLOUDFLARE_PROJECT_NAME }}

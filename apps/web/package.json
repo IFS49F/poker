@@ -1,0 +1,26 @@
+{
+  "name": "@ifs49f/poker-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot src/index.ts",
+    "build": "rimraf ./dist && bun build ./src/index.html --outdir=dist --sourcemap=none --target=browser --production --env='BUN_PUBLIC_*'",
+    "typecheck": "tsc --noEmit",
+    "start": "NODE_ENV=production bun src/index.ts"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1",
+    "human-readable-ids": "^1.0.3",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-router-dom": "^7.5.3",
+    "react-transition-group": "^4.4.5",
+    "socket.io-client": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/react-transition-group": "^4.4.12"
+  }
+}

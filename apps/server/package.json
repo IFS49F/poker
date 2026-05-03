@@ -1,0 +1,16 @@
+{
+  "name": "@ifs49f/poker-server",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot src/index.ts",
+    "build": "bun build ./src/index.ts --target=bun --outdir=dist --minify",
+    "start": "NODE_ENV=production bun src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@socket.io/bun-engine": "^0.1.1",
+    "socket.io": "^4.8.3"
+  }
+}

@@ -1,0 +1,51 @@
+.Notification {
+  --notification-alert-color: white;
+  --notification-alert-bg-color: crimson;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2rem;
+  background-color: var(--notification-alert-bg-color);
+  color: var(--notification-alert-color);
+  text-align: center;
+  line-height: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: transform 200ms linear;
+
+  &.slideOut-enter,
+  &.slideOut-exit {
+    transform: translateY(-2rem);
+  }
+
+  &.slideOut-enter-active {
+    transform: translateY(0);
+  }
+
+  a {
+    color: var(--notification-alert-color);
+  }
+}
+
+@media (max-width: 500px) {
+  .Notification {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+
+    .countdown {
+      display: none;
+    }
+
+    &.slideOut-enter,
+    &.slideOut-exit {
+      transform: translateY(2rem);
+    }
+
+    &.slideOut-enter-active {
+      transform: translateY(0);
+    }
+  }
+}
