@@ -9,6 +9,7 @@ on:
 
 env:
   CLOUDFLARE_PROJECT_NAME: poker4fun
+  BUN_PUBLIC_SERVER_BASE_URL: ${{ vars.BUN_PUBLIC_SERVER_BASE_URL }}
 
 jobs:
   deploy:

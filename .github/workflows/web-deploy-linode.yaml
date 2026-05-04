@@ -7,6 +7,9 @@ on:
     paths:
       - "apps/web/**"
 
+env:
+  BUN_PUBLIC_SERVER_BASE_URL: ${{ vars.BUN_PUBLIC_SERVER_BASE_URL }}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
