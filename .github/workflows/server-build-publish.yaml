@@ -42,7 +42,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ toLower(github.repository_owner) }}/${{ toLower(env.IMAGE_NAME) }}
 
       - name: Set IMAGE_TAG from git tag
         if: startsWith(github.ref, 'refs/tags/server/')
@@ -58,7 +58,7 @@ jobs:
           context: .
           file: apps/server/Containerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          tags: ${{ env.REGISTRY }}/${{ toLower(github.repository_owner) }}/${{ toLower(env.IMAGE_NAME) }}:${{ env.IMAGE_TAG }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
