@@ -11,7 +11,6 @@ on:
 
 env:
   CLOUDFLARE_PROJECT_NAME: poker4fun
-  BUN_PUBLIC_SERVER_BASE_URL: ${{ vars.BUN_PUBLIC_SERVER_BASE_URL }}
 
 jobs:
   deploy:
@@ -40,6 +39,9 @@ jobs:
 
       - name: Build
         run: bun run --filter './apps/web' build
+        env:
+          BUN_PUBLIC_SERVER_BASE_URL: ${{ vars.BUN_PUBLIC_SERVER_BASE_URL }}
+          BUN_PUBLIC_DOMAIN_EXPIRY_DATE: ""
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
