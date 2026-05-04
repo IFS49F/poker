@@ -1,0 +1,41 @@
+name: Web Deploy to Linode
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "apps/web/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: Linode
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+
+      - name: Install dependencies
+        run: bun ci
+
+      - name: Build
+        run: bun run --filter './apps/web' build
+
+      - name: Setup SSH key
+        run: |
+          echo "${{ secrets.LINODE_SSH_KEY }}" > ~/ssh_key
+          chmod 600 ~/ssh_key
+
+      - name: Deploy to Linode
+        run: rsync -e "ssh -p ${{ secrets.LINODE_SSH_PORT }} -i ~/ssh_key -o StrictHostKeyChecking=no" -a apps/web/dist/ deploy@poker4.fun:/websites/poker

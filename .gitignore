@@ -1,26 +1,37 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
+# dependencies (bun install)
+node_modules
 
-# dependencies
-/node_modules
+# output
+out
+dist
+*.tgz
 
-# testing
-/coverage
+# code coverage
+coverage
+*.lcov
 
-# production
-/build
+# logs
+logs
+_.log
+report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
-# misc
-.DS_Store
+# mise local config
+mise.local.toml
+
+# dotenv environment variable files
 .env
-.env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# caches
+.eslintcache
+.cache
+*.tsbuildinfo
 
+# IntelliJ based IDEs
+.idea
+
+# Finder (MacOS) folder config
 .DS_Store
-
-*.swp
