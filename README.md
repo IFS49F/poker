@@ -40,6 +40,14 @@ Install dependencies from the repository root:
 bun install
 ```
 
+Set up the pre-commit hook after installing dependencies:
+
+```bash
+bunx lefthook install
+```
+
+The hook runs `bunx oxlint --fix` and `bunx oxfmt` before commits.
+
 Start a local Redis instance:
 
 ```bash

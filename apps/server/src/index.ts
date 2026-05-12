@@ -57,12 +57,13 @@ const server = Bun.serve({
 });
 
 const shutdown = () => {
-  io.close();
+  void io.close();
   shutdownSocketServer();
-  server.stop(true);
+  void server.stop(true);
 };
 
 process.on("SIGINT", shutdown);
 process.on("SIGTERM", shutdown);
 
+// oxlint-disable-next-line typescript/restrict-template-expressions
 console.log(`Poker server listening on ${server.url}`);

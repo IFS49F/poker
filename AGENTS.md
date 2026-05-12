@@ -47,6 +47,14 @@ bun run fmt
 bun run lint
 ```
 
+This repo also uses `lefthook` for pre-commit automation. After installing dependencies, set up the git hooks with:
+
+```bash
+bunx lefthook install
+```
+
+The pre-commit hook runs `bunx oxlint --fix` and `bunx oxfmt` so commits stay formatted and linted.
+
 Add these to your PR verification flow or a `ci` script so they act as back pressure against style drift. Consider adding `oxfmt --check` and `oxlint` as required CI steps on `pull_request` to block merges that don't pass.
 
 ## Testing Guidelines

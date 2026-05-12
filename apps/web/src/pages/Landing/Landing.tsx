@@ -1,5 +1,5 @@
-import { Component, type ChangeEvent, type FormEvent } from "react";
 import { hri } from "human-readable-ids";
+import { Component, type ChangeEvent, type SubmitEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Landing.css";
 import bgImg from "./bram-naus-200967.jpg";
@@ -32,7 +32,7 @@ class LandingView extends Component<LandingProps, LandingState> {
     });
   };
 
-  handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     const roomName = this.state.roomName || this.state.randomRoomName;
     this.props.navigate(`/${roomName}`);

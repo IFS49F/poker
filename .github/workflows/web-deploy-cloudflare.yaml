@@ -8,7 +8,6 @@ on:
       - "apps/web/**"
   workflow_dispatch:
 
-
 env:
   CLOUDFLARE_PROJECT_NAME: poker4fun
 

@@ -1,0 +1,6 @@
+pre-commit:
+  jobs:
+    - run: bunx oxlint --fix
+      stage_fixed: true
+    - run: bunx oxfmt
+      stage_fixed: true
