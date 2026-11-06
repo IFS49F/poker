@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "bun --hot src/index.ts",
     "build": "rimraf ./dist && bun build ./src/index.html --outdir=dist --sourcemap=none --target=browser --production --env='BUN_PUBLIC_*'",
-    "typecheck": "tsc --noEmit",
     "start": "NODE_ENV=production bun src/index.ts"
   },
   "dependencies": {

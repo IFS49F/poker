@@ -1,6 +1,19 @@
 pre-commit:
-  jobs:
-    - run: bunx oxlint --fix
+  parallel: false
+  commands:
+    lint:
+      priority: 1
+      glob: "*.{ts,tsx,mts,cts,js,jsx,mjs,cjs}"
+      run: bunx oxlint --fix {staged_files}
       stage_fixed: true
-    - run: bunx oxfmt
+    format:
+      priority: 2
+      glob: "*.{ts,tsx,mts,cts,js,jsx,mjs,cjs}"
+      run: bunx oxfmt {staged_files}
       stage_fixed: true
+
+pre-push:
+  parallel: true
+  commands:
+    typecheck:
+      run: bun check .

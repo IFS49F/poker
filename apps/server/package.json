@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "bun --hot src/index.ts",
     "build": "bun build ./src/index.ts --target=bun --outdir=dist --minify",
-    "start": "NODE_ENV=production bun src/index.ts",
-    "typecheck": "tsc --noEmit"
+    "start": "NODE_ENV=production bun src/index.ts"
   },
   "dependencies": {
     "@socket.io/bun-engine": "^0.1.1",

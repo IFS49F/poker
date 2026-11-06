@@ -10,14 +10,20 @@
   },
   "devDependencies": {
     "@types/bun": "^1",
-    "lefthook": "^2.1.6",
     "oxfmt": "^0.47.0",
     "oxlint": "^1.62.0",
     "oxlint-tsgolint": "^0.22.1",
     "rimraf": "^6.1.3"
   },
-  "peerDependencies": {
-    "typescript": "^5"
+  "devEngines": {
+    "packageManager": {
+      "name": "bun",
+      "version": "1.4.4"
+    },
+    "runtime": {
+      "name": "bun",
+      "version": "1.4.4"
+    }
   },
-  "packageManager": "bun@1.3.13"
+  "packageManager": "bun@1.4.4"
 }

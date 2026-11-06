@@ -43,10 +43,10 @@ bun install
 Set up the pre-commit hook after installing dependencies:
 
 ```bash
-bunx lefthook install
+lefthook install
 ```
 
-The hook runs `bunx oxlint --fix` and `bunx oxfmt` before commits.
+The pre-commit hook lints and formats staged JavaScript and TypeScript files. The pre-push hook runs `bun check .` across both apps.
 
 Start a local Redis instance:
 
@@ -74,7 +74,7 @@ By default, the web app serves on `http://localhost:3000` and the server listens
 ```bash
 bun run --filter './apps/web' build
 bun run --filter './apps/server' build
-bun run --filter './apps/web' typecheck
+bun check .
 ```
 
 Build output is written to each app's `dist/` directory.
